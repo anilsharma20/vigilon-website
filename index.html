@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VigilON — CMMC Compliance, Digital Forensics &amp; Cybersecurity Awareness Courses | Hora Technologies</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="styles.css">
+<style>
+  :root{
+    --hdr-line:var(--l-line); --hdr-ink:var(--l-ink); --hdr-ink-soft:var(--l-ink-soft);
+    --tab-bg:var(--l-bg-raised); --tab-active-bg:var(--l-teal-deep); --tab-active-ink:#fff;
+    --ft-line:var(--d-line); --ft-ink-soft:var(--d-ink-soft); --ft-ink:var(--d-ink); --ft-accent:var(--d-mint);
+    --ft-tag-bg:var(--d-mint-soft); --ft-tag-ink:var(--d-mint); --ft-input-bg:#142420; --ft-btn-ink:#06201b;
+  }
+  body{background:var(--l-panel);color:var(--l-ink);}
+  header{background:rgba(252,252,250,0.92);}
+  .cta-btn.primary{background:var(--l-teal-deep);color:#fff;}
+  .cta-btn.primary:hover{background:var(--l-teal);box-shadow:var(--shadow-md);}
+  .cta-btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.4);color:#fff;}
+  .cta-btn.ghost:hover{background:rgba(255,255,255,0.12);}
+  footer{background:var(--d-bg);}
+  .sec-head{display:grid;grid-template-columns:0.4fr 0.6fr;gap:40px;margin-bottom:52px;align-items:end;}
+  .sec-head .index{font-family:'IBM Plex Mono',monospace;color:var(--l-teal-deep);font-size:13px;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+  .sec-head .index::before{content:"";width:22px;height:1px;background:var(--l-teal);}
+  .sec-head h2{font-size:34px;max-width:14ch;}
+  .sec-head p{font-size:15.5px;color:var(--l-ink-soft);max-width:46ch;}
+
+
+  /* ===== SERVICE TILES ===== */
+  .service-tiles{padding:96px 0;border-bottom:1px solid var(--l-line);}
+  .tile-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;}
+  .tile{
+    position:relative;border-radius:14px;overflow:hidden;min-height:340px;display:flex;flex-direction:column;justify-content:flex-end;
+    padding:34px 32px;color:#fff;box-shadow:var(--shadow-md);
+  }
+  .tile.a{background:linear-gradient(155deg, #0a4f46 0%, #0d322c 60%, #081c18 100%);}
+  .tile.b{background:linear-gradient(155deg, #123a32 0%, #0a1f1b 60%, #060f0d 100%);}
+  .tile.c{background:linear-gradient(155deg, #6b3d13 0%, #3a2410 60%, #1c130a 100%);}
+  .tile.c .tile-icon{background:rgba(226,147,62,0.22);}
+  .tile.c a.plink{color:#f0b768;}
+  .tile::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px);background-size:20px 20px;pointer-events:none;}
+  .tile .tile-icon{width:52px;height:52px;border-radius:10px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:22px;position:relative;z-index:1;}
+  .tile h3{font-size:26px;margin-bottom:10px;position:relative;z-index:1;color:#fff;}
+  .tile p{font-size:14.5px;color:#c9dbd6;max-width:38ch;margin-bottom:18px;position:relative;z-index:1;}
+  .tile a.plink{position:relative;z-index:1;font-size:13.5px;font-weight:600;color:#5fe6c6;text-decoration:none;display:inline-flex;align-items:center;gap:6px;}
+
+  /* ===== COURSE CTA BAND ===== */
+  .cta-band{padding:0 0 96px;}
+  .cta-band .inner{
+    background:linear-gradient(120deg,var(--l-teal-deep) 0%,#0a4f46 45%,#0d3d35 100%);
+    border-radius:16px;padding:64px 56px;color:#fff;text-align:center;position:relative;overflow:hidden;
+  }
+  .cta-band .inner::before{content:"";position:absolute;left:-60px;bottom:-70px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle, rgba(55,214,179,0.28) 0%, rgba(55,214,179,0) 70%);}
+  .cta-band .index{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:#a9e8d8;margin-bottom:14px;position:relative;z-index:1;}
+  .cta-band h2{color:#fff;font-size:32px;max-width:26ch;margin:0 auto 14px;position:relative;z-index:1;}
+  .cta-band p{color:#cfe6e0;font-size:15.5px;max-width:56ch;margin:0 auto 28px;position:relative;z-index:1;}
+  .cta-band .cta-btn.on-dark{background:var(--d-mint);color:#062019;position:relative;z-index:1;}
+  .cta-band .cta-btn.on-dark:hover{background:#4fe8c6;}
+
+  /* ===== SOLUTIONS BY SECTOR ===== */
+  .solutions{padding:96px 0;border-bottom:1px solid var(--l-line);}
+  .sector-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;}
+  .sector-card{background:#fff;border:1px solid var(--l-line);border-radius:var(--radius-lg);padding:28px 26px;box-shadow:var(--shadow-sm);transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;}
+  .sector-card:hover{transform:translateY(-3px);border-color:var(--l-teal);box-shadow:0 16px 36px rgba(15,122,108,0.14);}
+  .sector-card.wide{grid-column:span 4;}
+  .sector-card.narrow{grid-column:span 2;}
+  .sector-card.cta-tile{background:linear-gradient(155deg,var(--l-teal-deep),#0d3d35);color:#fff;display:flex;flex-direction:column;justify-content:center;}
+  .sector-card.cta-tile h4{color:#fff;}
+  .sector-card.cta-tile p{color:#cfe6e0;}
+  .sector-card.cta-tile a{color:#5fe6c6;font-size:13.5px;font-weight:600;text-decoration:none;margin-top:6px;display:inline-block;}
+  .sector-card .icon-box{width:44px;height:44px;border-radius:8px;background:var(--l-teal-tint);display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+  .sector-card h4{font-size:18px;margin-bottom:8px;}
+  .sector-card p{font-size:13.5px;color:var(--l-ink-soft);}
+
+  /* ===== GLOBAL PRESENCE ===== */
+  .geo{background:linear-gradient(160deg,#0c1613,#0a1a17);color:var(--d-ink);border-bottom:1px solid var(--d-line);position:relative;overflow:hidden;}
+  .geo::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);background-size:22px 22px;pointer-events:none;}
+  .geo .wrap{padding:88px 32px;position:relative;z-index:1;}
+  .geo .sec-head h2, .geo .sec-head .index{color:#fff;}
+  .geo .sec-head .index{color:var(--d-mint);}
+  .geo .sec-head .index::before{background:var(--d-mint);}
+  .geo .sec-head p{color:var(--d-ink-soft);}
+  .geo-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;}
+  .geo-col{background:rgba(255,255,255,0.04);border:1px solid var(--d-line);border-radius:var(--radius);padding:28px;}
+  .geo-col h4{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--d-mint);margin-bottom:12px;}
+  .geo-col h3{font-size:21px;margin-bottom:10px;color:#fff;}
+  .geo-col p{font-size:13.5px;color:var(--d-ink-soft);}
+
+  /* ===== INSIGHTS TEASER ===== */
+  .insights{padding:96px 0;border-bottom:1px solid var(--l-line);}
+  .insight-row{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .insight-card{background:#fff;border:1px solid var(--l-line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s;}
+  .insight-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
+  .insight-thumb{height:140px;background:linear-gradient(150deg,#123f38,#0a1f1b);position:relative;}
+  .insight-thumb::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);background-size:16px 16px;}
+  .insight-body{padding:22px 22px 24px;}
+  .insight-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--l-teal-deep);margin-bottom:10px;display:block;}
+  .insight-body h4{font-size:17px;margin-bottom:8px;line-height:1.3;}
+  .insight-body p{font-size:13px;color:var(--l-ink-soft);}
+  .insight-note{font-size:12.5px;color:var(--l-ink-soft);margin-top:22px;text-align:center;font-style:italic;}
+
+  /* ===== CONTACT ===== */
+  #contact{padding:96px 0;}
+  .contact-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;}
+  .contact-copy h2{font-size:32px;margin-bottom:14px;max-width:12ch;}
+  .contact-copy p{color:var(--l-ink-soft);font-size:15px;max-width:40ch;margin-bottom:24px;}
+  .contact-detail{display:flex;flex-direction:column;gap:14px;}
+  .contact-detail .row{display:flex;align-items:center;gap:12px;font-size:14px;}
+  .contact-detail .icon-box{width:34px;height:34px;border-radius:7px;background:var(--l-teal-tint);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .contact-detail .icon{width:17px;height:17px;stroke:var(--l-teal-deep);}
+  .contact-form{background:#fff;border:1px solid var(--l-line);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow-sm);}
+  form{display:grid;gap:16px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  label{font-size:11.5px;font-family:'IBM Plex Mono',monospace;color:var(--l-ink-soft);display:block;margin-bottom:6px;}
+  input,select,textarea{width:100%;background:var(--l-bg);border:1px solid var(--l-line);padding:11px 12px;font-family:'IBM Plex Sans',sans-serif;font-size:14px;border-radius:6px;color:var(--l-ink);}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--l-teal);box-shadow:0 0 0 3px rgba(15,122,108,0.15);}
+  textarea{resize:vertical;min-height:90px;}
+  .submit-btn{background:var(--l-teal-deep);color:#fff;border:none;padding:13px 22px;font-size:14px;font-weight:600;border-radius:6px;cursor:pointer;justify-self:start;}
+  .submit-btn:hover{background:var(--l-teal);}
+
+  @media (max-width:980px){
+    .tile-grid{grid-template-columns:1fr;}
+    .sector-grid{grid-template-columns:1fr 1fr;}
+    .sector-card.wide,.sector-card.narrow{grid-column:span 1;}
+    .geo-grid{grid-template-columns:1fr;}
+    .insight-row{grid-template-columns:1fr;}
+  }
+  @media (max-width:880px){
+    .sec-head{grid-template-columns:1fr;}
+    .sector-grid{grid-template-columns:1fr;}
+    .cta-band .inner{padding:40px 26px;}
+    .contact-grid{grid-template-columns:1fr;gap:32px;}
+    .form-row{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap nav-row">
+    <a href="index.html" class="logo">
+      <svg class="logo-mark" viewBox="0 0 32 32" fill="none">
+        <path d="M7 5l9 21 9-21" stroke="#0a4f46" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16 6v5" stroke="#d98a34" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M12.5 8a5 5 0 107 0" stroke="#d98a34" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      VigilON
+    </a>
+    <div class="tab-switch">
+      <a href="compliance.html"><span class="sw"></span><span class="label">Compliance</span></a>
+      <a href="courses.html"><span class="sw"></span><span class="label">Digital Forensics</span></a>
+      <a href="awareness.html"><span class="sw"></span><span class="label">Awareness</span></a>
+    </div>
+    <div class="hdr-right">
+      <nav id="mobileNav">
+        <a href="#solutions">Solutions</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact" class="cta-btn primary">Book a consultation</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- SERVICE TILES -->
+  <section class="service-tiles" id="services">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><div class="index mono">WHAT WE DO</div><h2>Three practices, built to work together</h2></div>
+        <p>Compliance, forensics, and awareness training draw on the same security knowledge — proving your posture, investigating when it's tested, and preventing the everyday mistakes that cause it to be tested.</p>
+      </div>
+      <div class="tile-grid">
+        <div class="tile a reveal">
+          <div class="tile-icon"><svg class="icon" viewBox="0 0 24 24" stroke="#fff"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+          <h3>CMMC Compliance</h3>
+          <p>Gap analysis, SSP &amp; POA&amp;M drafting, and C3PAO assessment preparation for defense contractors.</p>
+          <a href="compliance.html" class="plink">View compliance services</a>
+        </div>
+        <div class="tile b reveal">
+          <div class="tile-icon"><svg class="icon" viewBox="0 0 24 24" stroke="#fff"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M10 7h4M10 11h4M10 15h2"/></svg></div>
+          <h3>Digital Forensics Courses</h3>
+          <p>Nine live courses — from a zero-background starter tier to expert testimony — covering computer, network, mobile, memory, and cloud forensics.</p>
+          <a href="courses.html" class="plink">View global course catalog</a>
+        </div>
+        <div class="tile c reveal">
+          <div class="tile-icon"><svg class="icon" viewBox="0 0 24 24" stroke="#fff"><path d="M4 4l16 16M20 4L4 20"/><rect x="3" y="6" width="18" height="12" rx="2"/></svg></div>
+          <h3>Cybersecurity Awareness</h3>
+          <p>Short, live workshops for teams — plus free community sessions on scams targeting Indian families, including the "digital arrest" fraud.</p>
+          <a href="awareness.html" class="plink">View awareness training</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSE CTA BAND -->
+  <section class="cta-band">
+    <div class="wrap reveal">
+      <div class="inner grain">
+        <div class="index mono">COURSE CENTER</div>
+        <h2>Explore and enroll in our digital forensics courses</h2>
+        <p>Sharpen your skills with structured, instructor-led courses in digital forensics. Work through foundational concepts and advanced topics designed for every experience level, with cohorts scheduled for India and international learners.</p>
+        <a href="courses.html" class="cta-btn on-dark">See the course catalog</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS BY SECTOR -->
+  <section class="solutions" id="solutions">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><div class="index mono">WHO WE WORK WITH</div><h2>Built for these sectors</h2></div>
+        <p>The same compliance and forensics discipline applies across sectors — the requirements differ, the rigor doesn't.</p>
+      </div>
+      <div class="sector-grid reveal">
+        <div class="sector-card wide">
+          <div class="icon-box"><svg class="icon" viewBox="0 0 24 24" stroke="#0a4f46"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/></svg></div>
+          <h4>Defense &amp; government contractors</h4>
+          <p>CMMC readiness for primes and subcontractors handling FCI and CUI.</p>
+        </div>
+        <div class="sector-card narrow">
+          <div class="icon-box"><svg class="icon" viewBox="0 0 24 24" stroke="#0a4f46"><path d="M4 12a8 8 0 1116 0 8 8 0 01-16 0z"/><path d="M12 8v4l3 2"/></svg></div>
+          <h4>Law enforcement &amp; legal</h4>
+          <p>Forensic methodology and courtroom-ready reporting for investigators and counsel.</p>
+        </div>
+        <div class="sector-card narrow">
+          <div class="icon-box"><svg class="icon" viewBox="0 0 24 24" stroke="#0a4f46"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg></div>
+          <h4>Financial services</h4>
+          <p>Incident-ready teams trained in account-compromise and fraud investigation workflows.</p>
+        </div>
+        <div class="sector-card narrow">
+          <div class="icon-box"><svg class="icon" viewBox="0 0 24 24" stroke="#0a4f46"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.3-4.3"/></svg></div>
+          <h4>eDiscovery &amp; legal tech</h4>
+          <p>Evidence handling and chain-of-custody rigor built for litigation support work.</p>
+        </div>
+        <div class="sector-card narrow">
+          <div class="icon-box"><svg class="icon" viewBox="0 0 24 24" stroke="#0a4f46"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg></div>
+          <h4>Technology sector</h4>
+          <p>Cloud and network forensics skills for security teams securing SaaS platforms.</p>
+        </div>
+        <div class="sector-card narrow">
+          <div class="icon-box"><svg class="icon" viewBox="0 0 24 24" stroke="#0a4f46"><path d="M12 3a5 5 0 015 5c0 3-2 5-5 5s-5-2-5-5a5 5 0 015-5z"/><path d="M7 21c0-3 2.5-5 5-5s5 2 5 5"/></svg></div>
+          <h4>Healthcare &amp; pharma</h4>
+          <p>Data protection and investigative readiness for regulated, high-sensitivity environments.</p>
+        </div>
+        <div class="sector-card wide cta-tile">
+          <h4>Don't see your sector?</h4>
+          <p>The same rigor applies anywhere security posture or evidence handling matters — tell us about yours.</p>
+          <a href="#contact">Get in touch →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GLOBAL PRESENCE -->
+  <section class="geo grain">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><div class="index mono">GLOBAL PRESENCE</div><h2>Where we work</h2></div>
+        <p>VigilON is based in India and built to serve globally.</p>
+      </div>
+      <div class="geo-grid">
+        <div class="geo-col reveal">
+          <h4 class="mono">UNITED STATES</h4>
+          <h3>CMMC consulting</h3>
+          <p>Direct engagement for DoD primes and subcontractors preparing for C3PAO assessment, scheduled on US Eastern and Pacific time.</p>
+        </div>
+        <div class="geo-col reveal">
+          <h4 class="mono">INDIA</h4>
+          <h3>Home base &amp; course hub</h3>
+          <p>VigilON operates from India as a Hora Technologies practice, with live forensics cohorts on IST evening slots.</p>
+        </div>
+        <div class="geo-col reveal">
+          <h4 class="mono">EVERYWHERE ELSE</h4>
+          <h3>Open, worldwide enrollment</h3>
+          <p>Course delivery is remote-first — learners outside India or the US are welcome, with schedules arranged around your timezone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSIGHTS -->
+  <section class="insights">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><div class="index mono">INSIGHTS</div><h2>From the desk</h2></div>
+        <p>Notes on CMMC and digital forensics, published as our practice grows.</p>
+      </div>
+      <div class="insight-row">
+        <div class="insight-card reveal">
+          <div class="insight-thumb"></div>
+          <div class="insight-body">
+            <span class="insight-tag mono">COMPLIANCE</span>
+            <h4>CMMC's three levels, explained without the jargon</h4>
+            <p>What actually changes between Foundational, Advanced, and Expert — and how to tell which one applies to you.</p>
+          </div>
+        </div>
+        <div class="insight-card reveal">
+          <div class="insight-thumb"></div>
+          <div class="insight-body">
+            <span class="insight-tag mono">FORENSICS</span>
+            <h4>Why chain of custody breaks most often at handoff</h4>
+            <p>The most common gap we see in evidence handling isn't collection — it's the transfer between people.</p>
+          </div>
+        </div>
+        <div class="insight-card reveal">
+          <div class="insight-thumb"></div>
+          <div class="insight-body">
+            <span class="insight-tag mono">FORENSICS</span>
+            <h4>Mobile forensics in the cloud-backup era</h4>
+            <p>What examiners need to change when most of the evidence lives off the device.</p>
+          </div>
+        </div>
+      </div>
+      <p class="insight-note">Article titles shown as placeholders for layout — real posts coming soon.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="border-bottom:none;">
+    <div class="wrap contact-grid">
+      <div class="contact-copy reveal">
+        <div class="index mono" style="margin-bottom:14px;">GET IN TOUCH</div>
+        <h2>Start a conversation</h2>
+        <p>Tell us whether you're preparing for a CMMC assessment or looking to enroll in a forensics course, and we'll route it to the right person.</p>
+        <div class="contact-detail">
+          <div class="row"><div class="icon-box"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><a href="mailto:asharma@vigilon.in">asharma@vigilon.in</a></div>
+          <div class="row"><div class="icon-box"><svg class="icon" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2.1L8 9.7a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c.9.3 1.8.5 2.7.6a2 2 0 011.7 2z"/></svg></div><span>India: +91 9987899220</span></div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/thank-you.html">
+          <input type="hidden" name="form-name" value="contact">
+          <p style="position:absolute;left:-9999px;" aria-hidden="true">
+            <label>Don't fill this out if you're human: <input name="bot-field"></label>
+          </p>
+          <div class="form-row">
+            <div><label for="name">Full name</label><input id="name" name="name" type="text" required></div>
+            <div><label for="email">Email</label><input id="email" name="email" type="email" required></div>
+          </div>
+          <div class="form-row">
+            <div><label for="org">Organization</label><input id="org" name="organization" type="text"></div>
+            <div><label for="interest">I'm interested in</label>
+              <select id="interest" name="interest"><option>CMMC compliance services</option><option>Digital forensics courses</option><option>Both</option></select>
+            </div>
+          </div>
+          <div><label for="msg">Message</label><textarea id="msg" name="message" placeholder="Tell us about your program, timeline, or the course you're considering."></textarea></div>
+          <button type="submit" class="submit-btn">Send message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="logo" style="color:#fff;">
+        <svg class="logo-mark" viewBox="0 0 32 32" fill="none">
+          <path d="M7 5l9 21 9-21" stroke="#37d6b3" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M16 6v5" stroke="#e2933e" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M12.5 8a5 5 0 107 0" stroke="#e2933e" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        VigilON
+      </a>
+      <p>CMMC compliance, digital forensics &amp; cybersecurity awareness courses, for teams across the US and India.</p>
+      <span class="footer-tag">A Hora Technologies company</span>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">COMPLIANCE</h5>
+      <a href="compliance.html#services">Gap analysis &amp; SSP</a>
+      <a href="compliance.html#services">Assessment prep</a>
+      <a href="compliance.html#services">Managed compliance</a>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">DIGITAL FORENSICS</h5>
+      <a href="courses.html#courses">Starter courses</a>
+      <a href="courses.html#courses">Core track DF-101+</a>
+      <a href="courses.html#courses">Expert testimony DF-310</a>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">AWARENESS</h5>
+      <a href="awareness.html">Phishing &amp; social engineering</a>
+      <a href="awareness.html">Password &amp; access hygiene</a>
+      <a href="awareness.html">Incident reporting habits</a>
+      <a href="awareness.html#community">Digital arrest scam safety</a>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">STAY UPDATED</h5>
+      <p style="font-size:13px;color:var(--d-ink-soft);margin-bottom:4px;">New cohort dates, twice a year.</p>
+      <div class="newsletter"><input type="email" placeholder="you@company.com"><button type="button">Join</button></div>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 VigilON, a Hora Technologies company. All rights reserved.</span>
+    <span>Registered as a proprietorship — Hora Technologies</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

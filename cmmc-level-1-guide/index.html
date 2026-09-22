@@ -1,0 +1,1972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMMC Level 1 Implementation & Readiness Guide | VigilON</title>
+    <meta name="description" content="A practical VigilON guide to the 15 FAR 52.204-21 safeguarding requirements and 17 CMMC Level 1 practices, with implementation guidance, evidence examples, and assessment considerations.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://vigilon.in/cmmc-level-1-guide">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="VigilON">
+    <meta property="og:title" content="CMMC Level 1 Implementation & Readiness Guide">
+    <meta property="og:description" content="Understand the 17 CMMC Level 1 practices, what they require, practical implementation considerations, and the evidence an assessor may review.">
+    <meta property="og:url" content="https://vigilon.in/cmmc-level-1-guide">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CMMC Level 1 Implementation & Readiness Guide | VigilON">
+    <meta name="twitter:description" content="A practical walkthrough of all 17 CMMC Level 1 practices and their evidence expectations.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://vigilon.in/cmmc-level-1-guide#webpage",
+          "url": "https://vigilon.in/cmmc-level-1-guide",
+          "name": "CMMC Level 1 Implementation & Readiness Guide",
+          "description": "A practical guide to the 15 FAR 52.204-21 safeguarding requirements and 17 CMMC Level 1 practices.",
+          "isPartOf": {"@id": "https://vigilon.in/#website"},
+          "about": ["CMMC Level 1", "FAR 52.204-21", "Federal Contract Information"],
+          "publisher": {"@id": "https://vigilon.in/#organization"},
+          "breadcrumb": {"@id": "https://vigilon.in/cmmc-level-1-guide#breadcrumb"}
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://vigilon.in/cmmc-level-1-guide#breadcrumb",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://vigilon.in/"},
+            {"@type": "ListItem", "position": 2, "name": "CMMC Compliance", "item": "https://vigilon.in/#compliance"},
+            {"@type": "ListItem", "position": 3, "name": "CMMC Level 1 Guide", "item": "https://vigilon.in/cmmc-level-1-guide"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is CMMC Level 1?",
+              "acceptedAnswer": {"@type": "Answer", "text": "CMMC Level 1 focuses on the basic safeguarding of Federal Contract Information through 17 practices derived from the 15 requirements in FAR 52.204-21."}
+            },
+            {
+              "@type": "Question",
+              "name": "How many practices are in CMMC Level 1?",
+              "acceptedAnswer": {"@type": "Answer", "text": "CMMC Level 1 contains 17 practices across six domains: Access Control, Identification and Authentication, Media Protection, Physical Protection, System and Communications Protection, and System and Information Integrity."}
+            },
+            {
+              "@type": "Question",
+              "name": "What evidence may support a CMMC Level 1 self-assessment?",
+              "acceptedAnswer": {"@type": "Answer", "text": "Relevant evidence depends on the practice and environment, but may include policies, procedures, system configurations, access lists, asset inventories, logs, screenshots, records, interviews, and test results."}
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* VigilON Primary Spruce / Forest Palette — matched to vigilon.in design system */
+            --vigilon-dark: #0a1210;
+            --vigilon-forest: #0a4f46;
+            --vigilon-forest-light: #0f7a6c;
+            --vigilon-mint: #37d6b3;
+            --vigilon-sage: #9db3ac;
+            --vigilon-sage-light: #dcede8;
+            
+            /* VigilON Warm Amber / Espresso Accent Palette — matched to vigilon.in design system */
+            --vigilon-espresso: #2a1a0c;
+            --vigilon-amber: #4a3520;
+            --vigilon-gold: #d98a34;
+            --vigilon-sand: #f7e7d1;
+            
+            /* Canvas & Typography — matched to vigilon.in design system */
+            --bg-canvas: #fcfcfa;
+            --bg-surface: #ffffff;
+            --text-heading: #111c17;
+            --text-body: #4b584f;
+            --text-muted: #6b7a70;
+            --border-light: #ccd3c5;
+            --border-subtle: #e6e9e3;
+            
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --shadow-subtle: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
+            --shadow-card: 0 4px 14px rgba(15, 38, 31, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-canvas);
+            color: var(--text-body);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- VIGILON TOP BAR & NAVIGATION --- */
+        .site-header {
+            background-color: var(--bg-surface);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 16px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand-logo-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .brand-logo-icon {
+            width: 32px;
+            height: 32px;
+            color: var(--vigilon-forest);
+        }
+
+        .brand-logo-text {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.55rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text-heading);
+        }
+
+        .brand-logo-text span {
+            text-transform: uppercase;
+        }
+
+        /* Center Practice Capsule */
+        .practice-capsule {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: #edece8;
+            padding: 8px 22px;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #4b5563;
+        }
+
+        .practice-capsule span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .practice-capsule span::before {
+            content: "•";
+            color: #9ca3af;
+            font-size: 1rem;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .header-actions a {
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-body);
+            transition: color 0.15s ease;
+        }
+
+        .header-actions a:hover {
+            color: var(--vigilon-forest);
+        }
+
+        .btn-consultation {
+            background-color: var(--vigilon-forest);
+            color: #ffffff !important;
+            padding: 10px 22px;
+            border-radius: var(--radius-sm);
+            font-weight: 600 !important;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(20, 53, 43, 0.15);
+        }
+
+        .btn-consultation:hover {
+            background-color: var(--vigilon-forest-light);
+            transform: translateY(-1px);
+        }
+
+        /* --- EDITORIAL HERO SECTION --- */
+        .hero-banner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 70px 5% 40px;
+        }
+
+        .section-kicker {
+            display: inline-block;
+            text-transform: uppercase;
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .section-kicker::before {
+            content: "— ";
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 50px;
+            align-items: flex-start;
+            margin-bottom: 50px;
+        }
+
+        .hero-title {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 2.85rem;
+            font-weight: 700;
+            line-height: 1.18;
+            letter-spacing: -0.02em;
+            color: var(--text-heading);
+        }
+
+        .hero-lead {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            padding-top: 8px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 26px;
+        }
+
+        .btn-guide {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: var(--radius-sm);
+            font-size: 0.92rem;
+            font-weight: 700;
+            background: var(--vigilon-forest);
+            color: #fff;
+        }
+
+        .guide-facts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 46px;
+        }
+
+        .guide-fact {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 22px;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .guide-fact strong {
+            display: block;
+            font-family: 'Fraunces', Georgia, serif;
+            color: var(--vigilon-forest);
+            font-size: 1.35rem;
+            margin-bottom: 5px;
+        }
+
+        .guide-fact span { color: var(--text-muted); font-size: 0.88rem; }
+
+        .question-heading {
+            font-size: 0.86rem;
+            color: var(--vigilon-forest);
+            margin-bottom: 8px;
+        }
+
+        .faq-section {
+            margin: 56px 0 32px;
+            padding-top: 12px;
+        }
+
+        .faq-section h2 {
+            font-family: 'Fraunces', Georgia, serif;
+            color: var(--text-heading);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .faq-item {
+            background: #fff;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 22px 24px;
+            margin-bottom: 12px;
+        }
+
+        .faq-item h3 { color: var(--vigilon-forest); font-size: 1rem; margin-bottom: 8px; }
+        .faq-item p { color: var(--text-muted); }
+
+        .guide-note {
+            border-left: 3px solid var(--vigilon-gold);
+            background: #fffbeb;
+            padding: 18px 20px;
+            margin: 28px 0;
+            color: #5f4a24;
+            font-size: 0.86rem;
+        }
+
+        /* Hero Triple Practice Cards (Matches Screenshot) */
+        .hero-cards-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .hero-card {
+            border-radius: var(--radius-lg);
+            padding: 34px 30px;
+            color: #ffffff;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 280px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+        }
+
+        .hero-card.spruce {
+            background: linear-gradient(145deg, var(--vigilon-forest) 0%, var(--vigilon-dark) 100%);
+        }
+
+        .hero-card.amber {
+            background: linear-gradient(145deg, var(--vigilon-amber) 0%, var(--vigilon-espresso) 100%);
+        }
+
+        .card-icon-wrap {
+            width: 42px;
+            height: 42px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .card-icon-wrap svg {
+            width: 20px;
+            height: 20px;
+            stroke: #ffffff;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .hero-card h3 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.55rem;
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .hero-card p {
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .hero-card.spruce p {
+            color: var(--vigilon-sage);
+        }
+
+        .hero-card.amber p {
+            color: var(--vigilon-sand);
+        }
+
+        .hero-card-link {
+            font-size: 0.88rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-card.spruce .hero-card-link {
+            color: var(--vigilon-mint);
+        }
+
+        .hero-card.amber .hero-card-link {
+            color: #fcd34d;
+        }
+
+        /* --- TWO-COLUMN WORKFLOW LAYOUT --- */
+        .page-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5% 80px;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        /* --- STICKY DIRECTORY SIDEBAR --- */
+        .sidebar-sticky {
+            position: sticky;
+            top: 95px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .sidebar-title {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .search-field {
+            width: 100%;
+            padding: 10px 14px;
+            font-size: 0.88rem;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            margin-bottom: 20px;
+            outline: none;
+            background-color: var(--bg-canvas);
+            transition: all 0.2s ease;
+        }
+
+        .search-field:focus {
+            border-color: var(--vigilon-forest);
+            background-color: #ffffff;
+        }
+
+        .toc-list {
+            list-style: none;
+            max-height: calc(100vh - 300px);
+            overflow-y: auto;
+            padding-right: 6px;
+        }
+
+        .toc-list::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .toc-list::-webkit-scrollbar-thumb {
+            background-color: var(--border-light);
+            border-radius: 4px;
+        }
+
+        .toc-domain-label {
+            font-size: 0.74rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--vigilon-forest);
+            margin: 18px 0 6px;
+        }
+
+        .toc-item a {
+            display: block;
+            text-decoration: none;
+            color: var(--text-body);
+            font-size: 0.87rem;
+            padding: 6px 10px;
+            border-radius: 4px;
+            transition: all 0.15s ease;
+        }
+
+        .toc-item a:hover {
+            background-color: var(--vigilon-sage-light);
+            color: var(--vigilon-forest);
+            padding-left: 14px;
+        }
+
+        /* --- CONTROL CARDS --- */
+        .content-body {
+            min-width: 0;
+        }
+
+        .domain-header-divider {
+            margin: 40px 0 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border-light);
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+        }
+
+        .domain-header-divider:first-of-type {
+            margin-top: 0;
+        }
+
+        .domain-header-divider h2 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.85rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            letter-spacing: -0.01em;
+        }
+
+        .domain-header-divider span {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .control-block {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            margin-bottom: 36px;
+            box-shadow: var(--shadow-card);
+            overflow: hidden;
+            transition: border-color 0.2s ease;
+        }
+
+        .control-block:hover {
+            border-color: #cbd5e1;
+        }
+
+        .control-header {
+            padding: 28px 32px 24px;
+            border-bottom: 1px solid var(--border-subtle);
+            background: #ffffff;
+        }
+
+        .control-badge-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .control-badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .control-badge.nist {
+            background-color: #eef5f2;
+            color: var(--vigilon-forest);
+            border: 1px solid #d4e5de;
+        }
+
+        .control-badge.far {
+            background-color: #f5f4f0;
+            color: #57534e;
+            border: 1px solid #e7e5e0;
+        }
+
+        .control-header h3 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 16px;
+        }
+
+        .mandate-box {
+            background-color: var(--bg-canvas);
+            border-left: 3px solid var(--vigilon-forest);
+            padding: 14px 18px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-heading);
+            margin-bottom: 18px;
+        }
+
+        .objective-list-box {
+            background: #fafafa;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+        }
+
+        .objective-list-box h5 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .objective-list-box ul {
+            list-style: none;
+        }
+
+        .objective-list-box li {
+            font-size: 0.88rem;
+            padding: 6px 0;
+            border-bottom: 1px dashed #e5e7eb;
+            color: var(--text-body);
+        }
+
+        .objective-list-box li:last-child {
+            border-bottom: none;
+        }
+
+        /* --- VIGILON ADVISORY PANELS --- */
+        .control-panels-grid {
+            padding: 28px 32px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            background: #fdfdfc;
+        }
+
+        .panel-box {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 20px;
+        }
+
+        .panel-box.full-span {
+            grid-column: 1 / -1;
+        }
+
+        .panel-box h4 {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--vigilon-forest);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .policy-quote {
+            background: #f8faf9;
+            border-left: 2px solid var(--vigilon-forest);
+            padding: 12px 14px;
+            font-size: 0.88rem;
+            color: #1f2937;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+
+        .panel-box p, .panel-box li {
+            font-size: 0.88rem;
+            color: var(--text-body);
+        }
+
+        .panel-box ul {
+            margin-left: 18px;
+            margin-top: 6px;
+        }
+
+        .panel-box li {
+            margin-bottom: 6px;
+        }
+
+        .evidence-trinity {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        .ev-item {
+            background: var(--bg-canvas);
+            border: 1px solid var(--border-light);
+            padding: 12px 14px;
+            border-radius: 4px;
+        }
+
+        .ev-item strong {
+            display: block;
+            font-size: 0.74rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--vigilon-forest);
+            margin-bottom: 4px;
+        }
+
+        .ev-item p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+
+        /* --- FOOTER BANNER --- */
+        .footer-banner {
+            background: linear-gradient(145deg, var(--vigilon-forest) 0%, var(--vigilon-dark) 100%);
+            border-radius: var(--radius-lg);
+            color: #ffffff;
+            padding: 48px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .footer-banner h3 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .footer-banner p {
+            color: var(--vigilon-sage);
+            font-size: 1.05rem;
+            max-width: 650px;
+            margin: 0 auto 28px;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 1080px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .hero-cards-row {
+                grid-template-columns: 1fr;
+            }
+            .guide-facts {
+                grid-template-columns: 1fr;
+            }
+            .page-container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar-sticky {
+                display: none;
+            }
+            .control-panels-grid {
+                grid-template-columns: 1fr;
+            }
+            .evidence-trinity {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP HEADER -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="https://vigilon.in/" class="brand-logo-group">
+                <svg class="brand-logo-icon" viewBox="0 0 32 32" fill="none">
+                    <path d="M7 5l9 21 9-21" stroke="#0a4f46" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M16 6v5" stroke="#d98a34" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M12.5 8a5 5 0 107 0" stroke="#d98a34" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+                <span class="brand-logo-text">Vigil<span>ON</span></span>
+            </a>
+
+            <div class="practice-capsule">
+                <span>Compliance</span>
+                <span>Digital Forensics</span>
+                <span>Awareness</span>
+            </div>
+
+            <div class="header-actions">
+                <a href="https://vigilon.in/">Solutions</a>
+                <a href="https://vigilon.in/">Contact</a>
+                <a href="https://vigilon.in/" class="btn-consultation">Book a consultation</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- GUIDE INTRODUCTION -->
+    <section class="hero-banner">
+        <span class="section-kicker">VigilON CMMC Resource</span>
+        <div class="hero-grid">
+            <h1 class="hero-title">CMMC Level 1 Implementation &amp; Readiness Guide</h1>
+            <div>
+                <p class="hero-lead">A practical walkthrough of the 15 FAR 52.204-21 safeguarding requirements and 17 CMMC Level 1 practices—including what each practice requires, implementation considerations, evidence to prepare, and how it may be assessed.</p>
+                <div class="hero-actions"><a href="#practice-directory" class="btn-guide">Explore the 17 practices &darr;</a></div>
+            </div>
+        </div>
+
+        <div class="guide-facts" aria-label="CMMC Level 1 guide coverage">
+            <div class="guide-fact"><strong>15</strong><span>FAR 52.204-21 safeguarding requirements</span></div>
+            <div class="guide-fact"><strong>17</strong><span>CMMC Level 1 practices</span></div>
+            <div class="guide-fact"><strong>6</strong><span>security domains covered</span></div>
+        </div>
+        <!--
+        <div class="hero-cards-row">
+            <div class="hero-card spruce">
+                <div>
+                    <div class="card-icon-wrap">
+                        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <h3>CMMC Level 1 Readiness</h3>
+                    <p>Gap analysis, policy drafting, and objective evidence frameworks aligned strictly to the 15 FAR 52.204-21 basic safeguarding requirements.</p>
+                </div>
+                <a href="#AC-3.1.1" class="hero-card-link">Explore the framework &rarr;</a>
+            </div>
+
+            <div class="hero-card spruce">
+                <div>
+                    <div class="card-icon-wrap">
+                        <svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                    </div>
+                    <h3>Forensic Audit Preparedness</h3>
+                    <p>Rigorous test methods (Examine, Interview, Test) to verify that access controls, boundaries, and system event logs withstand assessor scrutiny.</p>
+                </div>
+                <a href="https://vigilon.in/" class="hero-card-link">View forensics methodologies &rarr;</a>
+            </div>
+
+            <div class="hero-card amber">
+                <div>
+                    <div class="card-icon-wrap">
+                        <svg viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                    </div>
+                    <h3>Cybersecurity Awareness</h3>
+                    <p>Targeted staff guidance to eliminate the everyday operational oversights that lead to unauthorized public disclosures of contract data.</p>
+                </div>
+                <a href="#AC-3.1.22" class="hero-card-link">View public info controls &rarr;</a>
+            </div>
+        </div> -->
+    </section>
+
+    <!-- WORKFLOW & CONTROLS -->
+    <div class="page-container" id="practice-directory">
+
+        <!-- DIRECTORY SIDEBAR -->
+        <aside class="sidebar-sticky">
+            <div class="sidebar-title">Safeguard Navigation</div>
+            <input type="text" id="searchInput" class="search-field" placeholder="Search by control (e.g. AC-3.1.1)..." onkeyup="filterControls()">
+            
+            <ul class="toc-list" id="tocDirectory">
+                <li class="toc-domain-label">Access Control</li>
+                <li class="toc-item"><a href="#AC-3.1.1">AC.L1-3.1.1 — Authorized Access</a></li>
+                <li class="toc-item"><a href="#AC-3.1.2">AC.L1-3.1.2 — Transaction Flow</a></li>
+                <li class="toc-item"><a href="#AC-3.1.20">AC.L1-3.1.20 — External Boundaries</a></li>
+                <li class="toc-item"><a href="#AC-3.1.22">AC.L1-3.1.22 — Public Disclosures</a></li>
+
+                <li class="toc-domain-label">Identification &amp; Auth</li>
+                <li class="toc-item"><a href="#IA-3.5.1">IA.L1-3.5.1 — Entity Identification</a></li>
+                <li class="toc-item"><a href="#IA-3.5.2">IA.L1-3.5.2 — Pre-Access Authentication</a></li>
+
+                <li class="toc-domain-label">Media Protection</li>
+                <li class="toc-item"><a href="#MP-3.8.3">MP.L1-3.8.3 — Media Sanitization</a></li>
+
+                <li class="toc-domain-label">Physical Protection</li>
+                <li class="toc-item"><a href="#PE-3.10.1">PE.L1-3.10.1 — Physical Access</a></li>
+                <li class="toc-item"><a href="#PE-3.10.3">PE.L1-3.10.3 — Visitor Escort</a></li>
+                <li class="toc-item"><a href="#PE-3.10.4">PE.L1-3.10.4 — Physical Logs</a></li>
+                <li class="toc-item"><a href="#PE-3.10.5">PE.L1-3.10.5 — Key &amp; Badge Control</a></li>
+
+                <li class="toc-domain-label">System &amp; Comm Protection</li>
+                <li class="toc-item"><a href="#SC-3.13.1">SC.L1-3.13.1 — Boundary Firewalls</a></li>
+                <li class="toc-item"><a href="#SC-3.13.5">SC.L1-3.13.5 — DMZ Subnetting</a></li>
+
+                <li class="toc-domain-label">System &amp; Info Integrity</li>
+                <li class="toc-item"><a href="#SI-3.14.1">SI.L1-3.14.1 — Flaw Remediation</a></li>
+                <li class="toc-item"><a href="#SI-3.14.2">SI.L1-3.14.2 — Malicious Code Protection</a></li>
+                <li class="toc-item"><a href="#SI-3.14.4">SI.L1-3.14.4 — Signature Updates</a></li>
+                <li class="toc-item"><a href="#SI-3.14.5">SI.L1-3.14.5 — Real-Time Scanning</a></li>
+            </ul>
+        </aside>
+
+        <!-- MAIN CONTROL REGISTER -->
+        <main class="content-body">
+
+            <!-- DOMAIN 1: ACCESS CONTROL -->
+            <div class="domain-header-divider">
+                <h2>Access Control (AC)</h2>
+                <span>FAR 52.204-21(b)(1)(i–iv)</span>
+            </div>
+
+            <!-- AC.L1-3.1.1 -->
+            <section class="control-block" id="AC-3.1.1">
+                <div class="control-header">
+                    <div class="control-badge-strip">
+                        <span class="control-badge nist">NIST SP 800-171: 3.1.1</span>
+                        <span class="control-badge far">FAR 52.204-21(b)(1)(i)</span>
+                        <span class="control-badge far">CMMC Level 1</span>
+                    </div>
+                    <h3>AC.L1-3.1.1 — Authorized Access Control</h3>
+                    <div class="mandate-box">
+                        <h4 class="question-heading">What does this practice require?</h4>
+                        <strong>Requirement:</strong> Limit information system access to authorized users, processes acting on behalf of authorized users, or devices (including other information systems).
+                    </div>
+                    <div class="objective-list-box">
+                        <h5>Assessment Objectives (NIST SP 800-171A):</h5>
+                        <ul>
+                            <li>[a] Authorized users are identified.</li>
+                            <li>[b] Processes acting on behalf of authorized users are identified.</li>
+                            <li>[c] Authorized devices are identified.</li>
+                            <li>[d] System access is limited to authorized users, processes, and devices.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="control-panels-grid">
+                    <div class="panel-box">
+                        <h4>Sample policy language</h4>
+                        <div class="policy-quote">
+                            "Logical access to systems processing Federal Contract Information (FCI) is restricted exclusively to personnel with documented operational need, verified service accounts, and managed endpoints compliant with organizational trust criteria."
+                        </div>
+                    </div>
+                    <div class="panel-box">
+                        <h4>What should you do?</h4>
+                        <ul>
+                            <li>Consolidate authentication under an authoritative enterprise directory (e.g., Microsoft Entra ID or Google Workspace).</li>
+                            <li>Prohibit unmanaged hardware from accessing cloud or local networks using device enrollment and compliance policies.</li>
+                            <li>Enforce immediate deprovisioning workflows triggered by personnel separation.</li>
+                        </ul>
+                    </div>
+                    <div class="panel-box full-span">
+                        <h4>What evidence should you prepare, and how may it be assessed?</h4>
+                        <div class="evidence-trinity">
+                            <div class="ev-item">
+                                <strong>Examine</strong>
+                                <p>Access control policy, active user directory exports, and authorized hardware asset inventories.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Interview</strong>
+                                <p>Discussions with IT administrators demonstrating account provisioning and revocation workflows.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Test</strong>
+                                <p>Live verification that disabled accounts and unmanaged hardware cannot initiate active sessions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AC.L1-3.1.2 -->
+            <section class="control-block" id="AC-3.1.2">
+                <div class="control-header">
+                    <div class="control-badge-strip">
+                        <span class="control-badge nist">NIST SP 800-171: 3.1.2</span>
+                        <span class="control-badge far">FAR 52.204-21(b)(1)(ii)</span>
+                        <span class="control-badge far">CMMC Level 1</span>
+                    </div>
+                    <h3>AC.L1-3.1.2 — Transaction &amp; Function Control</h3>
+                    <div class="mandate-box">
+                        <h4 class="question-heading">What does this practice require?</h4>
+                        <strong>Requirement:</strong> Limit information system access to the types of transactions and functions that authorized users are permitted to execute.
+                    </div>
+                    <div class="objective-list-box">
+                        <h5>Assessment Objectives (NIST SP 800-171A):</h5>
+                        <ul>
+                            <li>[a] Authorized users are limited to the transactions and system functions they are permitted to perform.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="control-panels-grid">
+                    <div class="panel-box">
+                        <h4>Sample policy language</h4>
+                        <div class="policy-quote">
+                            "Privileges within organizational software and operating systems must adhere to role-based access control (RBAC). Users are restricted from executing administrative or functional actions outside their defined job responsibilities."
+                        </div>
+                    </div>
+                    <div class="panel-box">
+                        <h4>What should you do?</h4>
+                        <ul>
+                            <li>Establish standardized role profiles (e.g., standard employee, project manager, billing admin).</li>
+                            <li>Strip local workstation administrative privileges from standard user profiles to block unauthorized configurations.</li>
+                            <li>Audit functional application permissions during quarterly access reviews.</li>
+                        </ul>
+                    </div>
+                    <div class="panel-box full-span">
+                        <h4>What evidence should you prepare, and how may it be assessed?</h4>
+                        <div class="evidence-trinity">
+                            <div class="ev-item">
+                                <strong>Examine</strong>
+                                <p>RBAC permission matrices, directory security group rosters, and local admin group audit reports.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Interview</strong>
+                                <p>Interviews with system custodians on how transaction rights are scoped and requested.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Test</strong>
+                                <p>Demonstrating that a non-privileged user cannot run privileged commands or access restricted repositories.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AC.L1-3.1.20 -->
+            <section class="control-block" id="AC-3.1.20">
+                <div class="control-header">
+                    <div class="control-badge-strip">
+                        <span class="control-badge nist">NIST SP 800-171: 3.1.20</span>
+                        <span class="control-badge far">FAR 52.204-21(b)(1)(iii)</span>
+                        <span class="control-badge far">CMMC Level 1</span>
+                    </div>
+                    <h3>AC.L1-3.1.20 — External System Connections</h3>
+                    <div class="mandate-box">
+                        <h4 class="question-heading">What does this practice require?</h4>
+                        <strong>Requirement:</strong> Verify and control/limit connections to and use of external information systems.
+                    </div>
+                    <div class="objective-list-box">
+                        <h5>Assessment Objectives (NIST SP 800-171A):</h5>
+                        <ul>
+                            <li>[a] Connections to external information systems are identified.</li>
+                            <li>[b] Connections to external information systems are verified.</li>
+                            <li>[c] Connections to external information systems are controlled or limited.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="control-panels-grid">
+                    <div class="panel-box">
+                        <h4>Sample policy language</h4>
+                        <div class="policy-quote">
+                            "External interconnections—including cloud services, vendor APIs, and remote connection portals—must be inventoried, authorized by security leadership, and routed through inspected access control points."
+                        </div>
+                    </div>
+                    <div class="panel-box">
+                        <h4>What should you do?</h4>
+                        <ul>
+                            <li>Maintain a documented register of all external SaaS, IaaS, and partner connections.</li>
+                            <li>Block unauthorized remote desktop and file-sharing ports at perimeter firewalls.</li>
+                            <li>Enforce conditional access policies that restrict connections originating from unauthorized regions or untrusted tenant spaces.</li>
+                        </ul>
+                    </div>
+                    <div class="panel-box full-span">
+                        <h4>What evidence should you prepare, and how may it be assessed?</h4>
+                        <div class="evidence-trinity">
+                            <div class="ev-item">
+                                <strong>Examine</strong>
+                                <p>Network boundary topology diagrams, external connection registers, and firewall configuration rules.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Interview</strong>
+                                <p>Interviews with network architects on authorization procedures for new external links.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Test</strong>
+                                <p>Inspection of firewall drops and gateway blocks against unauthorized external IP ranges.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AC.L1-3.1.22 -->
+            <section class="control-block" id="AC-3.1.22">
+                <div class="control-header">
+                    <div class="control-badge-strip">
+                        <span class="control-badge nist">NIST SP 800-171: 3.1.22</span>
+                        <span class="control-badge far">FAR 52.204-21(b)(1)(iv)</span>
+                        <span class="control-badge far">CMMC Level 1</span>
+                    </div>
+                    <h3>AC.L1-3.1.22 — Control of Public Information</h3>
+                    <div class="mandate-box">
+                        <h4 class="question-heading">What does this practice require?</h4>
+                        <strong>Requirement:</strong> Control information posted or processed on publicly accessible information systems.
+                    </div>
+                    <div class="objective-list-box">
+                        <h5>Assessment Objectives (NIST SP 800-171A):</h5>
+                        <ul>
+                            <li>[a] Individuals authorized to post or process information on publicly accessible systems are identified.</li>
+                            <li>[b] Procedures are identified to ensure FCI is not posted on publicly accessible systems.</li>
+                            <li>[c] Information is reviewed prior to posting on publicly accessible systems.</li>
+                            <li>[d] Publicly accessible information is reviewed to ensure FCI is not included.</li>
+                            <li>[e] Mechanisms are maintained to remove improperly posted FCI.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="control-panels-grid">
+                    <div class="panel-box">
+                        <h4>Sample policy language</h4>
+                        <div class="policy-quote">
+                            "Content designated for public websites, marketing collateral, or public forums must undergo documented administrative review prior to release to prevent accidental dissemination of contract-related information."
+                        </div>
+                    </div>
+                    <div class="panel-box">
+                        <h4>What should you do?</h4>
+                        <ul>
+                            <li>Designate an explicit review team (e.g., Communications and Legal/Security) with sign-off authority.</li>
+                            <li>Enforce write-permission restrictions on public CMS platforms, limiting publishing rights to authorized personnel.</li>
+                            <li>Maintain a documented emergency takedown procedure for removing inadvertently released sensitive assets.</li>
+                        </ul>
+                    </div>
+                    <div class="panel-box full-span">
+                        <h4>What evidence should you prepare, and how may it be assessed?</h4>
+                        <div class="evidence-trinity">
+                            <div class="ev-item">
+                                <strong>Examine</strong>
+                                <p>Public release SOP, authorized publisher rosters, and signed pre-publication review records.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Interview</strong>
+                                <p>Interviews with public-facing staff on their workflow for identifying and excluding FCI.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Test</strong>
+                                <p>Simulating a content takedown workflow to confirm immediate retraction capability.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DOMAIN 2: IDENTIFICATION & AUTHENTICATION -->
+            <div class="domain-header-divider">
+                <h2>Identification &amp; Authentication (IA)</h2>
+                <span>FAR 52.204-21(b)(1)(v–vi)</span>
+            </div>
+
+            <!-- IA.L1-3.5.1 -->
+            <section class="control-block" id="IA-3.5.1">
+                <div class="control-header">
+                    <div class="control-badge-strip">
+                        <span class="control-badge nist">NIST SP 800-171: 3.5.1</span>
+                        <span class="control-badge far">FAR 52.204-21(b)(1)(v)</span>
+                        <span class="control-badge far">CMMC Level 1</span>
+                    </div>
+                    <h3>IA.L1-3.5.1 — User &amp; Device Identification</h3>
+                    <div class="mandate-box">
+                        <h4 class="question-heading">What does this practice require?</h4>
+                        <strong>Requirement:</strong> Identify information system users, processes acting on behalf of users, or devices.
+                    </div>
+                    <div class="objective-list-box">
+                        <h5>Assessment Objectives (NIST SP 800-171A):</h5>
+                        <ul>
+                            <li>[a] System users are identified.</li>
+                            <li>[b] Processes acting on behalf of users are identified.</li>
+                            <li>[c] Devices accessing the system are identified.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="control-panels-grid">
+                    <div class="panel-box">
+                        <h4>Sample policy language</h4>
+                        <div class="policy-quote">
+                            "Every user, administrative process, and hardware component must be provisioned with a unique, traceable identifier prior to gaining network or system access. Shared or generic accounts are strictly prohibited."
+                        </div>
+                    </div>
+                    <div class="panel-box">
+                        <h4>What should you do?</h4>
+                        <ul>
+                            <li>Enforce standard naming syntax tied to an individual’s identity (e.g., `first.last@domain.com`).</li>
+                            <li>Assign unique machine accounts and certificates to physical laptops and servers.</li>
+                            <li>Configure background services to execute using dedicated, named service principals rather than default system accounts.</li>
+                        </ul>
+                    </div>
+                    <div class="panel-box full-span">
+                        <h4>What evidence should you prepare, and how may it be assessed?</h4>
+                        <div class="evidence-trinity">
+                            <div class="ev-item">
+                                <strong>Examine</strong>
+                                <p>Active directory listings confirming no generic or shared accounts exist within the environment.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Interview</strong>
+                                <p>Discussions with directory managers on user identification workflows during onboarding.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Test</strong>
+                                <p>Inspection of directory logs to confirm that all events are traceable to specific named identities.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- IA.L1-3.5.2 -->
+            <section class="control-block" id="IA-3.5.2">
+                <div class="control-header">
+                    <div class="control-badge-strip">
+                        <span class="control-badge nist">NIST SP 800-171: 3.5.2</span>
+                        <span class="control-badge far">FAR 52.204-21(b)(1)(vi)</span>
+                        <span class="control-badge far">CMMC Level 1</span>
+                    </div>
+                    <h3>IA.L1-3.5.2 — Pre-Access Authentication</h3>
+                    <div class="mandate-box">
+                        <h4 class="question-heading">What does this practice require?</h4>
+                        <strong>Requirement:</strong> Authenticate (or verify) the identities of those users, processes, or devices, as a prerequisite to allowing access to organizational information systems.
+                    </div>
+                    <div class="objective-list-box">
+                        <h5>Assessment Objectives (NIST SP 800-171A):</h5>
+                        <ul>
+                            <li>[a] User identities are authenticated prior to allowing access to organizational systems.</li>
+                            <li>[b] Process identities are authenticated prior to allowing access to organizational systems.</li>
+                            <li>[c] Device identities are authenticated prior to allowing access to organizational systems.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="control-panels-grid">
+                    <div class="panel-box">
+                        <h4>Sample policy language</h4>
+                        <div class="policy-quote">
+                            "No session shall be established until the claimed identity has successfully passed verification through approved authentication mechanisms (e.g., passwords, certificates, or multi-factor credentials)."
+                        </div>
+                    </div>
+                    <div class="panel-box">
+                        <h4>What should you do?</h4>
+                        <ul>
+                            <li>Configure systems to challenge every user for credentials at logon before launching the desktop or shell.</li>
+                            <li>Implement modern identity provider authentication across all web, email, and cloud endpoints.</li>
+                            <li>Authenticate devices via 802.1X certificates or MDM trust validations before permitting network routing.</li>
+                        </ul>
+                    </div>
+                    <div class="panel-box full-span">
+                        <h4>What evidence should you prepare, and how may it be assessed?</h4>
+                        <div class="evidence-trinity">
+                            <div class="ev-item">
+                                <strong>Examine</strong>
+                                <p>Password policy configurations, authentication baseline standards, and identity provider settings.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Interview</strong>
+                                <p>Interviews with system administrators on authentication enforcement mechanisms.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Test</strong>
+                                <p>Assessor observation of a logon attempt to confirm that access is denied prior to successful credential challenge.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DOMAIN 3: MEDIA PROTECTION -->
+            <div class="domain-header-divider">
+                <h2>Media Protection (MP)</h2>
+                <span>FAR 52.204-21(b)(1)(vii)</span>
+            </div>
+
+            <!-- MP.L1-3.8.3 -->
+            <section class="control-block" id="MP-3.8.3">
+                <div class="control-header">
+                    <div class="control-badge-strip">
+                        <span class="control-badge nist">NIST SP 800-171: 3.8.3</span>
+                        <span class="control-badge far">FAR 52.204-21(b)(1)(vii)</span>
+                        <span class="control-badge far">CMMC Level 1</span>
+                    </div>
+                    <h3>MP.L1-3.8.3 — Media Sanitization &amp; Disposal</h3>
+                    <div class="mandate-box">
+                        <h4 class="question-heading">What does this practice require?</h4>
+                        <strong>Requirement:</strong> Sanitize or destroy information system media containing Federal Contract Information before disposal or release for reuse.
+                    </div>
+                    <div class="objective-list-box">
+                        <h5>Assessment Objectives (NIST SP 800-171A):</h5>
+                        <ul>
+                            <li>[a] Information system media containing FCI is sanitized prior to disposal.</li>
+                            <li>[b] Information system media containing FCI is destroyed prior to disposal.</li>
+                            <li>[c] Information system media containing FCI is sanitized prior to release for reuse.</li>
+                            <li>[d] Information system media containing FCI is destroyed prior to release for reuse.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="control-panels-grid">
+                    <div class="panel-box">
+                        <h4>Sample policy language</h4>
+                        <div class="policy-quote">
+                            "All digital storage media (hard drives, solid-state disks, USB media) and physical documents containing FCI must be cryptographically wiped, degaussed, shredded, or pulverized in compliance with NIST SP 800-88 before reuse or disposal."
+                        </div>
+                    </div>
+                    <div class="panel-box">
+                        <h4>What should you do?</h4>
+                        <ul>
+                            <li>Utilize certified cryptographic erase or multi-pass overwrite software on retired hard drives and endpoints.</li>
+                            <li>Deploy cross-cut shred bins for physical documentation within company facilities.</li>
+                            <li>Obtain formal Certificates of Destruction from licensed disposal vendors for hardware leaving the facility.</li>
+                        </ul>
+                    </div>
+                    <div class="panel-box full-span">
+                        <h4>What evidence should you prepare, and how may it be assessed?</h4>
+                        <div class="evidence-trinity">
+                            <div class="ev-item">
+                                <strong>Examine</strong>
+                                <p>Media sanitization SOPs, signed Certificates of Destruction, and disposal logs.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Interview</strong>
+                                <p>Interviews with IT operations staff on hardware sanitization protocols prior to asset decommissioning.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Test</strong>
+                                <p>Inspection of physical shred containers and verification of drive sanitization software logs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DOMAIN 4: PHYSICAL PROTECTION -->
+            <div class="domain-header-divider">
+                <h2>Physical Protection (PE)</h2>
+                <span>FAR 52.204-21(b)(1)(viii–ix)</span>
+            </div>
+
+            <!-- PE.L1-3.10.1 -->
+            <section class="control-block" id="PE-3.10.1">
+                <div class="control-header">
+                    <div class="control-badge-strip">
+                        <span class="control-badge nist">NIST SP 800-171: 3.10.1</span>
+                        <span class="control-badge far">FAR 52.204-21(b)(1)(viii)</span>
+                        <span class="control-badge far">CMMC Level 1</span>
+                    </div>
+                    <h3>PE.L1-3.10.1 — Physical Facility Access</h3>
+                    <div class="mandate-box">
+                        <h4 class="question-heading">What does this practice require?</h4>
+                        <strong>Requirement:</strong> Limit physical access to organizational information systems, equipment, and the respective operating environments to authorized individuals.
+                    </div>
+                    <div class="objective-list-box">
+                        <h5>Assessment Objectives (NIST SP 800-171A):</h5>
+                        <ul>
+                            <li>[a] Authorized individuals are identified.</li>
+                            <li>[b] Physical access to systems is limited to authorized individuals.</li>
+                            <li>[c] Physical access to equipment is limited to authorized individuals.</li>
+                            <li>[d] Physical access to operating environments is limited to authorized individuals.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="control-panels-grid">
+                    <div class="panel-box">
+                        <h4>Sample policy language</h4>
+                        <div class="policy-quote">
+                            "Physical entry to facilities, server closets, and workstations hosting organizational systems is restricted strictly to authorized employees holding verified physical credentials."
+                        </div>
+                    </div>
+                    <div class="panel-box">
+                        <h4>What should you do?</h4>
+                        <ul>
+                            <li>Secure all facility entry perimeters with physical door locks or electronic keycard readers.</li>
+                            <li>Lock server cabinets, network switches, and patch panels in dedicated rooms accessible only to IT staff.</li>
+                            <li>Maintain a formal roster of personnel approved for unescorted physical building entry.</li>
+                        </ul>
+                    </div>
+                    <div class="panel-box full-span">
+                        <h4>What evidence should you prepare, and how may it be assessed?</h4>
+                        <div class="evidence-trinity">
+                            <div class="ev-item">
+                                <strong>Examine</strong>
+                                <p>Physical security policies, building access rosters, and photos of locked infrastructure rooms.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Interview</strong>
+                                <p>Interviews with facility managers regarding access revocation when an employee leaves.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Test</strong>
+                                <p>On-site walk-through testing door locks, badge readers, and server room access points.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PE.L1-3.10.3 -->
+            <section class="control-block" id="PE-3.10.3">
+                <div class="control-header">
+                    <div class="control-badge-strip">
+                        <span class="control-badge nist">NIST SP 800-171: 3.10.3</span>
+                        <span class="control-badge far">FAR 52.204-21(b)(1)(ix)</span>
+                        <span class="control-badge far">CMMC Level 1</span>
+                    </div>
+                    <h3>PE.L1-3.10.3 — Visitor Escort &amp; Monitoring</h3>
+                    <div class="mandate-box">
+                        <h4 class="question-heading">What does this practice require?</h4>
+                        <strong>Requirement:</strong> Escort visitors and monitor visitor activity.
+                    </div>
+                    <div class="objective-list-box">
+                        <h5>Assessment Objectives (NIST SP 800-171A):</h5>
+                        <ul>
+                            <li>[a] Visitors are escorted.</li>
+                            <li>[b] Visitor activity is monitored.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="control-panels-grid">
+                    <div class="panel-box">
+                        <h4>Sample policy language</h4>
+                        <div class="policy-quote">
+                            "Unaccompanied visitor access to operating environments housing contract information systems is strictly forbidden. Visitors must be escorted and monitored by an authorized employee at all times."
+                        </div>
+                    </div>
+                    <div class="panel-box">
+                        <h4>What should you do?</h4>
+                        <ul>
+                            <li>Establish a single designated entrance for all arriving visitors.</li>
+                            <li>Assign an authorized escort who remains physically present with the visitor throughout the visit.</li>
+                            <li>Instruct employees to challenge unescorted strangers observed inside secure work areas.</li>
+                        </ul>
+                    </div>
+                    <div class="panel-box full-span">
+                        <h4>What evidence should you prepare, and how may it be assessed?</h4>
+                        <div class="evidence-trinity">
+                            <div class="ev-item">
+                                <strong>Examine</strong>
+                                <p>Visitor management procedures, escort guidelines, and receptionist training manuals.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Interview</strong>
+                                <p>Interviews with designated escorts on their responsibilities when guiding guests.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Test</strong>
+                                <p>Observing the check-in and escort protocol in real time during an assessor visit.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PE.L1-3.10.4 -->
+            <section class="control-block" id="PE-3.10.4">
+                <div class="control-header">
+                    <div class="control-badge-strip">
+                        <span class="control-badge nist">NIST SP 800-171: 3.10.4</span>
+                        <span class="control-badge far">FAR 52.204-21(b)(1)(ix)</span>
+                        <span class="control-badge far">CMMC Level 1</span>
+                    </div>
+                    <h3>PE.L1-3.10.4 — Physical Access Logging</h3>
+                    <div class="mandate-box">
+                        <h4 class="question-heading">What does this practice require?</h4>
+                        <strong>Requirement:</strong> Maintain audit logs of physical access.
+                    </div>
+                    <div class="objective-list-box">
+                        <h5>Assessment Objectives (NIST SP 800-171A):</h5>
+                        <ul>
+                            <li>[a] Audit logs of physical access are maintained.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="control-panels-grid">
+                    <div class="panel-box">
+                        <h4>Sample policy language</h4>
+                        <div class="policy-quote">
+                            "Physical entry to facilities processing FCI must produce an immutable audit log capturing visitor name, date, entry/exit timestamps, purpose of visit, and escort identity."
+                        </div>
+                    </div>
+                    <div class="panel-box">
+                        <h4>What should you do?</h4>
+                        <ul>
+                            <li>Deploy a physical visitor log book or electronic visitor sign-in iPad terminal at reception.</li>
+                            <li>Archive electronic badge swipe logs for facility entries on a scheduled monthly basis.</li>
+                            <li>Retain physical access records for a minimum of one year to support retrospective forensic analysis.</li>
+                        </ul>
+                    </div>
+                    <div class="panel-box full-span">
+                        <h4>What evidence should you prepare, and how may it be assessed?</h4>
+                        <div class="evidence-trinity">
+                            <div class="ev-item">
+                                <strong>Examine</strong>
+                                <p>Completed visitor sign-in registers, badge reader electronic logs, and log retention standards.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Interview</strong>
+                                <p>Interviews with reception staff regarding log completion and record archiving.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Test</strong>
+                                <p>Reviewing historical log entries to confirm completeness of required fields (time, date, escort).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PE.L1-3.10.5 -->
+            <section class="control-block" id="PE-3.10.5">
+                <div class="control-header">
+                    <div class="control-badge-strip">
+                        <span class="control-badge nist">NIST SP 800-171: 3.10.5</span>
+                        <span class="control-badge far">FAR 52.204-21(b)(1)(ix)</span>
+                        <span class="control-badge far">CMMC Level 1</span>
+                    </div>
+                    <h3>PE.L1-3.10.5 — Physical Access Device Control</h3>
+                    <div class="mandate-box">
+                        <h4 class="question-heading">What does this practice require?</h4>
+                        <strong>Requirement:</strong> Control and manage physical access devices.
+                    </div>
+                    <div class="objective-list-box">
+                        <h5>Assessment Objectives (NIST SP 800-171A):</h5>
+                        <ul>
+                            <li>[a] Physical access devices are identified.</li>
+                            <li>[b] Physical access devices are controlled.</li>
+                            <li>[c] Physical access devices are managed.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="control-panels-grid">
+                    <div class="panel-box">
+                        <h4>Sample policy language</h4>
+                        <div class="policy-quote">
+                            "Physical access devices—including brass keys, RFID badges, and biometric tokens—must be inventoried, tracked upon issuance, and retrieved immediately upon employee reassignment or separation."
+                        </div>
+                    </div>
+                    <div class="panel-box">
+                        <h4>What should you do?</h4>
+                        <ul>
+                            <li>Maintain a master Key and Badge Register listing card numbers, assigned holders, and access tiers.</li>
+                            <li>Promptly deactivate lost badges in the access control server.</li>
+                            <li>Change mechanical combinations or rekey cylinders periodically and following high-level personnel departures.</li>
+                        </ul>
+                    </div>
+                    <div class="panel-box full-span">
+                        <h4>What evidence should you prepare, and how may it be assessed?</h4>
+                        <div class="evidence-trinity">
+                            <div class="ev-item">
+                                <strong>Examine</strong>
+                                <p>Master key/badge inventory registers, key return sign-off sheets, and lost token procedures.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Interview</strong>
+                                <p>Interviews with physical security coordinators on badge provisioning and offboarding retrieval.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Test</strong>
+                                <p>Demonstration that a deactivated badge cannot open secured facility doors.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DOMAIN 5: SYSTEM & COMMUNICATIONS PROTECTION -->
+            <div class="domain-header-divider">
+                <h2>System &amp; Communications Protection (SC)</h2>
+                <span>FAR 52.204-21(b)(1)(x–xi)</span>
+            </div>
+
+            <!-- SC.L1-3.13.1 -->
+            <section class="control-block" id="SC-3.13.1">
+                <div class="control-header">
+                    <div class="control-badge-strip">
+                        <span class="control-badge nist">NIST SP 800-171: 3.13.1</span>
+                        <span class="control-badge far">FAR 52.204-21(b)(1)(x)</span>
+                        <span class="control-badge far">CMMC Level 1</span>
+                    </div>
+                    <h3>SC.L1-3.13.1 — Perimeter Boundary Protection</h3>
+                    <div class="mandate-box">
+                        <h4 class="question-heading">What does this practice require?</h4>
+                        <strong>Requirement:</strong> Monitor, control, and protect organizational communications at the external boundaries and key internal boundaries of the systems.
+                    </div>
+                    <div class="objective-list-box">
+                        <h5>Assessment Objectives (NIST SP 800-171A):</h5>
+                        <ul>
+                            <li>[a] External boundaries are identified.</li>
+                            <li>[b] Key internal boundaries are identified.</li>
+                            <li>[c] External boundary communications are monitored.</li>
+                            <li>[d] Key internal boundary communications are monitored.</li>
+                            <li>[e] Unauthorized external boundary connections are denied.</li>
+                            <li>[f] Unauthorized internal boundary connections are denied.</li>
+                            <li>[g] External boundary communications are protected.</li>
+                            <li>[h] Key internal boundary communications are protected.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="control-panels-grid">
+                    <div class="panel-box">
+                        <h4>Sample policy language</h4>
+                        <div class="policy-quote">
+                            "The organization deploys managed firewall gateways at all external network ingress/egress points. Network traffic must default to 'deny-all' and permit only explicitly authorized ports, protocols, and services."
+                        </div>
+                    </div>
+                    <div class="panel-box">
+                        <h4>What should you do?</h4>
+                        <ul>
+                            <li>Deploy stateful firewalls at corporate network edges and cloud virtual network perimeters.</li>
+                            <li>Block all inbound traffic from the internet unless explicitly mapped to an inspected service.</li>
+                            <li>Segment corporate IT resources from untrusted visitor Wi-Fi networks using dedicated VLANs.</li>
+                        </ul>
+                    </div>
+                    <div class="panel-box full-span">
+                        <h4>What evidence should you prepare, and how may it be assessed?</h4>
+                        <div class="evidence-trinity">
+                            <div class="ev-item">
+                                <strong>Examine</strong>
+                                <p>Network architecture diagrams showing security perimeters and exported firewall access control lists (ACLs).</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Interview</strong>
+                                <p>Interviews with network security engineers on rule change approval procedures.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Test</strong>
+                                <p>Port scanning perimeter IPs to confirm that unauthorized inbound ports are closed and non-responsive.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SC.L1-3.13.5 -->
+            <section class="control-block" id="SC-3.13.5">
+                <div class="control-header">
+                    <div class="control-badge-strip">
+                        <span class="control-badge nist">NIST SP 800-171: 3.13.5</span>
+                        <span class="control-badge far">FAR 52.204-21(b)(1)(xi)</span>
+                        <span class="control-badge far">CMMC Level 1</span>
+                    </div>
+                    <h3>SC.L1-3.13.5 — Public Subnetwork Separation</h3>
+                    <div class="mandate-box">
+                        <h4 class="question-heading">What does this practice require?</h4>
+                        <strong>Requirement:</strong> Implement subnetworks for publicly accessible system components that are physically or logically separated from internal networks.
+                    </div>
+                    <div class="objective-list-box">
+                        <h5>Assessment Objectives (NIST SP 800-171A):</h5>
+                        <ul>
+                            <li>[a] Publicly accessible system components are identified.</li>
+                            <li>[b] Subnetworks for publicly accessible components are logically or physically separated from internal networks.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="control-panels-grid">
+                    <div class="panel-box">
+                        <h4>Sample policy language</h4>
+                        <div class="policy-quote">
+                            "Public-facing services (e.g., corporate web servers, public file drops) must reside in isolated demilitarized zones (DMZs) or external hosting environments, preventing direct lateral access into internal corporate systems."
+                        </div>
+                    </div>
+                    <div class="panel-box">
+                        <h4>What should you do?</h4>
+                        <ul>
+                            <li>Place any on-premises public web or mail proxies in an isolated DMZ subnet.</li>
+                            <li>Enforce firewall rules preventing connections initiated from the DMZ toward internal subnets.</li>
+                            <li>Recommend hosting public web services with isolated commercial SaaS/PaaS providers outside the internal network boundary.</li>
+                        </ul>
+                    </div>
+                    <div class="panel-box full-span">
+                        <h4>What evidence should you prepare, and how may it be assessed?</h4>
+                        <div class="evidence-trinity">
+                            <div class="ev-item">
+                                <strong>Examine</strong>
+                                <p>Network segmentation diagrams, VLAN configurations, and cloud security group separation rules.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Interview</strong>
+                                <p>Interviews with infrastructure engineers regarding lateral movement protections from public systems.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Test</strong>
+                                <p>Pinging or attempting connection from a public subnet machine toward an internal IP to confirm routing is blocked.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DOMAIN 6: SYSTEM & INFORMATION INTEGRITY -->
+            <div class="domain-header-divider">
+                <h2>System &amp; Information Integrity (SI)</h2>
+                <span>FAR 52.204-21(b)(1)(xii–xv)</span>
+            </div>
+
+            <!-- SI.L1-3.14.1 -->
+            <section class="control-block" id="SI-3.14.1">
+                <div class="control-header">
+                    <div class="control-badge-strip">
+                        <span class="control-badge nist">NIST SP 800-171: 3.14.1</span>
+                        <span class="control-badge far">FAR 52.204-21(b)(1)(xii)</span>
+                        <span class="control-badge far">CMMC Level 1</span>
+                    </div>
+                    <h3>SI.L1-3.14.1 — Flaw Remediation (Patching)</h3>
+                    <div class="mandate-box">
+                        <h4 class="question-heading">What does this practice require?</h4>
+                        <strong>Requirement:</strong> Identify, report, and correct information and information-system flaws in a timely manner.
+                    </div>
+                    <div class="objective-list-box">
+                        <h5>Assessment Objectives (NIST SP 800-171A):</h5>
+                        <ul>
+                            <li>[a] Timeframe to identify system flaws is specified.</li>
+                            <li>[b] System flaws are identified within the specified timeframe.</li>
+                            <li>[c] Timeframe to report system flaws is specified.</li>
+                            <li>[d] System flaws are reported within the specified timeframe.</li>
+                            <li>[e] Timeframe to correct system flaws is specified.</li>
+                            <li>[f] System flaws are corrected within the specified timeframe.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="control-panels-grid">
+                    <div class="panel-box">
+                        <h4>Sample policy language</h4>
+                        <div class="policy-quote">
+                            "Operating systems and software applications must undergo automated patch management. Critical and high-severity security vulnerabilities must be remediated within organizationally defined service-level agreements (e.g., within 30 days of release)."
+                        </div>
+                    </div>
+                    <div class="panel-box">
+                        <h4>What should you do?</h4>
+                        <ul>
+                            <li>Enable automated OS patching via Microsoft Intune, Windows Update for Business, or third-party RMM tools.</li>
+                            <li>Subscribe to vendor vulnerability advisories (CISA alerts, Apple/Microsoft security bulletins).</li>
+                            <li>Run vulnerability scanners periodically to identify unpatched third-party utilities.</li>
+                        </ul>
+                    </div>
+                    <div class="panel-box full-span">
+                        <h4>What evidence should you prepare, and how may it be assessed?</h4>
+                        <div class="evidence-trinity">
+                            <div class="ev-item">
+                                <strong>Examine</strong>
+                                <p>Patch management policy (with explicit timeframes), update deployment reports, and patch logs.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Interview</strong>
+                                <p>Interviews with IT operations personnel on how zero-day or out-of-band security patches are evaluated.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Test</strong>
+                                <p>Checking software version numbers on sample endpoints against current vendor security baselines.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SI.L1-3.14.2 -->
+            <section class="control-block" id="SI-3.14.2">
+                <div class="control-header">
+                    <div class="control-badge-strip">
+                        <span class="control-badge nist">NIST SP 800-171: 3.14.2</span>
+                        <span class="control-badge far">FAR 52.204-21(b)(1)(xiii)</span>
+                        <span class="control-badge far">CMMC Level 1</span>
+                    </div>
+                    <h3>SI.L1-3.14.2 — Malicious Code Protection</h3>
+                    <div class="mandate-box">
+                        <h4 class="question-heading">What does this practice require?</h4>
+                        <strong>Requirement:</strong> Provide protection from malicious code at appropriate locations within organizational information systems.
+                    </div>
+                    <div class="objective-list-box">
+                        <h5>Assessment Objectives (NIST SP 800-171A):</h5>
+                        <ul>
+                            <li>[a] Protection from malicious code is provided at appropriate locations within organizational systems.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="control-panels-grid">
+                    <div class="panel-box">
+                        <h4>Sample policy language</h4>
+                        <div class="policy-quote">
+                            "Centrally managed anti-malware / Endpoint Detection and Response (EDR) software must be installed and active on all workstations, mobile devices, and servers processing organizational data."
+                        </div>
+                    </div>
+                    <div class="panel-box">
+                        <h4>What should you do?</h4>
+                        <ul>
+                            <li>Deploy reputable endpoint protection agents (e.g., Microsoft Defender for Endpoint, CrowdStrike, SentinelOne).</li>
+                            <li>Lock agent configurations to prevent local employees from stopping or disabling real-time shields.</li>
+                            <li>Ensure email gateways scan incoming email attachments for viruses and malicious scripts.</li>
+                        </ul>
+                    </div>
+                    <div class="panel-box full-span">
+                        <h4>What evidence should you prepare, and how may it be assessed?</h4>
+                        <div class="evidence-trinity">
+                            <div class="ev-item">
+                                <strong>Examine</strong>
+                                <p>Antivirus central console deployment summaries and tamper-protection configuration policies.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Interview</strong>
+                                <p>Interviews with security personnel regarding automated threat quarantine workflows.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Test</strong>
+                                <p>Attempting to disable local security agent protections on a client workstation to verify prevention.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SI.L1-3.14.4 -->
+            <section class="control-block" id="SI-3.14.4">
+                <div class="control-header">
+                    <div class="control-badge-strip">
+                        <span class="control-badge nist">NIST SP 800-171: 3.14.4</span>
+                        <span class="control-badge far">FAR 52.204-21(b)(1)(xiv)</span>
+                        <span class="control-badge far">CMMC Level 1</span>
+                    </div>
+                    <h3>SI.L1-3.14.4 — Update Protection Signatures</h3>
+                    <div class="mandate-box">
+                        <h4 class="question-heading">What does this practice require?</h4>
+                        <strong>Requirement:</strong> Update malicious code protection mechanisms when new releases are available.
+                    </div>
+                    <div class="objective-list-box">
+                        <h5>Assessment Objectives (NIST SP 800-171A):</h5>
+                        <ul>
+                            <li>[a] Malicious code protection mechanisms are updated when new releases are available.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="control-panels-grid">
+                    <div class="panel-box">
+                        <h4>Sample policy language</h4>
+                        <div class="policy-quote">
+                            "Anti-malware definition updates and engine releases must be applied automatically as soon as published by the vendor to defend against emerging threat signatures."
+                        </div>
+                    </div>
+                    <div class="panel-box">
+                        <h4>What should you do?</h4>
+                        <ul>
+                            <li>Configure protection agents to check for cloud signature updates at least daily or continuously.</li>
+                            <li>Establish automated alerts in the central management dashboard for endpoints disconnected or out of date for more than 48 hours.</li>
+                            <li>Force manual definition syncs on devices returning from extended leave.</li>
+                        </ul>
+                    </div>
+                    <div class="panel-box full-span">
+                        <h4>What evidence should you prepare, and how may it be assessed?</h4>
+                        <div class="evidence-trinity">
+                            <div class="ev-item">
+                                <strong>Examine</strong>
+                                <p>Agent update schedule configurations and centralized dashboard definition compliance reports.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Interview</strong>
+                                <p>Interviews with IT operations on how endpoints with out-of-date signatures are identified and addressed.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Test</strong>
+                                <p>Inspecting local endpoint antivirus client status screens to verify current definition timestamps.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SI.L1-3.14.5 -->
+            <section class="control-block" id="SI-3.14.5">
+                <div class="control-header">
+                    <div class="control-badge-strip">
+                        <span class="control-badge nist">NIST SP 800-171: 3.14.5</span>
+                        <span class="control-badge far">FAR 52.204-21(b)(1)(xv)</span>
+                        <span class="control-badge far">CMMC Level 1</span>
+                    </div>
+                    <h3>SI.L1-3.14.5 — Real-Time &amp; Periodic Scanning</h3>
+                    <div class="mandate-box">
+                        <h4 class="question-heading">What does this practice require?</h4>
+                        <strong>Requirement:</strong> Perform periodic scans of the information system and real-time scans of files from external sources as files are downloaded, opened, or executed.
+                    </div>
+                    <div class="objective-list-box">
+                        <h5>Assessment Objectives (NIST SP 800-171A):</h5>
+                        <ul>
+                            <li>[a] Periodic scans of the information system are performed.</li>
+                            <li>[b] Real-time scans of files from external sources are performed as files are downloaded, opened, or executed.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="control-panels-grid">
+                    <div class="panel-box">
+                        <h4>Sample policy language</h4>
+                        <div class="policy-quote">
+                            "Systems must maintain continuous real-time on-access scanning for all files accessed or downloaded from external media or the internet, augmented by scheduled periodic deep-disk scans."
+                        </div>
+                    </div>
+                    <div class="panel-box">
+                        <h4>What should you do?</h4>
+                        <ul>
+                            <li>Enable on-access file interception (real-time protection) in endpoint security profiles.</li>
+                            <li>Schedule weekly automated background full-disk scans during off-peak hours.</li>
+                            <li>Configure automatic quarantine action upon detection of malicious payloads.</li>
+                        </ul>
+                    </div>
+                    <div class="panel-box full-span">
+                        <h4>What evidence should you prepare, and how may it be assessed?</h4>
+                        <div class="evidence-trinity">
+                            <div class="ev-item">
+                                <strong>Examine</strong>
+                                <p>EDR real-time scanning policy settings and historical scheduled scan completion logs.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Interview</strong>
+                                <p>Interviews with administrators regarding quarantine alert triage procedures.</p>
+                            </div>
+                            <div class="ev-item">
+                                <strong>Test</strong>
+                                <p>Testing the real-time file scanner with a benign EICAR test string to verify immediate interception.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq-section" aria-labelledby="faq-heading">
+                <h2 id="faq-heading">CMMC Level 1: common questions</h2>
+                <article class="faq-item">
+                    <h3>What is CMMC Level 1?</h3>
+                    <p>CMMC Level 1 focuses on the basic safeguarding of Federal Contract Information (FCI). It consists of 17 practices derived from the 15 safeguarding requirements in FAR 52.204-21.</p>
+                </article>
+                <article class="faq-item">
+                    <h3>How many domains and practices are included?</h3>
+                    <p>The 17 practices span six domains: Access Control, Identification and Authentication, Media Protection, Physical Protection, System and Communications Protection, and System and Information Integrity.</p>
+                </article>
+                <article class="faq-item">
+                    <h3>What evidence may support a Level 1 self-assessment?</h3>
+                    <p>The appropriate evidence depends on the practice and your environment. It may include policies, procedures, system configurations, access lists, asset inventories, logs, screenshots, records, interviews, and test results.</p>
+                </article>
+            </section>
+
+            <div class="guide-note">
+                <strong>Important:</strong> This guide provides general implementation and readiness guidance, not legal advice or a guarantee of assessment results. Organizations should evaluate each practice against their own systems, contracts, FCI environment, and the current authoritative CMMC, FAR, and assessment requirements.
+            </div>
+
+            <!-- FOOTER CONSULTATION BANNER -->
+            <div class="footer-banner">
+                <h3>Need help applying the guide to your environment?</h3>
+                <p>VigilON can help you interpret the requirements, identify readiness gaps, organize supporting evidence, and prepare for your CMMC journey.</p>
+                <a href="https://vigilon.in/" class="btn-consultation" style="font-size: 1rem; padding: 12px 28px;">Talk to VigilON</a>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- CLIENT FILTER SCRIPT -->
+    <script>
+        function filterControls() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const blocks = document.querySelectorAll('.control-block');
+
+            blocks.forEach(block => {
+                const text = block.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    block.style.display = 'block';
+                } else {
+                    block.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Message received | VigilON</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="styles.css">
+<style>
+  :root{
+    --hdr-line:var(--l-line); --hdr-ink:var(--l-ink); --hdr-ink-soft:var(--l-ink-soft);
+    --tab-bg:var(--l-bg-raised); --tab-active-bg:var(--l-teal-deep); --tab-active-ink:#fff;
+    --ft-line:var(--d-line); --ft-ink-soft:var(--d-ink-soft); --ft-ink:var(--d-ink); --ft-accent:var(--d-mint);
+    --ft-tag-bg:var(--d-mint-soft); --ft-tag-ink:var(--d-mint); --ft-input-bg:#142420; --ft-btn-ink:#06201b;
+  }
+  body{background:var(--l-panel);color:var(--l-ink);}
+  header{background:rgba(252,252,250,0.92);}
+  .cta-btn.primary{background:var(--l-teal-deep);color:#fff;}
+  .cta-btn.primary:hover{background:var(--l-teal);box-shadow:var(--shadow-md);}
+  .cta-btn.ghost{background:transparent;border:1px solid var(--l-line);color:var(--l-ink);}
+  .cta-btn.ghost:hover{background:var(--l-ink);color:#fff;}
+  footer{background:var(--d-bg);}
+
+  .confirm{padding:120px 0 140px;text-align:center;}
+  .confirm .icon-circle{
+    width:72px;height:72px;border-radius:50%;background:var(--l-teal-tint);border:1px solid var(--l-teal);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 28px;
+  }
+  .confirm .icon-circle svg{width:32px;height:32px;stroke:var(--l-teal-deep);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+  .confirm h1{font-size:36px;margin-bottom:16px;}
+  .confirm p{font-size:16.5px;color:var(--l-ink-soft);max-width:48ch;margin:0 auto 34px;}
+  .confirm-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+  @media (max-width:880px){
+    .confirm{padding:80px 0 96px;}
+    .confirm h1{font-size:28px;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap nav-row">
+    <a href="index.html" class="logo">
+      <svg class="logo-mark" viewBox="0 0 32 32" fill="none">
+        <path d="M7 5l9 21 9-21" stroke="#0a4f46" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16 6v5" stroke="#d98a34" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M12.5 8a5 5 0 107 0" stroke="#d98a34" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      VigilON
+    </a>
+    <div class="tab-switch">
+      <a href="compliance.html"><span class="sw"></span><span class="label">Compliance</span></a>
+      <a href="courses.html"><span class="sw"></span><span class="label">Digital Forensics</span></a>
+      <a href="awareness.html"><span class="sw"></span><span class="label">Awareness</span></a>
+    </div>
+    <div class="hdr-right">
+      <nav id="mobileNav">
+        <a href="index.html#solutions">Solutions</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <a href="index.html#contact" class="cta-btn primary">Book a consultation</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="confirm">
+    <div class="wrap">
+      <div class="icon-circle">
+        <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <h1>Thanks — your message is in.</h1>
+      <p>We've received your note and will get back to you shortly, usually within one business day. If it's urgent, feel free to email us directly at asharma@vigilon.in.</p>
+      <div class="confirm-ctas">
+        <a href="index.html" class="cta-btn primary">Back to homepage</a>
+        <a href="courses.html" class="cta-btn ghost">Browse courses</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="logo" style="color:#fff;">
+        <svg class="logo-mark" viewBox="0 0 32 32" fill="none">
+          <path d="M7 5l9 21 9-21" stroke="#37d6b3" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M16 6v5" stroke="#e2933e" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M12.5 8a5 5 0 107 0" stroke="#e2933e" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        VigilON
+      </a>
+      <p>CMMC compliance, digital forensics &amp; cybersecurity awareness courses, for teams across the US and India.</p>
+      <span class="footer-tag">A Hora Technologies company</span>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">COMPLIANCE</h5>
+      <a href="compliance.html#services">Gap analysis &amp; SSP</a>
+      <a href="compliance.html#services">Assessment prep</a>
+      <a href="compliance.html#services">Managed compliance</a>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">DIGITAL FORENSICS</h5>
+      <a href="courses.html#courses">Starter courses</a>
+      <a href="courses.html#courses">Core track DF-101+</a>
+      <a href="courses.html#courses">Expert testimony DF-310</a>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">AWARENESS</h5>
+      <a href="awareness.html">Phishing &amp; social engineering</a>
+      <a href="awareness.html">Password &amp; access hygiene</a>
+      <a href="awareness.html">Incident reporting habits</a>
+      <a href="awareness.html#community">Digital arrest scam safety</a>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">STAY UPDATED</h5>
+      <p style="font-size:13px;color:var(--d-ink-soft);margin-bottom:4px;">New cohort dates, twice a year.</p>
+      <div class="newsletter"><input type="email" placeholder="you@company.com"><button type="button">Join</button></div>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 VigilON, a Hora Technologies company. All rights reserved.</span>
+    <span>Registered as a proprietorship — Hora Technologies</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Forensics Global Courses | VigilON</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="styles.css">
+<style>
+  :root{
+    --hdr-line:var(--d-line); --hdr-ink:var(--d-ink); --hdr-ink-soft:var(--d-ink-soft);
+    --tab-bg:var(--d-bg-raised); --tab-active-bg:var(--d-mint); --tab-active-ink:#062019;
+    --ft-line:var(--d-line); --ft-ink-soft:var(--d-ink-soft); --ft-ink:var(--d-ink); --ft-accent:var(--d-mint);
+    --ft-tag-bg:var(--d-mint-soft); --ft-tag-ink:var(--d-mint); --ft-input-bg:#142420; --ft-btn-ink:#06201b;
+  }
+  body{background:var(--d-bg);color:var(--d-ink);}
+  header{background:rgba(10,18,16,0.88);}
+  .cta-btn.primary{background:var(--d-mint);color:#062019;}
+  .cta-btn.primary:hover{background:#4fe8c6;box-shadow:0 10px 26px rgba(55,214,179,0.25);}
+  .cta-btn.ghost{background:transparent;border:1px solid var(--d-line);color:var(--d-ink);}
+  .cta-btn.ghost:hover{background:rgba(255,255,255,0.06);}
+  section{border-bottom:1px solid var(--d-line);}
+  .index{font-family:'IBM Plex Mono',monospace;color:var(--d-mint);font-size:13px;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+  .index::before{content:"";width:22px;height:1px;background:var(--d-mint);}
+  .sec-head{display:grid;grid-template-columns:0.4fr 0.6fr;gap:40px;margin-bottom:52px;align-items:end;}
+  .sec-head h2{font-size:34px;max-width:14ch;color:#fff;}
+  .sec-head p{font-size:15.5px;color:var(--d-ink-soft);max-width:46ch;}
+
+  /* hero */
+  .p-hero{padding:64px 0 76px;position:relative;overflow:hidden;}
+  .p-hero::before{content:"";position:absolute;top:-90px;right:-120px;width:520px;height:520px;background:radial-gradient(circle, rgba(55,214,179,0.14) 0%, rgba(55,214,179,0) 70%);pointer-events:none;}
+  .p-hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.045) 1px, transparent 1px);background-size:22px 22px;pointer-events:none;}
+  .p-hero .wrap{position:relative;z-index:1;}
+  .crumb{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--d-ink-soft);margin-bottom:20px;}
+  .crumb a{color:var(--d-mint);text-decoration:none;}
+  .file-tag{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--d-mint);background:var(--d-mint-soft);border:1px solid var(--d-mint);padding:6px 12px;border-radius:20px;margin-bottom:22px;}
+  .file-tag .dot{width:6px;height:6px;background:var(--d-amber);border-radius:50%;}
+  .p-hero h1{font-size:52px;line-height:1.06;letter-spacing:-0.015em;max-width:15ch;margin-bottom:18px;color:#fff;}
+  .p-hero p.lede{font-size:17.5px;color:var(--d-ink-soft);max-width:52ch;margin-bottom:30px;}
+  .p-hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+
+  /* tools strip */
+  .tools-strip{border-top:1px solid var(--d-line);padding:26px 0;background:var(--d-bg-raised);}
+  .tools-strip .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .tools-strip .label{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--d-ink-soft);}
+  .tools-strip .tools{display:flex;gap:26px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--d-ink-soft);}
+
+  /* course board */
+  .courses{padding:88px 0;}
+  .course-board{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 24px;}
+  .pin-card{
+    background:var(--d-panel);border:1px solid var(--d-line);border-radius:8px;padding:26px 24px;position:relative;
+    box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s,border-color .2s;
+  }
+  .pin-card:nth-child(odd){transform:rotate(-0.6deg);}
+  .pin-card:nth-child(even){transform:rotate(0.6deg);}
+  .pin-card:hover{transform:translateY(-5px) rotate(0deg);box-shadow:0 18px 40px rgba(55,214,179,0.16);border-color:var(--d-mint);}
+  .pin-dot{position:absolute;top:-8px;left:24px;width:16px;height:16px;border-radius:50%;background:var(--d-amber);box-shadow:0 3px 6px rgba(0,0,0,0.4);}
+  .course-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;}
+  .course-top .icon-box{width:42px;height:42px;border-radius:8px;background:var(--d-mint-soft);display:flex;align-items:center;justify-content:center;}
+  .course-top .icon-box .icon{stroke:var(--d-mint);width:21px;height:21px;}
+  .level-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;padding:4px 9px;border-radius:20px;letter-spacing:.03em;}
+  .level-tag.beg{background:var(--d-mint-soft);color:var(--d-mint);}
+  .level-tag.intm{background:var(--d-amber-soft);color:var(--d-amber);}
+  .level-tag.adv{background:#2c2c2c;color:#fff;}
+  .pin-card .code{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--d-mint);margin-bottom:6px;display:block;}
+  .pin-card h3{font-size:19px;margin-bottom:9px;color:#fff;}
+  .pin-card p{font-size:13.5px;color:var(--d-ink-soft);margin-bottom:16px;}
+  .course-meta{display:flex;gap:12px;font-size:11.5px;color:var(--d-ink-soft);flex-wrap:wrap;border-top:1px solid var(--d-line);padding-top:12px;}
+  .course-meta span{display:flex;align-items:center;gap:6px;}
+  .course-meta .sw{width:5px;height:5px;background:var(--d-amber);border-radius:50%;}
+
+  /* learning path */
+  .path{padding:88px 0;}
+  .timeline{display:grid;grid-template-columns:repeat(9,1fr);position:relative;margin-top:12px;}
+  .timeline::before{content:"";position:absolute;top:20px;left:4%;right:4%;height:1px;background:var(--d-line);z-index:0;}
+  .tl-step{position:relative;z-index:1;text-align:center;padding:0 6px;}
+  .tl-num{width:40px;height:40px;border-radius:50%;background:var(--d-panel);border:1.5px solid var(--d-mint);color:var(--d-mint);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12.5px;margin:0 auto 12px;box-shadow:0 0 0 6px var(--d-bg);}
+  .tl-step h4{font-size:12.5px;font-weight:600;color:#fff;margin-bottom:4px;}
+  .tl-step p{font-size:11px;color:var(--d-ink-soft);}
+
+  /* format */
+  .format{padding:88px 0;}
+  .format-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;}
+  .format-card{background:var(--d-panel);border:1px solid var(--d-line);border-radius:var(--radius);padding:28px 24px;}
+  .format-card .icon-box{width:44px;height:44px;border-radius:8px;background:var(--d-mint-soft);display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+  .format-card .icon-box .icon{stroke:var(--d-mint);}
+  .format-card h4{color:#fff;font-size:17px;margin-bottom:8px;}
+  .format-card p{font-size:13.5px;color:var(--d-ink-soft);}
+
+  /* CTA */
+  .cta-wrap{padding:0 0 96px;border-bottom:none;}
+  .cta-banner{background:linear-gradient(120deg,#0f2a25 0%,#123a32 50%,#0d3d35 100%);border-radius:16px;padding:60px 52px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:36px;flex-wrap:wrap;position:relative;overflow:hidden;border:1px solid var(--d-line);}
+  .cta-banner::before{content:"";position:absolute;right:-60px;top:-70px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle, rgba(55,214,179,0.30) 0%, rgba(55,214,179,0) 70%);}
+  .cta-banner h2{font-size:29px;max-width:17ch;margin-bottom:8px;color:#fff;}
+  .cta-banner p{font-size:14.5px;max-width:38ch;color:var(--d-ink-soft);}
+  .cta-banner-ctas{display:flex;gap:14px;flex-wrap:wrap;position:relative;z-index:1;}
+  .cta-btn.on-mint{background:var(--d-mint);color:#062019;}
+  .cta-btn.on-mint:hover{background:#4fe8c6;}
+  .cta-btn.outline-lt{background:transparent;border:1px solid rgba(255,255,255,0.3);color:#fff;}
+  .cta-btn.outline-lt:hover{background:rgba(255,255,255,0.08);}
+
+  footer{background:var(--d-bg);border-top:1px solid var(--d-line);}
+
+  @media (max-width:980px){.course-board{grid-template-columns:1fr 1fr;}.format-grid{grid-template-columns:1fr;}}
+  @media (max-width:880px){
+    .p-hero h1{font-size:34px;}
+    .sec-head{grid-template-columns:1fr;}
+    .course-board{grid-template-columns:1fr;}
+    .pin-card{transform:none !important;}
+    .timeline{grid-template-columns:1fr;gap:22px;}
+    .timeline::before{display:none;}
+    .cta-banner{padding:36px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap nav-row">
+    <a href="index.html" class="logo">
+      <svg class="logo-mark" viewBox="0 0 32 32" fill="none">
+        <path d="M7 5l9 21 9-21" stroke="#37d6b3" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16 6v5" stroke="#e2933e" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M12.5 8a5 5 0 107 0" stroke="#e2933e" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      VigilON
+    </a>
+    <div class="tab-switch">
+      <a href="compliance.html"><span class="sw"></span><span class="label">Compliance</span></a>
+      <a href="courses.html" class="active"><span class="sw"></span><span class="label">Digital Forensics</span></a>
+      <a href="awareness.html"><span class="sw"></span><span class="label">Awareness</span></a>
+    </div>
+    <div class="hdr-right">
+      <nav id="mobileNav">
+        <a href="index.html#solutions">Solutions</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <a href="index.html#contact" class="cta-btn primary">Book a consultation</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="p-hero">
+    <div class="wrap">
+      <div class="crumb"><a href="index.html">VigilON</a> / Digital Forensics Global Courses</div>
+      <span class="file-tag"><span class="dot"></span>Digital Forensics Global Courses</span>
+      <h1>Investigate evidence the way examiners actually do — anywhere in the world.</h1>
+      <p class="lede">Nine live, hands-on courses — from your first look at forensic tools to expert testimony — delivered to learners across India, the US, and beyond, on the same tools working examiners use: Autopsy, FTK, Cellebrite, Volatility, and Magnet AXIOM.</p>
+      <div class="p-hero-ctas">
+        <a href="index.html#contact" class="cta-btn primary">Enroll in a cohort</a>
+        <a href="#courses" class="cta-btn ghost">View the catalog</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="tools-strip">
+    <div class="wrap">
+      <span class="label mono">TOOLS YOU'LL WORK WITH</span>
+      <div class="tools"><span>Autopsy</span><span>FTK Imager</span><span>Cellebrite UFED</span><span>Magnet AXIOM</span><span>Volatility</span><span>Wireshark</span></div>
+    </div>
+  </div>
+
+  <!-- COURSE BOARD -->
+  <section class="courses" id="courses">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><div class="index mono">CATALOG</div><h2>Nine courses, one case-file method</h2></div>
+        <p>Start with zero background, or jump straight to advanced work — each course builds a complete case file, end to end, before the next one begins.</p>
+      </div>
+
+      <div class="group-label reveal" style="--gl-ink-soft:var(--d-ink-soft);--gl-line:var(--d-line);">
+        <span class="badge" style="background:var(--d-mint-soft);color:var(--d-mint);">STARTER</span>
+        <span class="glabel">No background needed</span>
+        <span class="line"></span>
+      </div>
+      <div class="course-board" style="margin-bottom:44px;">
+        <div class="pin-card reveal"><span class="pin-dot"></span>
+          <div class="course-top"><div class="icon-box"><svg class="icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div><span class="level-tag beg">STARTER</span></div>
+          <span class="code">DF-010</span><h3>Intro to Digital Forensics</h3>
+          <p>What digital evidence is, how investigations actually run, and the legal basics — before you touch a single tool.</p>
+          <div class="course-meta"><span><span class="sw"></span>1 week</span><span><span class="sw"></span>Online, self-paced</span><span><span class="sw"></span>No prerequisite</span></div>
+        </div>
+        <div class="pin-card reveal"><span class="pin-dot"></span>
+          <div class="course-top"><div class="icon-box"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/></svg></div><span class="level-tag beg">STARTER</span></div>
+          <span class="code">DF-020</span><h3>Cybersecurity Basics for Investigators</h3>
+          <p>The networking, operating-system, and security concepts every later course assumes you already know.</p>
+          <div class="course-meta"><span><span class="sw"></span>2 weeks</span><span><span class="sw"></span>Online, live</span><span><span class="sw"></span>No prerequisite</span></div>
+        </div>
+        <div class="pin-card reveal"><span class="pin-dot"></span>
+          <div class="course-top"><div class="icon-box"><svg class="icon" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.1-3.1a4 4 0 01-5.4 5.4L5 22l-3-3L12.4 8.6a4 4 0 015.4-5.4l-3 3z"/></svg></div><span class="level-tag beg">STARTER</span></div>
+          <span class="code">DF-030</span><h3>First Look at Forensic Tools</h3>
+          <p>A guided walkthrough of Autopsy and FTK Imager on a sample case file — no prior technical background needed.</p>
+          <div class="course-meta"><span><span class="sw"></span>2 weeks</span><span><span class="sw"></span>Online, live</span><span><span class="sw"></span>No prerequisite</span></div>
+        </div>
+      </div>
+
+      <div class="group-label reveal" style="--gl-ink-soft:var(--d-ink-soft);--gl-line:var(--d-line);">
+        <span class="badge" style="background:var(--d-amber-soft);color:var(--d-amber);">CORE TRACK</span>
+        <span class="glabel">DF-101 through DF-310</span>
+        <span class="line"></span>
+      </div>
+      <div class="course-board">
+        <div class="pin-card reveal"><span class="pin-dot"></span>
+          <div class="course-top"><div class="icon-box"><svg class="icon" viewBox="0 0 24 24"><path d="M6 4h9l4 4v12H6z"/><path d="M14 4v4h4"/></svg></div><span class="level-tag beg">BEGINNER</span></div>
+          <span class="code">DF-101</span><h3>Foundations of Digital Forensics</h3>
+          <p>Chain of custody, imaging, hashing, and file-system fundamentals across Windows, macOS, and Linux.</p>
+          <div class="course-meta"><span><span class="sw"></span>6 weeks</span><span><span class="sw"></span>Online, live</span><span><span class="sw"></span>No prerequisite</span></div>
+        </div>
+        <div class="pin-card reveal"><span class="pin-dot"></span>
+          <div class="course-top"><div class="icon-box"><svg class="icon" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 6h8M6 8v8M18 8v8M8 18h8"/></svg></div><span class="level-tag intm">INTERMEDIATE</span></div>
+          <span class="code">DF-210</span><h3>Network &amp; Packet Forensics</h3>
+          <p>Reconstructing intrusions from packet captures and log data with Wireshark and Zeek.</p>
+          <div class="course-meta"><span><span class="sw"></span>5 weeks</span><span><span class="sw"></span>Online, live</span><span><span class="sw"></span>DF-101</span></div>
+        </div>
+        <div class="pin-card reveal"><span class="pin-dot"></span>
+          <div class="course-top"><div class="icon-box"><svg class="icon" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div><span class="level-tag intm">INTERMEDIATE</span></div>
+          <span class="code">DF-230</span><h3>Mobile Device Forensics</h3>
+          <p>Physical and logical extraction on Android and iOS with Cellebrite UFED and Magnet AXIOM.</p>
+          <div class="course-meta"><span><span class="sw"></span>4 weeks</span><span><span class="sw"></span>Hybrid</span><span><span class="sw"></span>DF-101</span></div>
+        </div>
+        <div class="pin-card reveal"><span class="pin-dot"></span>
+          <div class="course-top"><div class="icon-box"><svg class="icon" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M2 9h2M2 15h2M20 9h2M20 15h2M9 2v2M15 2v2M9 20v2M15 20v2"/></svg></div><span class="level-tag adv">ADVANCED</span></div>
+          <span class="code">DF-260</span><h3>Memory &amp; Malware Forensics</h3>
+          <p>Volatile memory acquisition and analysis with Volatility — process injection, persistence, rootkits.</p>
+          <div class="course-meta"><span><span class="sw"></span>5 weeks</span><span><span class="sw"></span>Online, live</span><span><span class="sw"></span>DF-210</span></div>
+        </div>
+        <div class="pin-card reveal"><span class="pin-dot"></span>
+          <div class="course-top"><div class="icon-box"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3a5 5 0 015 5c0 3-2 5-5 5s-5-2-5-5a5 5 0 015-5z"/><path d="M7 21c0-3 2.5-5 5-5s5 2 5 5"/></svg></div><span class="level-tag adv">ADVANCED</span></div>
+          <span class="code">DF-280</span><h3>Cloud &amp; Enterprise Forensics</h3>
+          <p>Investigating AWS CloudTrail, Azure logs, and Microsoft 365 activity for compromise and insider-threat cases.</p>
+          <div class="course-meta"><span><span class="sw"></span>4 weeks</span><span><span class="sw"></span>Online, live</span><span><span class="sw"></span>DF-210</span></div>
+        </div>
+        <div class="pin-card reveal"><span class="pin-dot"></span>
+          <div class="course-top"><div class="icon-box"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M5 5l3 3M16 16l3 3M2 12h4M18 12h4M5 19l3-3M16 8l3-3"/><circle cx="12" cy="12" r="3"/></svg></div><span class="level-tag adv">ADVANCED</span></div>
+          <span class="code">DF-310</span><h3>Report Writing &amp; Expert Testimony</h3>
+          <p>Writing findings that survive cross-examination, and presenting evidence clearly under questioning.</p>
+          <div class="course-meta"><span><span class="sw"></span>3 weeks</span><span><span class="sw"></span>Online, live</span><span><span class="sw"></span>Any DF course</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEARNING PATH -->
+  <section class="path">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><div class="index mono">SEQUENCE</div><h2>The recommended path</h2></div>
+        <p>Zero background? Start with DF-010. Already comfortable with the basics? Jump straight to DF-101 and branch toward mobile, network, or memory forensics from there.</p>
+      </div>
+      <div class="timeline reveal">
+        <div class="tl-step"><div class="tl-num">010</div><h4>Intro</h4><p>Week 1</p></div>
+        <div class="tl-step"><div class="tl-num">020</div><h4>Basics</h4><p>Weeks 2–3</p></div>
+        <div class="tl-step"><div class="tl-num">030</div><h4>Tools</h4><p>Weeks 4–5</p></div>
+        <div class="tl-step"><div class="tl-num">101</div><h4>Foundations</h4><p>Weeks 6–11</p></div>
+        <div class="tl-step"><div class="tl-num">210</div><h4>Network</h4><p>Weeks 12–16</p></div>
+        <div class="tl-step"><div class="tl-num">230</div><h4>Mobile</h4><p>Weeks 12–15</p></div>
+        <div class="tl-step"><div class="tl-num">260</div><h4>Memory</h4><p>Weeks 17–21</p></div>
+        <div class="tl-step"><div class="tl-num">280</div><h4>Cloud</h4><p>Weeks 17–20</p></div>
+        <div class="tl-step"><div class="tl-num">310</div><h4>Testimony</h4><p>Weeks 22–24</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMAT -->
+  <section class="format">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><div class="index mono">FORMAT</div><h2>How cohorts run</h2></div>
+        <p>Every course is capped small enough that each learner completes an individual case file — not a shared class demo.</p>
+      </div>
+      <div class="format-grid">
+        <div class="format-card reveal"><div class="icon-box"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h4>Live, global cohorts</h4><p>Real-time instruction with office hours — IST evenings for India, US Eastern for North America, with slots scheduled around other regions on request.</p></div>
+        <div class="format-card reveal"><div class="icon-box"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h4>Remote lab access</h4><p>Cloud-hosted lab environment with sample images, so you never wait on hardware setup.</p></div>
+        <div class="format-card reveal"><div class="icon-box"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/></svg></div><h4>Certificate of completion</h4><p>Issued after your final case-file submission is reviewed by an instructor.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-wrap">
+    <div class="wrap reveal">
+      <div class="cta-banner grain">
+        <div>
+          <h2>Not sure which course to start with?</h2>
+          <p>Tell us your background and we'll recommend the right entry point and sequence.</p>
+        </div>
+        <div class="cta-banner-ctas">
+          <a href="index.html#contact" class="cta-btn on-mint">Get course guidance</a>
+          <a href="compliance.html" class="cta-btn outline-lt">Explore CMMC compliance</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+</main>
+
+<footer>
+  <div class="wrap footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="logo" style="color:#fff;">
+        <svg class="logo-mark" viewBox="0 0 32 32" fill="none">
+          <path d="M7 5l9 21 9-21" stroke="#37d6b3" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M16 6v5" stroke="#e2933e" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M12.5 8a5 5 0 107 0" stroke="#e2933e" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        VigilON
+      </a>
+      <p>CMMC compliance, digital forensics &amp; cybersecurity awareness courses, for teams across the US and India.</p>
+      <span class="footer-tag">A Hora Technologies company</span>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">COMPLIANCE</h5>
+      <a href="compliance.html#services">Gap analysis &amp; SSP</a>
+      <a href="compliance.html#services">Assessment prep</a>
+      <a href="compliance.html#services">Managed compliance</a>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">DIGITAL FORENSICS</h5>
+      <a href="courses.html#courses">Starter courses</a>
+      <a href="courses.html#courses">Core track DF-101+</a>
+      <a href="courses.html#courses">Expert testimony DF-310</a>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">AWARENESS</h5>
+      <a href="awareness.html">Phishing &amp; social engineering</a>
+      <a href="awareness.html">Password &amp; access hygiene</a>
+      <a href="awareness.html">Incident reporting habits</a>
+      <a href="awareness.html#community">Digital arrest scam safety</a>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">STAY UPDATED</h5>
+      <p style="font-size:13px;color:var(--d-ink-soft);margin-bottom:4px;">New cohort dates, twice a year.</p>
+      <div class="newsletter"><input type="email" placeholder="you@company.com"><button type="button">Join</button></div>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 VigilON, a Hora Technologies company. All rights reserved.</span>
+    <span>Registered as a proprietorship — Hora Technologies</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

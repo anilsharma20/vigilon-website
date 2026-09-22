@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compliance — CMMC Readiness | VigilON</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="styles.css">
+<style>
+  :root{
+    --hdr-line:var(--l-line); --hdr-ink:var(--l-ink); --hdr-ink-soft:var(--l-ink-soft);
+    --tab-bg:var(--l-bg-raised); --tab-active-bg:var(--l-teal-deep); --tab-active-ink:#fff;
+    --ft-line:var(--d-line); --ft-ink-soft:var(--d-ink-soft); --ft-ink:var(--d-ink); --ft-accent:var(--d-mint);
+    --ft-tag-bg:var(--d-mint-soft); --ft-tag-ink:var(--d-mint); --ft-input-bg:#142420; --ft-btn-ink:#06201b;
+  }
+  body{background:var(--l-bg);color:var(--l-ink);}
+  header{background:rgba(240,242,238,0.92);}
+  .cta-btn.primary{background:var(--l-teal-deep);color:#fff;}
+  .cta-btn.primary:hover{background:var(--l-teal);box-shadow:var(--shadow-md);}
+  .cta-btn.ghost{background:transparent;border:1px solid var(--l-line);color:var(--l-ink);}
+  .cta-btn.ghost:hover{background:var(--l-ink);color:#fff;}
+
+  /* ---- page hero ---- */
+  .p-hero{padding:64px 0 76px;border-bottom:1px solid var(--l-line);position:relative;overflow:hidden;}
+  .p-hero::before{content:"";position:absolute;top:-80px;right:-140px;width:520px;height:520px;background:radial-gradient(circle, rgba(15,122,108,0.12) 0%, rgba(15,122,108,0) 70%);pointer-events:none;}
+  .p-hero .wrap{position:relative;z-index:1;}
+  .crumb{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--l-ink-soft);margin-bottom:20px;}
+  .crumb a{color:var(--l-teal-deep);text-decoration:none;}
+  .p-hero .file-tag{display:inline-flex;align-items:flex-start;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.5;color:var(--l-teal-deep);background:var(--l-teal-tint);border:1px solid var(--l-teal);padding:10px 16px;border-radius:14px;margin-bottom:22px;max-width:56ch;}
+  .p-hero .file-tag .dot{width:6px;height:6px;background:var(--l-amber);border-radius:50%;margin-top:6px;flex-shrink:0;}
+  .p-hero h1{font-size:52px;line-height:1.06;letter-spacing:-0.015em;max-width:15ch;margin-bottom:18px;}
+  .p-hero p.lede{font-size:17.5px;color:var(--l-ink-soft);max-width:52ch;margin-bottom:30px;}
+  .p-hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+
+  /* level ledger */
+  .levels{padding:88px 0;border-bottom:1px solid var(--l-line);}
+  .sec-head{display:grid;grid-template-columns:0.4fr 0.6fr;gap:40px;margin-bottom:52px;align-items:end;}
+  .sec-head .index{font-family:'IBM Plex Mono',monospace;color:var(--l-teal-deep);font-size:13px;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+  .sec-head .index::before{content:"";width:22px;height:1px;background:var(--l-teal);}
+  .sec-head h2{font-size:34px;max-width:14ch;}
+  .sec-head p{font-size:15.5px;color:var(--l-ink-soft);max-width:46ch;}
+  .ledger{border:1px solid var(--l-line);border-radius:var(--radius);overflow:hidden;background:#fff;}
+  .ledger-row{display:grid;grid-template-columns:0.6fr 2fr 1.4fr 1fr;gap:24px;padding:26px 30px;border-bottom:1px solid var(--l-line);align-items:center;}
+  .ledger-row:last-child{border-bottom:none;}
+  .ledger-row.head-row{background:var(--l-bg-raised);font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--l-ink-soft);padding:16px 30px;letter-spacing:.03em;}
+  .lvl-num{width:46px;height:46px;border-radius:50%;background:var(--l-teal-tint);color:var(--l-teal-deep);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:600;font-size:18px;}
+  .ledger-row h4{font-size:19px;margin-bottom:4px;}
+  .ledger-row .d{font-size:13.5px;color:var(--l-ink-soft);}
+  .ledger-row .who{font-size:13px;color:var(--l-ink-soft);}
+  .assess-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;padding:5px 10px;border-radius:16px;width:fit-content;}
+  .assess-tag.self{background:var(--l-teal-tint);color:var(--l-teal-deep);}
+  .assess-tag.c3{background:var(--l-amber-tint);color:#8a5220;}
+  .assess-tag.gov{background:#1c1c1c;color:#fff;}
+
+  /* framework strip */
+  .fw-strip{border-top:1px solid var(--l-line);border-bottom:1px solid var(--l-line);padding:26px 0;background:var(--l-bg-raised);}
+  .fw-strip .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .fw-strip .label{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--l-ink-soft);}
+  .fw-strip .fws{display:flex;gap:26px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--l-ink-soft);}
+
+  /* services */
+  .services{padding:88px 0;border-bottom:1px solid var(--l-line);}
+  .service-list{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .service-card{background:#fff;border:1px solid var(--l-line);border-radius:var(--radius);padding:30px 26px;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s,border-color .2s;}
+  .service-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--l-teal);}
+  .service-card .icon-box{width:50px;height:50px;border-radius:9px;background:var(--l-teal-tint);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+  .service-card .name{font-size:20px;margin-bottom:4px;}
+  .service-card .ref{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--l-amber);display:block;margin-bottom:12px;}
+  .service-card p{font-size:14px;color:var(--l-ink-soft);margin-bottom:16px;}
+  .service-card ul{list-style:none;font-size:13.5px;color:var(--l-ink-soft);}
+  .service-card ul li{padding-left:16px;position:relative;margin-bottom:7px;}
+  .service-card ul li::before{content:"";position:absolute;left:0;top:7px;width:8px;height:1px;background:var(--l-teal);}
+
+  /* CMMC resources */
+  .resources{padding:64px 0;border-bottom:1px solid var(--l-line);}
+  .resource-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  .resource-title{display:inline-block;font-size:20px;font-weight:600;color:var(--l-teal-deep);text-decoration:none;margin-bottom:10px;}
+  .resource-title:hover{text-decoration:underline;}
+  .resource-card-disabled{opacity:0.62;}
+  .resource-card-disabled .resource-title{color:var(--l-ink);cursor:default;}
+  .resource-badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--l-ink-soft);background:var(--l-bg-raised);padding:3px 9px;border-radius:12px;margin-left:8px;vertical-align:middle;}
+
+  /* process timeline */
+  .process{padding:88px 0;border-bottom:1px solid var(--l-line);}
+  .timeline{display:grid;grid-template-columns:repeat(5,1fr);position:relative;margin-top:12px;}
+  .timeline::before{content:"";position:absolute;top:22px;left:5%;right:5%;height:1px;background:var(--l-line);z-index:0;}
+  .tl-step{position:relative;z-index:1;text-align:center;padding:0 10px;}
+  .tl-num{width:44px;height:44px;border-radius:50%;background:#fff;border:1.5px solid var(--l-teal);color:var(--l-teal-deep);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:600;font-size:16px;margin:0 auto 14px;box-shadow:0 0 0 6px var(--l-bg);}
+  .tl-step h4{font-size:14px;font-family:'IBM Plex Sans',sans-serif;font-weight:600;margin-bottom:6px;}
+  .tl-step p{font-size:12px;color:var(--l-ink-soft);}
+
+  /* CTA */
+  .cta-wrap{padding:0 0 96px;}
+  .cta-banner{background:linear-gradient(120deg,var(--l-teal-deep) 0%,#0a4f46 45%,#0d3d35 100%);border-radius:16px;padding:60px 52px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:36px;flex-wrap:wrap;position:relative;overflow:hidden;}
+  .cta-banner::before{content:"";position:absolute;right:-60px;top:-70px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle, rgba(217,138,52,0.30) 0%, rgba(217,138,52,0) 70%);}
+  .cta-banner h2{font-size:29px;max-width:17ch;margin-bottom:8px;color:#fff;}
+  .cta-banner p{font-size:14.5px;max-width:38ch;color:#cfe6e0;}
+  .cta-banner-ctas{display:flex;gap:14px;flex-wrap:wrap;position:relative;z-index:1;}
+  .cta-btn.on-dark{background:var(--l-amber);color:#fff;}
+  .cta-btn.on-dark:hover{background:#c07322;}
+  .cta-btn.outline-dark{background:transparent;border:1px solid rgba(255,255,255,0.4);color:#fff;}
+  .cta-btn.outline-dark:hover{background:rgba(255,255,255,0.1);}
+
+  footer{background:var(--d-bg);}
+
+  @media (max-width:980px){.service-list{grid-template-columns:1fr 1fr;}}
+  @media (max-width:880px){
+    .p-hero h1{font-size:34px;}
+    .sec-head{grid-template-columns:1fr;}
+    .ledger-row{grid-template-columns:1fr;gap:10px;}
+    .ledger-row.head-row{display:none;}
+    .service-list{grid-template-columns:1fr;}
+    .resource-grid{grid-template-columns:1fr;}
+    .timeline{grid-template-columns:1fr;gap:26px;}
+    .timeline::before{display:none;}
+    .cta-banner{padding:36px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap nav-row">
+    <a href="index.html" class="logo">
+      <svg class="logo-mark" viewBox="0 0 32 32" fill="none">
+        <path d="M7 5l9 21 9-21" stroke="#0a4f46" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16 6v5" stroke="#d98a34" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M12.5 8a5 5 0 107 0" stroke="#d98a34" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      VigilON
+    </a>
+    <div class="tab-switch">
+      <a href="compliance.html" class="active"><span class="sw"></span><span class="label">Compliance</span></a>
+      <a href="courses.html"><span class="sw"></span><span class="label">Digital Forensics</span></a>
+      <a href="awareness.html"><span class="sw"></span><span class="label">Awareness</span></a>
+    </div>
+    <div class="hdr-right">
+      <nav id="mobileNav">
+        <a href="index.html#solutions">Solutions</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <a href="index.html#contact" class="cta-btn primary">Book a consultation</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="p-hero grain">
+    <div class="wrap">
+      <div class="crumb"><a href="index.html">VigilON</a> / Compliance</div>
+      <span class="file-tag"><span class="dot"></span>CMMC (Cybersecurity Maturity Model Certification) and NIST (National Institute of Standards and Technology) SP 800-171</span>
+      <h1>Certification readiness, built the way an assessor will actually test it.</h1>
+      <p class="lede">We take defense contractors from an unscored SPRS entry to assessment day — mapping every control, drafting the System Security Plan, and rehearsing the interview before the C3PAO ever asks a question.</p>
+      <div class="p-hero-ctas">
+        <a href="index.html#contact" class="cta-btn primary">Start a gap assessment</a>
+        <a href="#services" class="cta-btn ghost">See our services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CMMC RESOURCES -->
+  <section class="resources">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><div class="index mono">RESOURCES</div><h2>CMMC Resources</h2></div>
+        <p>Practical guidance for defense contractors preparing for CMMC.</p>
+      </div>
+      <div class="resource-grid">
+        <div class="service-card reveal">
+          <a href="/cmmc-level-1-guide" class="resource-title">Explore the CMMC Level 1 Guide</a>
+          <p>Understand the 15 FAR 52.204-21 safeguarding requirements and 17 CMMC Level 1 practices, including implementation considerations, evidence to prepare, and how each practice may be assessed.</p>
+        </div>
+        <div class="service-card resource-card-disabled reveal">
+          <span class="resource-title">CMMC Level 2 Guide<span class="resource-badge">Coming soon</span></span>
+          <p>Coming soon.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEVEL LEDGER -->
+  <section class="levels">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><div class="index mono">CMMC</div><h2>The three levels, plainly</h2></div>
+        <p>Your target level is set by the sensitivity of the Federal Contract Information (FCI) and Controlled Unclassified Information (CUI) you handle — not by ambition.</p>
+      </div>
+      <div class="ledger reveal">
+        <div class="ledger-row head-row"><span>LEVEL</span><span>SCOPE</span><span>ASSESSED BY</span><span>PRACTICES</span></div>
+        <div class="ledger-row">
+          <div class="lvl-num">01</div>
+          <div><h4>Foundational</h4><div class="d">Basic safeguarding of Federal Contract Information (FCI)</div></div>
+          <div><span class="assess-tag self">Annual self-assessment</span></div>
+          <div class="who">17 practices</div>
+        </div>
+        <div class="ledger-row">
+          <div class="lvl-num">02</div>
+          <div><h4>Advanced</h4><div class="d">Protection of Controlled Unclassified Information (CUI)</div></div>
+          <div><span class="assess-tag c3">Self or C3PAO assessment</span></div>
+          <div class="who">110 practices — NIST SP 800-171</div>
+        </div>
+        <div class="ledger-row">
+          <div class="lvl-num">03</div>
+          <div><h4>Expert</h4><div class="d">Highest-risk programs, enhanced CUI protection</div></div>
+          <div><span class="assess-tag gov">Government-led assessment</span></div>
+          <div class="who">110 + NIST SP 800-172 enhanced controls</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="fw-strip">
+    <div class="wrap">
+      <span class="label mono">FRAMEWORKS WE WORK AGAINST</span>
+      <div class="fws"><span>NIST SP 800-171</span><span>NIST SP 800-172</span><span>DFARS 252.204-7012</span><span>CMMC</span><span>FAR 52.204-21</span></div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><div class="index mono">SERVICES</div><h2>How we get you there</h2></div>
+        <p>Three engagement types, used independently or as a full journey from first gap analysis through year-round maintenance.</p>
+      </div>
+      <div class="service-list">
+        <div class="service-card reveal">
+          <div class="icon-box"><svg class="icon" viewBox="0 0 24 24" stroke="#0a4f46"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+          <div class="name">Gap analysis &amp; SSP build</div>
+          <span class="ref mono">CMMC-GA</span>
+          <p>A control-by-control review against your target level, scored against SPRS methodology, with a prioritized POA&amp;M.</p>
+          <ul><li>NIST SP 800-171 / 800-172 control mapping</li><li>System Security Plan drafting &amp; review</li><li>CUI boundary and data-flow diagrams</li></ul>
+        </div>
+        <div class="service-card reveal">
+          <div class="icon-box"><svg class="icon" viewBox="0 0 24 24" stroke="#0a4f46"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.3-4.3"/></svg></div>
+          <div class="name">Assessment preparation</div>
+          <span class="ref mono">CMMC-AP</span>
+          <p>Mock assessments run the way a C3PAO will run them, so evidence, interviews, and artifacts are ready before assessment day.</p>
+          <ul><li>Evidence package organization</li><li>Mock C3PAO interviews with staff</li><li>DFARS flow-down review</li></ul>
+        </div>
+        <div class="service-card reveal">
+          <div class="icon-box"><svg class="icon" viewBox="0 0 24 24" stroke="#0a4f46"><path d="M4 12a8 8 0 1116 0 8 8 0 01-16 0z"/><path d="M12 8v4l3 2"/></svg></div>
+          <div class="name">Managed compliance</div>
+          <span class="ref mono">CMMC-MC</span>
+          <p>Ongoing support for teams that need compliance maintained between assessments, not just achieved once.</p>
+          <ul><li>Quarterly control monitoring</li><li>Policy &amp; SSP version control</li><li>Subcontractor flow-down tracking</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><div class="index mono">ENGAGEMENT</div><h2>How an engagement runs</h2></div>
+        <p>Most contractors move through all five stages in four to eight weeks, depending on target level and current maturity.</p>
+      </div>
+      <div class="timeline reveal">
+        <div class="tl-step"><div class="tl-num">1</div><h4>Discovery</h4><p>Scope CUI/FCI boundary and target level</p></div>
+        <div class="tl-step"><div class="tl-num">2</div><h4>Gap assessment</h4><p>Score all controls, draft POA&amp;M</p></div>
+        <div class="tl-step"><div class="tl-num">3</div><h4>Remediation</h4><p>Close gaps, write policy &amp; SSP</p></div>
+        <div class="tl-step"><div class="tl-num">4</div><h4>Mock assessment</h4><p>Rehearse interviews &amp; evidence</p></div>
+        <div class="tl-step"><div class="tl-num">5</div><h4>Certification</h4><p>Support through C3PAO assessment</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-wrap" style="padding-top:88px;">
+    <div class="wrap reveal">
+      <div class="cta-banner grain">
+        <div>
+          <h2>Not sure which level applies to you?</h2>
+          <p>A short scoping call is usually enough to tell you your target level and a realistic timeline.</p>
+        </div>
+        <div class="cta-banner-ctas">
+          <a href="index.html#contact" class="cta-btn on-dark">Book a scoping call</a>
+          <a href="courses.html" class="cta-btn outline-dark">Explore forensics courses</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="logo" style="color:#fff;">
+        <svg class="logo-mark" viewBox="0 0 32 32" fill="none">
+          <path d="M7 5l9 21 9-21" stroke="#37d6b3" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M16 6v5" stroke="#e2933e" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M12.5 8a5 5 0 107 0" stroke="#e2933e" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        VigilON
+      </a>
+      <p>CMMC compliance, digital forensics &amp; cybersecurity awareness courses, for teams across the US and India.</p>
+      <span class="footer-tag">A Hora Technologies company</span>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">COMPLIANCE</h5>
+      <a href="compliance.html#services">Gap analysis &amp; SSP</a>
+      <a href="compliance.html#services">Assessment prep</a>
+      <a href="compliance.html#services">Managed compliance</a>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">DIGITAL FORENSICS</h5>
+      <a href="courses.html#courses">Starter courses</a>
+      <a href="courses.html#courses">Core track DF-101+</a>
+      <a href="courses.html#courses">Expert testimony DF-310</a>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">AWARENESS</h5>
+      <a href="awareness.html">Phishing &amp; social engineering</a>
+      <a href="awareness.html">Password &amp; access hygiene</a>
+      <a href="awareness.html">Incident reporting habits</a>
+      <a href="awareness.html#community">Digital arrest scam safety</a>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">STAY UPDATED</h5>
+      <p style="font-size:13px;color:var(--d-ink-soft);margin-bottom:4px;">New cohort dates, twice a year.</p>
+      <div class="newsletter"><input type="email" placeholder="you@company.com"><button type="button">Join</button></div>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 VigilON, a Hora Technologies company. All rights reserved.</span>
+    <span>Registered as a proprietorship — Hora Technologies</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cybersecurity Awareness Training | VigilON</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="styles.css">
+<style>
+  :root{
+    --hdr-line:var(--d-line); --hdr-ink:var(--d-ink); --hdr-ink-soft:var(--d-ink-soft);
+    --tab-bg:var(--d-bg-raised); --tab-active-bg:var(--d-amber); --tab-active-ink:#2a1704;
+    --ft-line:var(--d-line); --ft-ink-soft:var(--d-ink-soft); --ft-ink:var(--d-ink); --ft-accent:var(--d-mint);
+    --ft-tag-bg:var(--d-mint-soft); --ft-tag-ink:var(--d-mint); --ft-input-bg:#142420; --ft-btn-ink:#06201b;
+  }
+  body{background:var(--d-bg);color:var(--d-ink);}
+  header{background:rgba(10,18,16,0.88);}
+  .cta-btn.primary{background:var(--d-amber);color:#2a1704;}
+  .cta-btn.primary:hover{background:#f0a758;box-shadow:0 10px 26px rgba(226,147,62,0.28);}
+  .cta-btn.ghost{background:transparent;border:1px solid var(--d-line);color:var(--d-ink);}
+  .cta-btn.ghost:hover{background:rgba(255,255,255,0.06);}
+  section{border-bottom:1px solid var(--d-line);}
+  .index{font-family:'IBM Plex Mono',monospace;color:var(--d-amber);font-size:13px;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+  .index::before{content:"";width:22px;height:1px;background:var(--d-amber);}
+  .sec-head{display:grid;grid-template-columns:0.4fr 0.6fr;gap:40px;margin-bottom:52px;align-items:end;}
+  .sec-head h2{font-size:34px;max-width:14ch;color:#fff;}
+  .sec-head p{font-size:15.5px;color:var(--d-ink-soft);max-width:46ch;}
+
+  /* hero */
+  .p-hero{padding:64px 0 76px;position:relative;overflow:hidden;}
+  .p-hero::before{content:"";position:absolute;top:-90px;right:-120px;width:520px;height:520px;background:radial-gradient(circle, rgba(226,147,62,0.16) 0%, rgba(226,147,62,0) 70%);pointer-events:none;}
+  .p-hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.045) 1px, transparent 1px);background-size:22px 22px;pointer-events:none;}
+  .p-hero .wrap{position:relative;z-index:1;}
+  .crumb{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--d-ink-soft);margin-bottom:20px;}
+  .crumb a{color:var(--d-amber);text-decoration:none;}
+  .file-tag{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--d-amber);background:var(--d-amber-soft);border:1px solid var(--d-amber);padding:6px 12px;border-radius:20px;margin-bottom:22px;}
+  .file-tag .dot{width:6px;height:6px;background:var(--d-mint);border-radius:50%;}
+  .p-hero h1{font-size:50px;line-height:1.08;letter-spacing:-0.01em;max-width:17ch;margin-bottom:18px;color:#fff;}
+  .p-hero p.lede{font-size:17.5px;color:var(--d-ink-soft);max-width:52ch;margin-bottom:30px;}
+  .p-hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+
+  /* audience strip */
+  .tools-strip{border-top:1px solid var(--d-line);padding:26px 0;background:var(--d-bg-raised);}
+  .tools-strip .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .tools-strip .label{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--d-ink-soft);}
+  .tools-strip .tools{display:flex;gap:26px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--d-ink-soft);}
+
+  /* module board */
+  .courses{padding:88px 0;}
+  .course-board{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 24px;}
+
+  /* trend callout (digital arrest scam warning box) */
+  .trend-callout{background:linear-gradient(155deg,#3a2410,#2a1a0c);border:1px solid var(--d-amber);border-radius:var(--radius);padding:30px 32px;margin-bottom:36px;}
+  .trend-tag{display:inline-block;font-size:11px;color:#2a1704;background:var(--d-amber);padding:5px 11px;border-radius:20px;letter-spacing:.04em;margin-bottom:14px;}
+  .trend-callout h3{color:#fff;font-size:22px;margin-bottom:12px;}
+  .trend-callout p{color:var(--d-ink-soft);font-size:14.5px;line-height:1.6;margin-bottom:18px;max-width:80ch;}
+  .trend-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;}
+  .trend-list li{font-size:13.5px;color:#eee2cf;padding-left:20px;position:relative;}
+  .trend-list li::before{content:"";position:absolute;left:0;top:8px;width:9px;height:1.5px;background:var(--d-amber);}
+  .trend-list strong{color:#fff;}
+  .pin-card{
+    background:var(--d-panel);border:1px solid var(--d-line);border-radius:8px;padding:26px 24px;position:relative;
+    box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s,border-color .2s;
+  }
+  .pin-card:nth-child(odd){transform:rotate(-0.6deg);}
+  .pin-card:nth-child(even){transform:rotate(0.6deg);}
+  .pin-card:hover{transform:translateY(-5px) rotate(0deg);box-shadow:0 18px 40px rgba(226,147,62,0.18);border-color:var(--d-amber);}
+  .pin-dot{position:absolute;top:-8px;left:24px;width:16px;height:16px;border-radius:50%;background:var(--d-mint);box-shadow:0 3px 6px rgba(0,0,0,0.4);}
+  .course-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;}
+  .course-top .icon-box{width:42px;height:42px;border-radius:8px;background:var(--d-amber-soft);display:flex;align-items:center;justify-content:center;}
+  .course-top .icon-box .icon{stroke:var(--d-amber);width:21px;height:21px;}
+  .level-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;padding:4px 9px;border-radius:20px;letter-spacing:.03em;background:var(--d-amber-soft);color:var(--d-amber);}
+  .pin-card .code{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--d-amber);margin-bottom:6px;display:block;}
+  .pin-card h3{font-size:19px;margin-bottom:9px;color:#fff;}
+  .pin-card p{font-size:13.5px;color:var(--d-ink-soft);margin-bottom:16px;}
+  .course-meta{display:flex;gap:12px;font-size:11.5px;color:var(--d-ink-soft);flex-wrap:wrap;border-top:1px solid var(--d-line);padding-top:12px;}
+  .course-meta span{display:flex;align-items:center;gap:6px;}
+  .course-meta .sw{width:5px;height:5px;background:var(--d-mint);border-radius:50%;}
+
+  /* why it matters */
+  .why{padding:88px 0;}
+  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  .why-card{background:var(--d-panel);border:1px solid var(--d-line);border-radius:var(--radius);padding:28px 26px;}
+  .why-card .num{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--d-amber);margin-bottom:10px;}
+  .why-card h4{color:#fff;font-size:18px;margin-bottom:8px;}
+  .why-card p{font-size:14px;color:var(--d-ink-soft);}
+
+  /* format */
+  .format{padding:88px 0;}
+  .format-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;}
+  .format-card{background:var(--d-panel);border:1px solid var(--d-line);border-radius:var(--radius);padding:28px 24px;}
+  .format-card .icon-box{width:44px;height:44px;border-radius:8px;background:var(--d-amber-soft);display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+  .format-card .icon-box .icon{stroke:var(--d-amber);}
+  .format-card h4{color:#fff;font-size:17px;margin-bottom:8px;}
+  .format-card p{font-size:13.5px;color:var(--d-ink-soft);}
+
+  /* CTA */
+  .cta-wrap{padding:0 0 96px;border-bottom:none;}
+  .cta-banner{background:linear-gradient(120deg,#3a2410 0%,#4a2f14 50%,#2a1a0c 100%);border-radius:16px;padding:60px 52px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:36px;flex-wrap:wrap;position:relative;overflow:hidden;border:1px solid var(--d-line);}
+  .cta-banner::before{content:"";position:absolute;right:-60px;top:-70px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle, rgba(226,147,62,0.32) 0%, rgba(226,147,62,0) 70%);}
+  .cta-banner h2{font-size:29px;max-width:17ch;margin-bottom:8px;color:#fff;}
+  .cta-banner p{font-size:14.5px;max-width:38ch;color:var(--d-ink-soft);}
+  .cta-banner-ctas{display:flex;gap:14px;flex-wrap:wrap;position:relative;z-index:1;}
+  .cta-btn.on-amber{background:var(--d-amber);color:#2a1704;}
+  .cta-btn.on-amber:hover{background:#f0a758;}
+  .cta-btn.outline-lt{background:transparent;border:1px solid rgba(255,255,255,0.3);color:#fff;}
+  .cta-btn.outline-lt:hover{background:rgba(255,255,255,0.08);}
+
+  footer{background:var(--d-bg);border-top:1px solid var(--d-line);}
+
+  @media (max-width:980px){.course-board{grid-template-columns:1fr 1fr;}.why-grid{grid-template-columns:1fr;}.format-grid{grid-template-columns:1fr;}}
+  @media (max-width:880px){
+    .p-hero h1{font-size:34px;}
+    .sec-head{grid-template-columns:1fr;}
+    .course-board{grid-template-columns:1fr;}
+    .pin-card{transform:none !important;}
+    .cta-banner{padding:36px 24px;}
+    .trend-list{grid-template-columns:1fr;}
+    .trend-callout{padding:24px 22px;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap nav-row">
+    <a href="index.html" class="logo">
+      <svg class="logo-mark" viewBox="0 0 32 32" fill="none">
+        <path d="M7 5l9 21 9-21" stroke="#37d6b3" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16 6v5" stroke="#e2933e" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M12.5 8a5 5 0 107 0" stroke="#e2933e" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      VigilON
+    </a>
+    <div class="tab-switch">
+      <a href="compliance.html"><span class="sw"></span><span class="label">Compliance</span></a>
+      <a href="courses.html"><span class="sw"></span><span class="label">Digital Forensics</span></a>
+      <a href="awareness.html" class="active"><span class="sw"></span><span class="label">Awareness</span></a>
+    </div>
+    <div class="hdr-right">
+      <nav id="mobileNav">
+        <a href="index.html#solutions">Solutions</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <a href="index.html#contact" class="cta-btn primary">Book a consultation</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="p-hero">
+    <div class="wrap">
+      <div class="crumb"><a href="index.html">VigilON</a> / Cybersecurity Awareness</div>
+      <span class="file-tag"><span class="dot"></span>Cybersecurity Awareness Training</span>
+      <h1>Turn your weakest link into your strongest defense.</h1>
+      <p class="lede">Most breaches start with a person, not a firewall. Short, live workshops build the everyday habits that stop phishing, weak passwords, and social engineering — for teams in India and worldwide, and for families facing the scams making headlines right now.</p>
+      <div class="p-hero-ctas">
+        <a href="index.html#contact" class="cta-btn primary">Book a session for your team</a>
+        <a href="#modules" class="cta-btn ghost">Workplace modules</a>
+        <a href="#community" class="cta-btn ghost">Community safety</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="tools-strip">
+    <div class="wrap">
+      <span class="label mono">WHO IT'S FOR</span>
+      <div class="tools"><span>All employees</span><span>New hires</span><span>Finance &amp; HR teams</span><span>Leadership &amp; executives</span><span>Senior citizens &amp; families</span></div>
+    </div>
+  </div>
+
+  <!-- MODULE BOARD -->
+  <section class="courses" id="modules">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><div class="index mono">MODULES</div><h2>Three short modules, delivered live</h2></div>
+        <p>Each module is a focused, live workshop — not a slide deck emailed around. Run them individually or as a single half-day program.</p>
+      </div>
+      <div class="course-board">
+        <div class="pin-card reveal"><span class="pin-dot"></span>
+          <div class="course-top"><div class="icon-box"><svg class="icon" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20"/><rect x="3" y="6" width="18" height="12" rx="2"/></svg></div><span class="level-tag">ALL STAFF</span></div>
+          <span class="code">CA-101</span><h3>Phishing &amp; Social Engineering</h3>
+          <p>Recognizing phishing emails, pretexting calls, and manipulation tactics before they lead to a click.</p>
+          <div class="course-meta"><span><span class="sw"></span>90 min</span><span><span class="sw"></span>Live workshop</span><span><span class="sw"></span>No prerequisite</span></div>
+        </div>
+        <div class="pin-card reveal"><span class="pin-dot"></span>
+          <div class="course-top"><div class="icon-box"><svg class="icon" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg></div><span class="level-tag">ALL STAFF</span></div>
+          <span class="code">CA-110</span><h3>Password &amp; Access Hygiene</h3>
+          <p>Password managers, multi-factor authentication, and safe handling of shared logins and devices.</p>
+          <div class="course-meta"><span><span class="sw"></span>60 min</span><span><span class="sw"></span>Live workshop</span><span><span class="sw"></span>No prerequisite</span></div>
+        </div>
+        <div class="pin-card reveal"><span class="pin-dot"></span>
+          <div class="course-top"><div class="icon-box"><svg class="icon" viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L2.8 17a2 2 0 001.7 3h15a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg></div><span class="level-tag">ALL STAFF</span></div>
+          <span class="code">CA-120</span><h3>Incident Reporting Habits</h3>
+          <p>What to do in the first five minutes after a suspicious email, lost device, or possible compromise.</p>
+          <div class="course-meta"><span><span class="sw"></span>45 min</span><span><span class="sw"></span>Live workshop</span><span><span class="sw"></span>No prerequisite</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY SAFETY -->
+  <section class="courses" id="community">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><div class="index mono">COMMUNITY SAFETY</div><h2>Free awareness for Indian families</h2></div>
+        <p>Beyond the workplace, we run public sessions on the scams actually hitting Indian households right now — starting with the fraud worrying families most.</p>
+      </div>
+
+      <div class="trend-callout reveal">
+        <span class="trend-tag mono">TRENDING NOW</span>
+        <h3>"Digital arrest" isn't real — but the losses are</h3>
+        <p>Callers posing as police, CBI, ED, or RBI officials tell victims — overwhelmingly senior citizens — that they're under investigation and must stay on a video call while "proving their innocence" by transferring money. India's Supreme Court took note of the trend in October 2025 after a 73-year-old woman lost over ₹1 crore to a fraud built on a forged court order. There is no provision in Indian law for an arrest to happen over a phone or video call, and a genuine investigating officer never asks for money this way.</p>
+        <ul class="trend-list">
+          <li>Hang up — a real investigation is never conducted over a call</li>
+          <li>Never transfer money to "prove innocence" or unfreeze an account</li>
+          <li>Call <strong>1930</strong> (National Cyber Crime Helpline) immediately — fast reporting can help freeze stolen funds</li>
+          <li>Report at <strong>cybercrime.gov.in</strong> and tell a family member before doing anything else</li>
+        </ul>
+      </div>
+
+      <div class="course-board">
+        <div class="pin-card reveal"><span class="pin-dot"></span>
+          <div class="course-top"><div class="icon-box"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M8 9l3 3-3 3"/></svg></div><span class="level-tag">FAMILIES</span></div>
+          <span class="code">CS-101</span><h3>Digital Arrest Scams</h3>
+          <p>How the "digital arrest" fraud works, why senior citizens are targeted, and the exact steps to take if a call starts this way.</p>
+          <div class="course-meta"><span><span class="sw"></span>60 min</span><span><span class="sw"></span>Community session</span><span><span class="sw"></span>Free</span></div>
+        </div>
+        <div class="pin-card reveal"><span class="pin-dot"></span>
+          <div class="course-top"><div class="icon-box"><svg class="icon" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/></svg></div><span class="level-tag">FAMILIES</span></div>
+          <span class="code">CS-110</span><h3>UPI &amp; Payment Fraud</h3>
+          <p>Fake payment requests, QR-code scams, and "refund" calls that trick people into approving the wrong UPI transaction.</p>
+          <div class="course-meta"><span><span class="sw"></span>45 min</span><span><span class="sw"></span>Community session</span><span><span class="sw"></span>Free</span></div>
+        </div>
+        <div class="pin-card reveal"><span class="pin-dot"></span>
+          <div class="course-top"><div class="icon-box"><svg class="icon" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/><path d="M9 8h6"/></svg></div><span class="level-tag">FAMILIES</span></div>
+          <span class="code">CS-120</span><h3>Fake KYC &amp; SIM-Swap Calls</h3>
+          <p>Calls and messages posing as your bank or telecom provider to steal OTPs, re-issue your SIM, or freeze your account.</p>
+          <div class="course-meta"><span><span class="sw"></span>45 min</span><span><span class="sw"></span>Community session</span><span><span class="sw"></span>Free</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY IT MATTERS -->
+  <section class="why">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><div class="index mono">WHY IT MATTERS</div><h2>The numbers behind the training</h2></div>
+        <p>Awareness training is the cheapest control that also has the highest leverage — most incidents start at the human layer, not the network layer.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="num mono">01</div>
+          <h4>Phishing is still the top entry point</h4>
+          <p>Email remains the most common way attackers get an initial foothold — a habit-level fix, not just a technical one.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="num mono">02</div>
+          <h4>One reported email can stop an incident</h4>
+          <p>Fast, confident reporting from any employee is often what turns a near-miss into a non-event.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMAT -->
+  <section class="format">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><div class="index mono">FORMAT</div><h2>How sessions run</h2></div>
+        <p>Built for teams that don't have a day to spare — sessions are short, live, and scheduled around your calendar.</p>
+      </div>
+      <div class="format-grid">
+        <div class="format-card reveal"><div class="icon-box"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h4>Short, live sessions</h4><p>45–90 minutes per module, run individually or back to back as a half-day program.</p></div>
+        <div class="format-card reveal"><div class="icon-box"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h4>Online or onsite</h4><p>Delivered remotely for distributed teams, or in person for a single office location.</p></div>
+        <div class="format-card reveal"><div class="icon-box"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/></svg></div><h4>Attendance tracking</h4><p>A completion record for every participant, useful for internal compliance and audit needs.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-wrap">
+    <div class="wrap reveal">
+      <div class="cta-banner grain">
+        <div>
+          <h2>Bring this training to your team</h2>
+          <p>Tell us your team size and we'll suggest a module sequence and schedule.</p>
+        </div>
+        <div class="cta-banner-ctas">
+          <a href="index.html#contact" class="cta-btn on-amber">Book a session</a>
+          <a href="courses.html" class="cta-btn outline-lt">Explore digital forensics courses</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="logo" style="color:#fff;">
+        <svg class="logo-mark" viewBox="0 0 32 32" fill="none">
+          <path d="M7 5l9 21 9-21" stroke="#37d6b3" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M16 6v5" stroke="#e2933e" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M12.5 8a5 5 0 107 0" stroke="#e2933e" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        VigilON
+      </a>
+      <p>CMMC compliance, digital forensics &amp; cybersecurity awareness courses, for teams across the US and India.</p>
+      <span class="footer-tag">A Hora Technologies company</span>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">COMPLIANCE</h5>
+      <a href="compliance.html#services">Gap analysis &amp; SSP</a>
+      <a href="compliance.html#services">Assessment prep</a>
+      <a href="compliance.html#services">Managed compliance</a>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">DIGITAL FORENSICS</h5>
+      <a href="courses.html#courses">Starter courses</a>
+      <a href="courses.html#courses">Core track DF-101+</a>
+      <a href="courses.html#courses">Expert testimony DF-310</a>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">AWARENESS</h5>
+      <a href="awareness.html#modules">Phishing &amp; social engineering</a>
+      <a href="awareness.html#modules">Password &amp; access hygiene</a>
+      <a href="awareness.html#modules">Incident reporting habits</a>
+      <a href="awareness.html#community">Digital arrest scam safety</a>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">STAY UPDATED</h5>
+      <p style="font-size:13px;color:var(--d-ink-soft);margin-bottom:4px;">New cohort dates, twice a year.</p>
+      <div class="newsletter"><input type="email" placeholder="you@company.com"><button type="button">Join</button></div>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 VigilON, a Hora Technologies company. All rights reserved.</span>
+    <span>Registered as a proprietorship — Hora Technologies</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
