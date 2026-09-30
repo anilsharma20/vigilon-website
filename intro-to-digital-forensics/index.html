@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JEZFE3C7RF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JEZFE3C7RF');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction to Digital Forensics: A Beginner's Guide | VigilON</title>
+<meta name="description" content="What digital forensics is, why it matters, the five domains of practice, and the golden rule every investigator follows — a plain-language starting point for beginners.">
+<link rel="canonical" href="https://vigilon.in/intro-to-digital-forensics">
+<meta property="og:title" content="Introduction to Digital Forensics: A Beginner's Guide">
+<meta property="og:description" content="What digital forensics is, why it matters, the five domains of practice, and the golden rule every investigator follows.">
+<meta property="og:url" content="https://vigilon.in/intro-to-digital-forensics">
+<meta property="og:type" content="article">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://vigilon.in/intro-to-digital-forensics#article",
+      "headline": "Introduction to Digital Forensics: A Beginner's Guide",
+      "description": "What digital forensics is, why it matters, the five domains of practice, and the golden rule every investigator follows.",
+      "url": "https://vigilon.in/intro-to-digital-forensics",
+      "about": ["Digital Forensics", "Chain of Custody", "Forensic Investigation"],
+      "publisher": {"@id": "https://vigilon.in/#organization"},
+      "breadcrumb": {"@id": "https://vigilon.in/intro-to-digital-forensics#breadcrumb"}
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://vigilon.in/#organization",
+      "name": "VigilON",
+      "url": "https://vigilon.in/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://vigilon.in/intro-to-digital-forensics#breadcrumb",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://vigilon.in/"},
+        {"@type": "ListItem", "position": 2, "name": "Digital Forensics", "item": "https://vigilon.in/courses"},
+        {"@type": "ListItem", "position": 3, "name": "Introduction to Digital Forensics", "item": "https://vigilon.in/intro-to-digital-forensics"}
+      ]
+    }
+  ]
+}
+</script>
+<style>
+  :root{
+    --hdr-line:var(--l-line); --hdr-ink:var(--l-ink); --hdr-ink-soft:var(--l-ink-soft);
+    --tab-bg:var(--l-bg-raised); --tab-active-bg:var(--l-teal-deep); --tab-active-ink:#fff;
+    --ft-line:var(--d-line); --ft-ink-soft:var(--d-ink-soft); --ft-ink:var(--d-ink); --ft-accent:var(--d-mint);
+    --ft-tag-bg:var(--d-mint-soft); --ft-tag-ink:var(--d-mint); --ft-input-bg:#142420; --ft-btn-ink:#06201b;
+  }
+  body{background:var(--l-bg);color:var(--l-ink);}
+  header{background:rgba(240,242,238,0.92);}
+  .cta-btn.primary{background:var(--l-teal-deep);color:#fff;}
+  .cta-btn.primary:hover{background:var(--l-teal);box-shadow:var(--shadow-md);}
+  .cta-btn.ghost{background:transparent;border:1px solid var(--l-line);color:var(--l-ink);}
+  .cta-btn.ghost:hover{background:var(--l-ink);color:#fff;}
+  footer{background:var(--d-bg);}
+
+  /* hero */
+  .p-hero{padding:64px 0 60px;border-bottom:1px solid var(--l-line);position:relative;overflow:hidden;}
+  .p-hero::before{content:"";position:absolute;top:-80px;right:-140px;width:520px;height:520px;background:radial-gradient(circle, rgba(15,122,108,0.12) 0%, rgba(15,122,108,0) 70%);pointer-events:none;}
+  .p-hero .wrap{position:relative;z-index:1;}
+  .crumb{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--l-ink-soft);margin-bottom:20px;}
+  .crumb a{color:var(--l-teal-deep);text-decoration:none;}
+  .file-tag{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--l-teal-deep);background:var(--l-teal-tint);border:1px solid var(--l-teal);padding:6px 12px;border-radius:20px;margin-bottom:22px;}
+  .file-tag .dot{width:6px;height:6px;background:var(--l-amber);border-radius:50%;}
+  .p-hero h1{font-size:46px;line-height:1.08;letter-spacing:-0.01em;max-width:16ch;margin-bottom:18px;}
+  .p-hero p.lede{font-size:17.5px;color:var(--l-ink-soft);max-width:60ch;margin-bottom:24px;}
+  .meta-row{display:flex;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--l-ink-soft);font-family:'IBM Plex Mono',monospace;margin-bottom:28px;}
+  .meta-row span{display:flex;align-items:center;gap:6px;}
+  .meta-row .sw{width:5px;height:5px;background:var(--l-teal);border-radius:50%;}
+  .p-hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+
+  /* article body */
+  .article{padding:72px 0;border-bottom:1px solid var(--l-line);}
+  .article .wrap{max-width:900px;}
+  .article-col{max-width:72ch;}
+  .article h2{font-size:28px;margin:0 0 16px;}
+  .article-col p{font-size:16px;line-height:1.7;color:var(--l-ink-soft);margin-bottom:18px;}
+  .article section + section{margin-top:48px;}
+
+  /* five domains */
+  .domain-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:8px;}
+  .domain-card{background:#fff;border:1px solid var(--l-line);border-radius:var(--radius);padding:22px 18px;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s,border-color .2s;}
+  .domain-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--l-teal);}
+  .domain-card .icon-box{width:38px;height:38px;border-radius:8px;background:var(--l-teal-tint);display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+  .domain-card h4{font-size:15.5px;margin-bottom:6px;}
+  .domain-card p{font-size:12.5px;color:var(--l-ink-soft);margin-bottom:10px;}
+  .domain-card .course-ref{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--l-teal-deep);text-decoration:none;font-weight:600;}
+  .domain-card .course-ref:hover{text-decoration:underline;}
+
+  /* callout (golden rule) */
+  .callout{background:var(--l-amber-tint);border:1px solid var(--l-amber);border-radius:var(--radius);padding:28px 30px;margin:8px 0;}
+  .callout .tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a5220;background:#fff;padding:4px 10px;border-radius:12px;margin-bottom:14px;}
+  .callout h3{font-size:19px;margin-bottom:10px;}
+  .callout p{font-size:15px;color:#5c4423;line-height:1.65;max-width:68ch;margin:0;}
+
+  /* scenario box */
+  .scenario-box{background:var(--l-bg-raised);border-left:3px solid var(--l-teal);border-radius:0 var(--radius) var(--radius) 0;padding:24px 28px;margin:8px 0;}
+  .scenario-box .tag{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--l-teal-deep);margin-bottom:10px;display:block;}
+  .scenario-box p{font-size:15px;color:var(--l-ink-soft);line-height:1.65;margin:0;}
+
+  /* knowledge check */
+  .kcheck{background:#fff;border:1px solid var(--l-line);border-radius:var(--radius);padding:26px 28px;box-shadow:var(--shadow-sm);}
+  .kcheck h3{font-size:18px;margin-bottom:14px;}
+  .kcheck ol{margin:0;padding-left:20px;}
+  .kcheck li{font-size:15px;color:var(--l-ink-soft);margin-bottom:10px;line-height:1.5;}
+  .kcheck li::marker{color:var(--l-teal-deep);font-weight:600;}
+
+  /* CTA */
+  .cta-wrap{padding:0 0 96px;}
+  .cta-banner{background:linear-gradient(120deg,var(--l-teal-deep) 0%,#0a4f46 45%,#0d3d35 100%);border-radius:16px;padding:56px 48px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;position:relative;overflow:hidden;}
+  .cta-banner::before{content:"";position:absolute;right:-60px;top:-70px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle, rgba(217,138,52,0.30) 0%, rgba(217,138,52,0) 70%);}
+  .cta-banner h2{font-size:27px;max-width:18ch;margin-bottom:8px;color:#fff;}
+  .cta-banner p{font-size:14.5px;max-width:40ch;color:#cfe6e0;margin:0;}
+  .cta-banner-ctas{display:flex;gap:14px;flex-wrap:wrap;position:relative;z-index:1;}
+  .cta-btn.on-dark{background:var(--l-amber);color:#fff;}
+  .cta-btn.on-dark:hover{background:#c07322;}
+  .cta-btn.outline-dark{background:transparent;border:1px solid rgba(255,255,255,0.4);color:#fff;}
+  .cta-btn.outline-dark:hover{background:rgba(255,255,255,0.1);}
+
+  @media (max-width:980px){.domain-grid{grid-template-columns:repeat(3,1fr);}}
+  @media (max-width:880px){
+    .p-hero h1{font-size:32px;}
+    .domain-grid{grid-template-columns:1fr 1fr;}
+    .cta-banner{padding:36px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap nav-row">
+    <a href="../index.html" class="logo">
+      <svg class="logo-mark" viewBox="0 0 32 32" fill="none">
+        <path d="M7 5l9 21 9-21" stroke="#0a4f46" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16 6v5" stroke="#d98a34" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M12.5 8a5 5 0 107 0" stroke="#d98a34" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      VigilON
+    </a>
+    <div class="tab-switch">
+      <a href="../compliance.html"><span class="sw"></span><span class="label">Compliance</span></a>
+      <a href="../courses.html" class="active"><span class="sw"></span><span class="label">Digital Forensics</span></a>
+      <a href="../awareness.html"><span class="sw"></span><span class="label">Awareness</span></a>
+    </div>
+    <div class="hdr-right">
+      <nav id="mobileNav">
+        <a href="../index.html#solutions">Solutions</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <a href="../index.html#contact" class="cta-btn primary">Book a consultation</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="p-hero">
+    <div class="wrap">
+      <div class="crumb"><a href="../index.html">VigilON</a> / <a href="../courses.html">Digital Forensics</a> / Introduction to Digital Forensics</div>
+      <span class="file-tag"><span class="dot"></span>Digital Forensics · Beginner Guide</span>
+      <h1>Introduction to Digital Forensics</h1>
+      <p class="lede">What digital forensics actually is, why it matters far beyond "hacking" cases, and the one rule every investigator follows before touching a single file.</p>
+      <div class="meta-row">
+        <span><span class="sw"></span>8 min read</span>
+        <span><span class="sw"></span>No prior experience needed</span>
+        <span><span class="sw"></span>Part of our Digital Forensics series</span>
+      </div>
+      <div class="p-hero-ctas">
+        <a href="../courses.html#courses" class="cta-btn primary">Browse our courses</a>
+        <a href="#domains" class="cta-btn ghost">Jump to the five domains</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="article">
+    <div class="wrap article-col">
+
+      <section>
+        <h2>What is digital forensics?</h2>
+        <p>Digital forensics is the practice of identifying, preserving, examining, and presenting digital evidence in a way that holds up to legal or organizational scrutiny. It's less about "hacking into" devices and more about disciplined, repeatable process — every step has to be defensible, because the whole point is that someone else, a court, an auditor, an opposing lawyer, will eventually check your work.</p>
+        <p>It sits at the intersection of three skill sets: technical (understanding how computers and storage actually work), procedural (following a chain of custody so evidence can't be challenged), and communicative (explaining technical findings to non-technical people — judges, juries, executives).</p>
+      </section>
+
+      <section>
+        <h2>Why it matters</h2>
+        <p>Digital evidence now shows up in almost every kind of investigation, not just "cybercrime" in the narrow sense. A fraud investigation needs transaction logs and deleted spreadsheets. A wrongful termination dispute needs email timestamps. An IP-theft case needs to prove which files were copied to a USB drive, and when. A ransomware incident response needs to know how attackers got in and what they touched.</p>
+        <p>In each case, the same core skill applies: recover the truth from digital systems without corrupting it in the process.</p>
+      </section>
+
+      <section id="domains">
+        <h2>The five domains</h2>
+        <p>Digital forensics isn't one skill — it branches into several specialties, and most practitioners eventually focus on one or two.</p>
+        <div class="domain-grid">
+          <div class="domain-card">
+            <div class="icon-box"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#0a4f46" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+            <h4>Computer forensics</h4>
+            <p>Laptops, desktops, hard drives — the most traditional starting point.</p>
+            <a href="../courses.html#courses" class="course-ref">→ DF-101</a>
+          </div>
+          <div class="domain-card">
+            <div class="icon-box"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#0a4f46" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
+            <h4>Mobile forensics</h4>
+            <p>Phones and tablets — often the richest source of evidence today.</p>
+            <a href="../courses.html#courses" class="course-ref">→ DF-230</a>
+          </div>
+          <div class="domain-card">
+            <div class="icon-box"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#0a4f46" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 6h8M6 8v8M18 8v8M8 18h8"/></svg></div>
+            <h4>Network forensics</h4>
+            <p>Traffic logs and intrusion data — tracing how an attacker moved.</p>
+            <a href="../courses.html#courses" class="course-ref">→ DF-210</a>
+          </div>
+          <div class="domain-card">
+            <div class="icon-box"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#0a4f46" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a5 5 0 015 5c0 3-2 5-5 5s-5-2-5-5a5 5 0 015-5z"/><path d="M7 21c0-3 2.5-5 5-5s5 2 5 5"/></svg></div>
+            <h4>Cloud forensics</h4>
+            <p>Evidence in Google Workspace, Microsoft 365, or AWS.</p>
+            <a href="../courses.html#courses" class="course-ref">→ DF-280</a>
+          </div>
+          <div class="domain-card">
+            <div class="icon-box"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#0a4f46" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg></div>
+            <h4>Memory forensics</h4>
+            <p>Live RAM analysis — reveals what a drive image alone misses.</p>
+            <a href="../courses.html#courses" class="course-ref">→ DF-260</a>
+          </div>
+        </div>
+        <p style="margin-top:20px;">This guide focuses on computer forensics fundamentals, since it's the foundation the other domains build on.</p>
+      </section>
+
+      <section>
+        <h2>The golden rule</h2>
+        <div class="callout">
+          <span class="tag">REMEMBER THIS</span>
+          <h3>Never work on the original evidence.</h3>
+          <p>Every action you take on a live system, even just opening a file to look at it, can change timestamps or overwrite data that might matter later. The standard practice is to create a forensic image (a bit-for-bit copy) of the original media first, verify that copy matches the original using a cryptographic hash, and then do all analysis on the copy — never the original again.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>A simple scenario</h2>
+        <div class="scenario-box">
+          <span class="tag">EXAMPLE</span>
+          <p>Imagine a company suspects an employee copied confidential client files to a personal USB drive before resigning. An untrained response would be to immediately open the employee's laptop and start browsing folders — which risks altering file access timestamps and destroying the very evidence needed to prove or disprove the claim. A trained response images the laptop's drive first, then examines the image for USB connection history, file access logs, and recently modified files, all without ever touching the original machine again. That difference is the entire value a forensics-trained investigator brings.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Career paths</h2>
+        <p>Digital forensics skills are used in law enforcement and government cyber units, corporate security and incident response teams, legal and eDiscovery support roles, and independent consulting for smaller firms that need occasional expert support. Many practitioners enter through IT or cybersecurity roles and specialize into forensics over time, rather than starting there directly.</p>
+      </section>
+
+      <section>
+        <div class="kcheck">
+          <h3>Knowledge check</h3>
+          <ol>
+            <li>What is the "golden rule" of digital forensics, and why does it matter?</li>
+            <li>Name two of the five domains of digital forensics.</li>
+            <li>Why might a company need forensic evidence in a case that has nothing to do with "hacking"?</li>
+          </ol>
+        </div>
+      </section>
+
+    </div>
+  </section>
+
+  <section class="cta-wrap" style="padding-top:88px;">
+    <div class="wrap reveal">
+      <div class="cta-banner">
+        <div>
+          <h2>Ready to go beyond the basics?</h2>
+          <p>DF-010 builds directly on this guide with no background needed, or start at DF-101 if you're ready for hands-on imaging and analysis.</p>
+        </div>
+        <div class="cta-banner-ctas">
+          <a href="../courses.html#courses" class="cta-btn on-dark">View the course catalog</a>
+          <a href="../index.html#contact" class="cta-btn outline-dark">Ask us which to start with</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-top">
+    <div class="footer-brand">
+      <a href="../index.html" class="logo" style="color:#fff;">
+        <svg class="logo-mark" viewBox="0 0 32 32" fill="none">
+          <path d="M7 5l9 21 9-21" stroke="#37d6b3" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M16 6v5" stroke="#e2933e" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M12.5 8a5 5 0 107 0" stroke="#e2933e" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        VigilON
+      </a>
+      <p>CMMC compliance, digital forensics &amp; cybersecurity awareness courses, for teams across the US and India.</p>
+      <span class="footer-tag">A Hora Technologies company</span>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">COMPLIANCE</h5>
+      <a href="../compliance.html#services">Gap analysis &amp; SSP</a>
+      <a href="../compliance.html#services">Assessment prep</a>
+      <a href="../compliance.html#services">Managed compliance</a>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">DIGITAL FORENSICS</h5>
+      <a href="../courses.html#courses">Starter courses</a>
+      <a href="../courses.html#courses">Core track DF-101+</a>
+      <a href="../courses.html#courses">Expert testimony DF-310</a>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">AWARENESS</h5>
+      <a href="../awareness.html">Phishing &amp; social engineering</a>
+      <a href="../awareness.html">Password &amp; access hygiene</a>
+      <a href="../awareness.html">Incident reporting habits</a>
+      <a href="../awareness.html#community">Digital arrest scam safety</a>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">STAY UPDATED</h5>
+      <p style="font-size:13px;color:var(--d-ink-soft);margin-bottom:4px;">New cohort dates, twice a year.</p>
+      <div class="newsletter"><input type="email" placeholder="you@company.com"><button type="button">Join</button></div>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 VigilON, a Hora Technologies company. All rights reserved.</span>
+    <span>Registered as a proprietorship — Hora Technologies</span>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>
