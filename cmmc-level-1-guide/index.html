@@ -866,6 +866,14 @@
                 white-space: nowrap;
             }
         }
+
+        /* --- HERO HEADLINE: SMALL PHONES --- */
+        /* "Implementation" is wider than the screen below ~377px; phones from 390px up are untouched */
+        @media (max-width: 385px) {
+            .hero-title {
+                font-size: min(2.3rem, 11.5vw);
+            }
+        }
     </style>
 </head>
 <body>
