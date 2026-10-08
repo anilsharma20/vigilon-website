@@ -798,6 +798,74 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* --- HEADER: TABLET & PHONE LAYOUT (header only) --- */
+        /* same two breakpoints as the main vigilon.in header */
+        @media (max-width: 1040px) {
+            /* both links only point to the homepage; the logo and the button remain */
+            .header-actions a:not(.btn-consultation) {
+                display: none;
+            }
+        }
+
+        @media (max-width: 880px) {
+            .header-inner {
+                flex-wrap: wrap;
+                gap: 12px 20px;
+            }
+            /* practice pill moves to its own row instead of squeezing or running off-screen */
+            .practice-capsule {
+                order: 3;
+                flex: 1 1 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .practice-capsule {
+                gap: 10px;
+                padding: 7px 14px;
+                font-size: 0.72rem;
+            }
+            .practice-capsule span {
+                gap: 4px;
+            }
+            .practice-capsule span::before {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .brand-logo-text {
+                font-size: 1.3rem;
+            }
+            .btn-consultation {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 340px) {
+            .header-inner {
+                gap: 10px 12px;
+            }
+            .brand-logo-group {
+                gap: 8px;
+            }
+            .brand-logo-text {
+                font-size: 1.2rem;
+            }
+            .btn-consultation {
+                padding: 8px 10px;
+                font-size: 0.76rem;
+            }
+            .practice-capsule {
+                gap: 8px;
+                padding: 6px 10px;
+                font-size: 0.66rem;
+                white-space: nowrap;
+            }
+        }
     </style>
 </head>
 <body>
