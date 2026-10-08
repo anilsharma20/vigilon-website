@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JEZFE3C7RF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JEZFE3C7RF');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DPDP Compliance Is Not Enough: Can You Prove What Happened? | VigilON</title>
+<meta name="description" content="Meeting DPDP requirements is not the same as being able to investigate a breach. Why organisations should assess digital forensic readiness alongside DPDP readiness.">
+<link rel="canonical" href="https://vigilon.in/dpdp-forensic-readiness">
+<meta property="og:title" content="DPDP Compliance Is Not Enough: Can You Prove What Happened After a Data Breach?">
+<meta property="og:description" content="Meeting DPDP requirements is not the same as being able to investigate a breach. Why organisations should assess digital forensic readiness alongside DPDP readiness.">
+<meta property="og:url" content="https://vigilon.in/dpdp-forensic-readiness">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="VigilON">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://vigilon.in/dpdp-forensic-readiness#article",
+      "headline": "DPDP Compliance Is Not Enough: Can You Prove What Happened After a Data Breach?",
+      "description": "Meeting DPDP requirements is not the same as being able to investigate a breach. Why organisations should assess digital forensic readiness alongside DPDP readiness.",
+      "url": "https://vigilon.in/dpdp-forensic-readiness",
+      "mainEntityOfPage": "https://vigilon.in/dpdp-forensic-readiness",
+      "datePublished": "2026-10-07",
+      "dateModified": "2026-10-07",
+      "inLanguage": "en-IN",
+      "about": [
+        "Digital Personal Data Protection Act",
+        "Digital forensic readiness",
+        "Data breach response"
+      ],
+      "author": {
+        "@id": "https://vigilon.in/#organization"
+      },
+      "publisher": {
+        "@id": "https://vigilon.in/#organization"
+      },
+      "breadcrumb": {
+        "@id": "https://vigilon.in/dpdp-forensic-readiness#breadcrumb"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://vigilon.in/#organization",
+      "name": "VigilON",
+      "url": "https://vigilon.in/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://vigilon.in/dpdp-forensic-readiness#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://vigilon.in/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "DPDP and forensic readiness",
+          "item": "https://vigilon.in/dpdp-forensic-readiness"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+  :root{
+    --hdr-line:var(--l-line); --hdr-ink:var(--l-ink); --hdr-ink-soft:var(--l-ink-soft);
+    --tab-bg:var(--l-bg-raised); --tab-active-bg:var(--l-teal-deep); --tab-active-ink:#fff;
+    --ft-line:var(--d-line); --ft-ink-soft:var(--d-ink-soft); --ft-ink:var(--d-ink); --ft-accent:var(--d-mint);
+    --ft-tag-bg:var(--d-mint-soft); --ft-tag-ink:var(--d-mint); --ft-input-bg:#142420; --ft-btn-ink:#06201b;
+  }
+  body{background:var(--l-bg);color:var(--l-ink);}
+  header{background:rgba(240,242,238,0.92);}
+  .cta-btn.primary{background:var(--l-teal-deep);color:#fff;}
+  .cta-btn.primary:hover{background:var(--l-teal);box-shadow:var(--shadow-md);}
+  .cta-btn.ghost{background:transparent;border:1px solid var(--l-line);color:var(--l-ink);}
+  .cta-btn.ghost:hover{background:var(--l-ink);color:#fff;}
+  footer{background:var(--d-bg);}
+
+  /* hero */
+  .p-hero{padding:64px 0 60px;border-bottom:1px solid var(--l-line);position:relative;overflow:hidden;}
+  .p-hero::before{content:"";position:absolute;top:-80px;right:-140px;width:520px;height:520px;background:radial-gradient(circle, rgba(15,122,108,0.12) 0%, rgba(15,122,108,0) 70%);pointer-events:none;}
+  .p-hero .wrap{position:relative;z-index:1;}
+  .crumb{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--l-ink-soft);margin-bottom:20px;}
+  .crumb a{color:var(--l-teal-deep);text-decoration:none;}
+  .file-tag{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--l-teal-deep);background:var(--l-teal-tint);border:1px solid var(--l-teal);padding:6px 12px;border-radius:20px;margin-bottom:22px;}
+  .file-tag .dot{width:6px;height:6px;background:var(--l-amber);border-radius:50%;}
+  .p-hero h1{font-size:46px;line-height:1.08;letter-spacing:-0.01em;max-width:16ch;margin-bottom:18px;}
+  .p-hero p.lede{font-size:17.5px;color:var(--l-ink-soft);max-width:60ch;margin-bottom:24px;}
+  .meta-row{display:flex;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--l-ink-soft);font-family:'IBM Plex Mono',monospace;margin-bottom:28px;}
+  .meta-row span{display:flex;align-items:center;gap:6px;}
+  .meta-row .sw{width:5px;height:5px;background:var(--l-teal);border-radius:50%;}
+  .p-hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+
+  /* article body */
+  .article{padding:72px 0;border-bottom:1px solid var(--l-line);}
+  .article .wrap{max-width:900px;}
+  .article-col{max-width:72ch;}
+  .article h2{font-size:28px;margin:0 0 16px;}
+  .article-col p{font-size:16px;line-height:1.7;color:var(--l-ink-soft);margin-bottom:18px;}
+  .article section + section{margin-top:48px;}
+
+  /* five domains */
+  .domain-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:8px;}
+  .domain-card{background:#fff;border:1px solid var(--l-line);border-radius:var(--radius);padding:22px 18px;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s,border-color .2s;}
+  .domain-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--l-teal);}
+  .domain-card .icon-box{width:38px;height:38px;border-radius:8px;background:var(--l-teal-tint);display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+  .domain-card h4{font-size:15.5px;margin-bottom:6px;}
+  .domain-card p{font-size:12.5px;color:var(--l-ink-soft);margin-bottom:10px;}
+  .domain-card .course-ref{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--l-teal-deep);text-decoration:none;font-weight:600;}
+  .domain-card .course-ref:hover{text-decoration:underline;}
+
+  /* callout (golden rule) */
+  .callout{background:var(--l-amber-tint);border:1px solid var(--l-amber);border-radius:var(--radius);padding:28px 30px;margin:8px 0;}
+  .callout .tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a5220;background:#fff;padding:4px 10px;border-radius:12px;margin-bottom:14px;}
+  .callout h3{font-size:19px;margin-bottom:10px;}
+  .callout p{font-size:15px;color:#5c4423;line-height:1.65;max-width:68ch;margin:0;}
+
+  /* scenario box */
+  .scenario-box{background:var(--l-bg-raised);border-left:3px solid var(--l-teal);border-radius:0 var(--radius) var(--radius) 0;padding:24px 28px;margin:8px 0;}
+  .scenario-box .tag{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--l-teal-deep);margin-bottom:10px;display:block;}
+  .scenario-box p{font-size:15px;color:var(--l-ink-soft);line-height:1.65;margin:0;}
+
+  /* knowledge check */
+  .kcheck{background:#fff;border:1px solid var(--l-line);border-radius:var(--radius);padding:26px 28px;box-shadow:var(--shadow-sm);}
+  .kcheck h3{font-size:18px;margin-bottom:14px;}
+  .kcheck ol{margin:0;padding-left:20px;}
+  .kcheck li{font-size:15px;color:var(--l-ink-soft);margin-bottom:10px;line-height:1.5;}
+  .kcheck li::marker{color:var(--l-teal-deep);font-weight:600;}
+
+  /* CTA */
+  .cta-wrap{padding:0 0 96px;}
+  .cta-banner{background:linear-gradient(120deg,var(--l-teal-deep) 0%,#0a4f46 45%,#0d3d35 100%);border-radius:16px;padding:56px 48px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;position:relative;overflow:hidden;}
+  .cta-banner::before{content:"";position:absolute;right:-60px;top:-70px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle, rgba(217,138,52,0.30) 0%, rgba(217,138,52,0) 70%);}
+  .cta-banner h2{font-size:27px;max-width:18ch;margin-bottom:8px;color:#fff;}
+  .cta-banner p{font-size:14.5px;max-width:40ch;color:#cfe6e0;margin:0;}
+  .cta-banner-ctas{display:flex;gap:14px;flex-wrap:wrap;position:relative;z-index:1;}
+  .cta-btn.on-dark{background:var(--l-amber);color:#fff;}
+  .cta-btn.on-dark:hover{background:#c07322;}
+  .cta-btn.outline-dark{background:transparent;border:1px solid rgba(255,255,255,0.4);color:#fff;}
+  .cta-btn.outline-dark:hover{background:rgba(255,255,255,0.1);}
+
+  @media (max-width:980px){.domain-grid{grid-template-columns:repeat(3,1fr);}}
+  @media (max-width:880px){
+    .p-hero h1{font-size:32px;}
+    .domain-grid{grid-template-columns:1fr 1fr;}
+    .cta-banner{padding:36px 24px;}
+  }
+
+  /* ---- DPDP article additions ---- */
+  .p-hero h1{font-size:40px;max-width:24ch;}
+  .p-hero p.lede{max-width:56ch;}
+  .article-col h2{margin-top:0;}
+  .pull{border-left:3px solid var(--l-teal);margin:26px 0;padding:4px 0 4px 22px;}
+  .pull p{font-family:'Fraunces',serif;font-size:22px;line-height:1.35;color:var(--l-ink);margin:0;}
+  .q-list{list-style:none;margin:6px 0 22px;padding:0;}
+  .q-list li{position:relative;padding-left:22px;margin-bottom:9px;font-size:16px;color:var(--l-ink-soft);line-height:1.55;}
+  .q-list li::before{content:"";position:absolute;left:0;top:11px;width:10px;height:1.5px;background:var(--l-teal);}
+  .scenario-box{margin:8px 0 24px;}
+  .scenario-box p{margin:0;}
+  .scenario-box p + p{margin-top:10px;}
+  .check-list{list-style:none;margin:10px 0 26px;padding:0;display:grid;gap:12px;}
+  .check-list li{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--l-line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow-sm);}
+  .check-list .tick{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--l-teal-tint);border:1px solid var(--l-teal);position:relative;margin-top:2px;}
+  .check-list .tick::after{content:"";position:absolute;left:6px;top:3px;width:5px;height:9px;border:solid var(--l-teal-deep);border-width:0 2px 2px 0;transform:rotate(45deg);}
+  .check-list strong{display:block;font-size:15.5px;color:var(--l-ink);margin-bottom:3px;}
+  .check-list span{display:block;font-size:14.5px;color:var(--l-ink-soft);line-height:1.55;}
+  .r-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:12px 0 22px;}
+  .r-card{background:#fff;border:1px solid var(--l-line);border-radius:var(--radius);padding:20px 18px;box-shadow:var(--shadow-sm);}
+  .r-card h3{font-size:17px;margin-bottom:8px;}
+  .r-card p{font-size:14px;color:var(--l-ink-soft);line-height:1.55;margin:0;}
+  .score{border-radius:var(--radius);padding:18px 22px;margin:14px 0 20px;font-size:16px;}
+  .score strong{font-weight:600;color:var(--l-ink);}
+  .score span{font-family:'Fraunces',serif;font-size:34px;font-weight:600;margin-left:6px;vertical-align:-3px;}
+  .score.high{background:var(--l-teal-tint);border:1px solid var(--l-teal);}
+  .score.high span{color:var(--l-teal-deep);}
+  .score.low{background:var(--l-amber-tint);border:1px solid var(--l-amber);}
+  .score.low span{color:#8a5220;}
+  .cta-banner p{max-width:58ch;margin:0 0 10px;}
+  .cta-banner p:last-child{margin-bottom:0;}
+  .cta-banner h2{max-width:none;}
+  .disclaimer{font-size:13px;font-style:italic;color:var(--l-ink-soft);max-width:72ch;margin:22px 0 0;line-height:1.55;}
+  @media (max-width:880px){
+    .p-hero h1{font-size:30px;}
+    .r-grid{grid-template-columns:1fr;}
+    .pull p{font-size:19px;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap nav-row">
+    <a href="../index.html" class="logo">
+      <svg class="logo-mark" viewBox="0 0 32 32" fill="none">
+        <path d="M7 5l9 21 9-21" stroke="#0a4f46" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16 6v5" stroke="#d98a34" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M12.5 8a5 5 0 107 0" stroke="#d98a34" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      VigilON
+    </a>
+    <div class="tab-switch">
+      <a href="../compliance.html"><span class="sw"></span><span class="label">Compliance</span></a>
+      <a href="../courses.html"><span class="sw"></span><span class="label">Digital Forensics</span></a>
+      <a href="../awareness.html"><span class="sw"></span><span class="label">Awareness</span></a>
+    </div>
+    <div class="hdr-right">
+      <nav id="mobileNav">
+        <a href="../index.html#solutions">Solutions</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <a href="../index.html#contact" class="cta-btn primary">Book a consultation</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="p-hero">
+    <div class="wrap">
+      <div class="crumb"><a href="../index.html">VigilON</a> / <a href="../index.html#insights">Insights</a> / DPDP and forensic readiness</div>
+      <span class="file-tag"><span class="dot"></span>DPDP · Digital Forensic Readiness</span>
+      <h1>DPDP Compliance Is Not Enough: Can You Prove What Happened After a Data Breach?</h1>
+      <p class="lede">India’s Digital Personal Data Protection framework is changing the way organisations think about personal data.</p>
+      <div class="meta-row">
+        <span><span class="sw"></span>6 min read</span>
+        <span><span class="sw"></span>October 2026</span>
+      </div>
+      <div class="p-hero-ctas">
+        <a href="../index.html#contact" class="cta-btn primary">Talk to VigilON</a>
+        <a href="../courses.html" class="cta-btn ghost">Digital forensics courses</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="article">
+    <div class="wrap article-col">
+
+      <section>
+        <p>The Digital Personal Data Protection Rules, 2025 were notified in November 2025. The substantive obligations, including the security safeguards and breach-reporting rules discussed below, come into force in May 2027, so organisations have a limited window in which to prepare.</p><p>Much of the discussion understandably focuses on compliance: consent, lawful processing, data retention, access controls, third-party processors, breach management and the responsibilities of organisations handling personal data.</p><p>But there is another question that deserves equal attention:</p><blockquote class="pull"><p><strong>If a data breach happens tomorrow, will you actually be able to determine what happened?</strong></p></blockquote><p>That is where <strong>digital forensic readiness</strong> becomes important.</p>
+      </section>
+
+      <section>
+        <h2>Compliance asks one question. An investigation asks another.</h2><p>A compliance assessment may establish that an organisation has appropriate policies, processes and security controls.</p><p>But after an incident, management may suddenly need answers to very different questions:</p><ul class="q-list"><li>When did the incident begin?</li><li>Which systems were accessed?</li><li>Which accounts were involved?</li><li>What personal data may have been exposed?</li><li>Was the information viewed, copied, modified or deleted?</li><li>How long did the attacker have access?</li><li>Can we reconstruct the sequence of events?</li><li>Do we have reliable evidence to support our conclusions?</li></ul><p>Having a policy saying that security events are logged is very different from having the logs necessary to reconstruct an incident six months later.</p><p>This is the gap between <strong>being compliant on paper and being capable of investigating an incident in practice.</strong></p>
+      </section>
+
+      <section>
+        <h2>Consider a simple scenario</h2><div class="scenario-box"><p>Imagine an employee account is compromised.</p><p>The attacker accesses a cloud application containing customer information. The compromise is discovered several weeks later.</p><p>The organisation now needs to establish the potential impact.</p><p>The security team checks its systems and discovers that authentication and firewall logs have been kept for a year, in line with the one-year minimum in the DPDP Rules, but the cloud application’s own activity was never logged, and timestamps across systems do not agree.</p><p>The organisation may know that an incident occurred.</p><p>What it cannot confidently determine is <strong>what the attacker actually did</strong>.</p><p>That uncertainty can quickly become a business, legal and regulatory problem.</p></div><p>The DPDP Rules set a floor here. Rule 6 requires reasonable security safeguards, including the retention of relevant logs for at least one year. But retention is not the same as investigability. A year of logs does not guarantee that the right activity was captured, that timestamps agree across systems, that evidence has been preserved, or that anyone knows who decides when to investigate.</p><p>The Rules also raise the stakes after a breach. Affected individuals and the Data Protection Board must be informed without delay, and a detailed report must reach the Board within 72 hours. Establishing what happened, and which personal data was affected, is an investigative task, and it will have to be done under time pressure.</p>
+      </section>
+
+      <section>
+        <h2>This is where forensic readiness matters</h2><p>Digital forensic readiness does not mean every organisation needs its own forensic laboratory or a large incident-response team.</p><p>It means designing systems and processes so that useful evidence will exist <strong>before an incident occurs</strong>.</p><p>For example, an organisation should consider whether:</p><ul class="check-list"><li><span class="tick" aria-hidden="true"></span><div><strong>Identity activity can be reconstructed.</strong><span>Can you determine who logged in, from where, using which account and when?</span></div></li><li><span class="tick" aria-hidden="true"></span><div><strong>Access to sensitive information is traceable.</strong><span>Can you determine which users or applications accessed important personal-data repositories?</span></div></li><li><span class="tick" aria-hidden="true"></span><div><strong>Relevant logs are retained for an appropriate period.</strong><span>Collecting logs is of little value if they disappear before an incident is discovered. The DPDP Rules set a one-year minimum, which is best treated as a floor rather than a target.</span></div></li><li><span class="tick" aria-hidden="true"></span><div><strong>Endpoint and cloud activity can be investigated.</strong><span>Can security teams reconstruct activity across laptops, servers, SaaS applications and cloud infrastructure?</span></div></li><li><span class="tick" aria-hidden="true"></span><div><strong>Time is consistent across systems.</strong><span>An investigation becomes considerably harder when different systems record events using inconsistent timestamps.</span></div></li><li><span class="tick" aria-hidden="true"></span><div><strong>Evidence can be preserved.</strong><span>If an incident becomes serious, can relevant evidence be collected and protected without compromising its integrity?</span></div></li><li><span class="tick" aria-hidden="true"></span><div><strong>Responsibilities are already defined.</strong><span>Who decides when an incident requires forensic investigation? Who preserves evidence? Who communicates with management, legal teams, customers or regulators?</span></div></li></ul><p>These capabilities are useful far beyond regulatory compliance.</p><p>They help organisations respond to ransomware, insider threats, account compromise, intellectual-property theft, fraud and other cyber incidents.</p>
+      </section>
+
+      <section>
+        <h2>DPDP readiness and forensic readiness should therefore meet</h2><p>A mature privacy programme should not stop at asking:</p><blockquote class="pull"><p><strong>“Do we have the required controls?”</strong></p></blockquote><p>It should also ask:</p><blockquote class="pull"><p><strong>“Could we demonstrate what happened if those controls failed?”</strong></p></blockquote><p>That leads to a more useful way of thinking about readiness:</p><div class="r-grid"><div class="r-card"><h3>DPDP Readiness</h3><p>Are the organisation’s privacy, governance and security controls appropriate?</p></div><div class="r-card"><h3>Cybersecurity Readiness</h3><p>Are reasonable technical measures in place to reduce the probability and impact of an incident?</p></div><div class="r-card"><h3>Digital Forensic Readiness</h3><p>If an incident occurs, can the organisation investigate it and establish reliable facts?</p></div></div><p>These are not competing disciplines.</p><p>They reinforce one another.</p>
+      </section>
+
+      <section>
+        <h2>A readiness score should reveal this difference</h2><p>Consider an organisation receiving the following assessment (an illustrative example, not real assessment data):</p><div class="score high"><strong>DPDP Readiness: <span>78%</span></strong></div><p>At first glance, that may look reassuring.</p><p>But suppose the same assessment finds:</p><div class="score low"><strong>Digital Forensic Readiness: <span>34%</span></strong></div><p>That tells management something much more useful.</p><p>The organisation may have established many of the necessary privacy processes and controls, but if a serious incident occurs, it could struggle to reconstruct events, identify affected data or support its conclusions with reliable evidence.</p><p>The percentage itself is not the objective.</p><p><strong>Understanding the gap is.</strong></p>
+      </section>
+
+      <section>
+        <h2>Smaller organisations should pay particular attention</h2><p>Large enterprises may already operate SIEM platforms, security operations centres, endpoint detection systems, centralised logging and established incident-response procedures.</p><p>Smaller organisations often do not have the same resources.</p><p>Logs may exist across Microsoft 365, Google Workspace, firewalls, endpoints, cloud platforms and business applications without anyone knowing exactly what is retained or for how long.</p><p>This does not automatically mean spending heavily on security technology.</p><p>A forensic-readiness exercise can begin with relatively straightforward questions:</p><ul class="q-list"><li>What personal data do we hold?</li><li>Where is it stored?</li><li>Who can access it?</li><li>What activity is logged?</li><li>How long are those logs retained?</li><li>Could we reconstruct an incident using what we have today?</li></ul><p>The answers often reveal practical improvements that can be made before purchasing additional technology.</p>
+      </section>
+
+      <section>
+        <h2>From compliance readiness to evidence readiness</h2><p>The objective of privacy and cybersecurity programmes should not simply be to produce documentation for an audit.</p><p>They should help organisations prevent incidents, detect them, respond effectively and understand what actually happened.</p><p>That is why VigilON believes organisations should increasingly consider <strong>DPDP readiness and digital forensic readiness together</strong>.</p><p>One prepares the organisation to protect personal data.</p><p>The other prepares it to establish the facts when something goes wrong.</p><p>Because after a data breach, one of the most difficult answers an organisation can give is:</p><blockquote class="pull"><p><strong>“We don’t know.”</strong></p></blockquote>
+      </section>
+
+    </div>
+  </section>
+
+  <!-- ASSESS YOUR READINESS: remove this banner if the self-assessments are not actually in development -->
+  <section class="cta-wrap" style="padding-top:8px;">
+    <div class="wrap">
+      <div class="cta-banner">
+        <div>
+          <h2>Assess your readiness</h2>
+          <p>VigilON is developing practical self-assessments designed to help organisations identify gaps across <strong>DPDP, cybersecurity and digital forensic readiness</strong>.</p>
+          <p>The initial assessment is intended to identify where you stand, highlight critical weaknesses and help determine which areas require deeper remediation.</p>
+        </div>
+        <div class="cta-banner-ctas">
+          <a href="../index.html#contact" class="cta-btn on-dark">Talk to VigilON</a>
+        </div>
+      </div>
+      <p class="disclaimer"><em>This article is general information, not legal advice. Organisations should take advice from their own legal counsel on their obligations under the DPDP Act, 2023 and the DPDP Rules, 2025.</em></p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-top">
+    <div class="footer-brand">
+      <a href="../index.html" class="logo" style="color:#fff;">
+        <svg class="logo-mark" viewBox="0 0 32 32" fill="none">
+          <path d="M7 5l9 21 9-21" stroke="#37d6b3" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M16 6v5" stroke="#e2933e" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M12.5 8a5 5 0 107 0" stroke="#e2933e" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        VigilON
+      </a>
+      <p>CMMC compliance, digital forensics &amp; cybersecurity awareness courses, for teams across the US and India.</p>
+      <span class="footer-tag">A Hora Technologies company</span>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">COMPLIANCE</h5>
+      <a href="../compliance.html#services">Gap analysis &amp; SSP</a>
+      <a href="../compliance.html#services">Assessment prep</a>
+      <a href="../compliance.html#services">Managed compliance</a>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">DIGITAL FORENSICS</h5>
+      <a href="../courses.html#courses">Starter courses</a>
+      <a href="../courses.html#courses">Core track DF-101+</a>
+      <a href="../courses.html#courses">Expert testimony DF-310</a>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">AWARENESS</h5>
+      <a href="../awareness.html">Phishing &amp; social engineering</a>
+      <a href="../awareness.html">Password &amp; access hygiene</a>
+      <a href="../awareness.html">Incident reporting habits</a>
+      <a href="../awareness.html#community">Digital arrest scam safety</a>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">STAY UPDATED</h5>
+      <p style="font-size:13px;color:var(--d-ink-soft);margin-bottom:4px;">New cohort dates, twice a year.</p>
+      <div class="newsletter"><input type="email" placeholder="you@company.com"><button type="button">Join</button></div>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 VigilON, a Hora Technologies company. All rights reserved.</span>
+    <span>Registered as a proprietorship — Hora Technologies</span>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>
