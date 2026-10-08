@@ -97,13 +97,14 @@ header.scrolled{box-shadow:0 4px 18px rgba(0,0,0,0.12);}
 /* ===== Footer (shared shell, themed per page) ===== */
 footer{padding:56px 0 0;}
 .footer-top{display:grid;grid-template-columns:1.2fr 0.85fr 0.85fr 0.85fr 0.95fr;gap:28px;padding-bottom:40px;border-bottom:1px solid var(--ft-line);}
+.footer-top > *{min-width:0;}
 .footer-brand p{font-size:13.5px;color:var(--ft-ink-soft);margin-top:12px;max-width:32ch;}
 .footer-tag{display:inline-block;margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ft-tag-ink);background:var(--ft-tag-bg);padding:6px 11px;border-radius:20px;}
 .footer-col h5{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ft-ink-soft);margin-bottom:16px;letter-spacing:.03em;}
 .footer-col a{display:block;font-size:13.5px;color:var(--ft-ink);text-decoration:none;margin-bottom:11px;}
 .footer-col a:hover{color:var(--ft-accent);}
 .newsletter{display:flex;gap:8px;margin-top:12px;}
-.newsletter input{flex-grow:1;padding:10px 12px;font-size:13px;border-radius:6px;border:1px solid var(--ft-line);background:var(--ft-input-bg);color:var(--ft-ink);}
+.newsletter input{flex-grow:1;min-width:0;padding:10px 12px;font-size:13px;border-radius:6px;border:1px solid var(--ft-line);background:var(--ft-input-bg);color:var(--ft-ink);}
 .newsletter button{background:var(--ft-accent);color:var(--ft-btn-ink);border:none;padding:10px 16px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:22px 0;font-size:12px;color:var(--ft-ink-soft);}
 
@@ -120,8 +121,12 @@ footer{padding:56px 0 0;}
 @media (max-width:880px){
   .wrap{padding:0 20px;}
   .tab-switch a span.label{display:none;}
-  .footer-top{grid-template-columns:1fr;gap:30px;}
+  .footer-top{gap:30px;padding-bottom:40px;}
+  .footer-bottom{padding-top:22px;padding-bottom:22px;}
 }
 @media (max-width:980px){.footer-top{grid-template-columns:1fr 1fr 1fr;}}
-@media (max-width:640px){.footer-top{grid-template-columns:1fr 1fr;}}
+@media (max-width:640px){
+  .footer-top{grid-template-columns:1fr 1fr;}
+  .footer-top > :first-child, .footer-top > :last-child{grid-column:1 / -1;}
+}
 
