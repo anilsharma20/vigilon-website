@@ -96,16 +96,13 @@ header.scrolled{box-shadow:0 4px 18px rgba(0,0,0,0.12);}
 
 /* ===== Footer (shared shell, themed per page) ===== */
 footer{padding:56px 0 0;}
-.footer-top{display:grid;grid-template-columns:1.2fr 0.85fr 0.85fr 0.85fr 0.95fr;gap:28px;padding-bottom:40px;border-bottom:1px solid var(--ft-line);}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:28px;padding-bottom:40px;border-bottom:1px solid var(--ft-line);}
 .footer-top > *{min-width:0;}
 .footer-brand p{font-size:13.5px;color:var(--ft-ink-soft);margin-top:12px;max-width:32ch;}
 .footer-tag{display:inline-block;margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ft-tag-ink);background:var(--ft-tag-bg);padding:6px 11px;border-radius:20px;}
 .footer-col h5{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ft-ink-soft);margin-bottom:16px;letter-spacing:.03em;}
 .footer-col a{display:block;font-size:13.5px;color:var(--ft-ink);text-decoration:none;margin-bottom:11px;}
 .footer-col a:hover{color:var(--ft-accent);}
-.newsletter{display:flex;gap:8px;margin-top:12px;}
-.newsletter input{flex-grow:1;min-width:0;padding:10px 12px;font-size:13px;border-radius:6px;border:1px solid var(--ft-line);background:var(--ft-input-bg);color:var(--ft-ink);}
-.newsletter button{background:var(--ft-accent);color:var(--ft-btn-ink);border:none;padding:10px 16px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:22px 0;font-size:12px;color:var(--ft-ink-soft);}
 
 /* ===== Course tier group label (used to divide Starter / Core / Advanced groups) ===== */
@@ -124,12 +121,32 @@ footer{padding:56px 0 0;}
   .footer-top{gap:30px;padding-bottom:40px;}
   .footer-bottom{padding-top:22px;padding-bottom:22px;}
 }
-@media (max-width:980px){.footer-top{grid-template-columns:1fr 1fr 1fr;}}
+@media (max-width:980px){.footer-top{grid-template-columns:1fr 1fr 1fr;}.footer-top > :first-child{grid-column:1 / -1;}}
 @media (max-width:640px){
   .footer-top{grid-template-columns:1fr 1fr;}
-  .footer-top > :first-child, .footer-top > :last-child{grid-column:1 / -1;}
+  .footer-top > :first-child{grid-column:1 / -1;}
 }
 .footer-bottom a{color:inherit;text-decoration:underline;text-underline-offset:2px;}
 .footer-bottom a:hover{color:var(--ft-accent);}
 .form-privacy{font-size:12.5px;color:var(--l-ink-soft);margin:10px 0 0;}
 .form-privacy a{color:var(--l-teal-deep);}
+
+/* ===== Compliance tab dropdown (hover / keyboard focus, desktop only) ===== */
+.tab-dd{position:relative;display:flex;}
+.tab-dd .dd-menu{display:none;position:absolute;top:100%;left:0;padding-top:10px;z-index:90;}
+.tab-dd .dd-panel{min-width:320px;background:#fcfcfa;border:1px solid #ccd3c5;border-radius:14px;padding:8px;box-shadow:0 10px 30px rgba(10,18,16,.14);}
+.tab-switch .dd-panel a,.tab-switch .dd-panel .dd-soon{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#111c17;background:none;box-shadow:none;text-decoration:none;}
+.tab-switch .dd-panel a:hover,.tab-switch .dd-panel a:focus-visible{background:#dcede8;color:#0a4f46;}
+.tab-switch .dd-panel .dd-soon{color:#4b584f;cursor:default;}
+.tab-switch .dd-panel .dd-soon em{font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:10.5px;background:#e9ece6;color:#4b584f;padding:2px 8px;border-radius:10px;white-space:nowrap;}
+@media (hover:hover) and (min-width:881px){
+  .tab-dd:hover .dd-menu,.tab-dd:focus-within .dd-menu{display:block;}
+}
+.social-row{display:flex;align-items:center;gap:10px;margin-top:20px;flex-wrap:wrap;}
+.social-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.04em;color:var(--ft-ink-soft);margin-right:2px;}
+.social-row a{width:38px;height:38px;border:1px solid var(--ft-line);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--ft-ink);text-decoration:none;transition:color .18s,border-color .18s,background .18s;}
+.social-row a svg{width:18px;height:18px;}
+.social-row a:hover,.social-row a:focus-visible{color:var(--ft-accent);border-color:var(--ft-accent);}
+.contact-detail .row span a{color:inherit;text-decoration:underline;text-underline-offset:3px;}
+.community-follow{font-size:14px;margin:-6px 0 22px;}
+.community-follow a{font-weight:600;}
