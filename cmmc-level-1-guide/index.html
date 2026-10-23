@@ -895,34 +895,132 @@
             }
         }
     </style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style id="siteHeaderCss">
+/* Shared site header (scoped so it matches the main site pages) */
+#siteHeader{--hdr-line:#ccd3c5;--hdr-ink:#111c17;--hdr-ink-soft:#4b584f;--tab-bg:#e6e9e3;--tab-active-bg:#0a4f46;--tab-active-ink:#fff;
+ position:sticky;top:0;z-index:80;backdrop-filter:blur(8px);background:rgba(240,242,238,0.92);border-bottom:1px solid var(--hdr-line);transition:box-shadow .25s;
+ font-family:'IBM Plex Sans',sans-serif;font-size:16px;line-height:1.6;margin:0;padding:0;width:100%;}
+#siteHeader.scrolled{box-shadow:0 4px 18px rgba(0,0,0,0.12);}
+#siteHeader *{box-sizing:border-box;}
+#siteHeader .wrap{max-width:1200px;margin:0 auto;padding:0 32px;position:relative;}
+#siteHeader .nav-row{display:flex;flex-wrap:wrap;row-gap:10px;align-items:center;justify-content:space-between;gap:16px;padding:16px 0;}
+#siteHeader a{text-decoration:none;}
+#siteHeader svg{display:block;max-width:100%;}
+#siteHeader .logo{display:flex;align-items:center;gap:9px;font-family:'Fraunces',serif;font-weight:600;font-size:21px;letter-spacing:.01em;color:var(--hdr-ink);}
+#siteHeader .logo-mark{width:28px;height:28px;flex-shrink:0;}
+#siteHeader .tab-switch{display:flex;align-items:center;background:var(--tab-bg);border:1px solid var(--hdr-line);border-radius:30px;padding:4px;gap:2px;}
+#siteHeader .tab-switch a{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;padding:8px 13px;border-radius:24px;color:var(--hdr-ink-soft);transition:background .18s,color .18s;}
+#siteHeader .tab-switch a .sw{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.55;}
+#siteHeader .tab-switch a.active{background:var(--tab-active-bg);color:var(--tab-active-ink);box-shadow:0 1px 3px rgba(10,20,17,0.08);}
+#siteHeader .tab-switch a:not(.active):hover{color:var(--hdr-ink);}
+#siteHeader .hdr-right{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+#siteHeader .hdr-right nav{display:flex;gap:18px;font-size:13.5px;}
+#siteHeader .hdr-right nav a{color:var(--hdr-ink-soft);}
+#siteHeader .hdr-right nav a:hover{color:var(--hdr-ink);}
+#siteHeader .cta-btn{display:inline-block;padding:11px 20px;font-size:13.5px;font-weight:600;border-radius:6px;transition:transform .15s,box-shadow .15s,background .15s;white-space:nowrap;}
+#siteHeader .cta-btn:hover{transform:translateY(-1px);}
+#siteHeader .cta-btn.primary{background:#0a4f46;color:#fff;}
+#siteHeader .cta-btn.primary:hover{background:#0f7a6c;box-shadow:0 12px 30px rgba(10,20,17,0.12);}
+#siteHeader .menu-toggle{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:var(--hdr-ink);}
+#siteHeader .tab-dd{position:relative;display:flex;}
+#siteHeader .tab-dd .dd-menu{display:none;position:absolute;top:100%;left:0;padding-top:10px;z-index:90;}
+#siteHeader .tab-dd .dd-panel{min-width:320px;background:#fcfcfa;border:1px solid #ccd3c5;border-radius:14px;padding:8px;box-shadow:0 10px 30px rgba(10,18,16,.14);}
+#siteHeader .tab-switch .dd-panel a,#siteHeader .tab-switch .dd-panel .dd-soon{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:#111c17;background:none;box-shadow:none;}
+#siteHeader .tab-switch .dd-panel a:hover,#siteHeader .tab-switch .dd-panel a:focus-visible{background:#dcede8;color:#0a4f46;}
+#siteHeader .tab-switch .dd-panel .dd-soon{color:#4b584f;cursor:default;}
+#siteHeader .tab-switch .dd-panel .dd-soon em{font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:10.5px;background:#e9ece6;color:#4b584f;padding:2px 8px;border-radius:10px;white-space:nowrap;}
+@media (hover:hover) and (min-width:881px){#siteHeader .tab-dd:hover .dd-menu,#siteHeader .tab-dd:focus-within .dd-menu{display:block;}}
+@media (max-width:1040px){#siteHeader .hdr-right nav{display:none;}#siteHeader .menu-toggle{display:block;}}
+@media (max-width:880px){#siteHeader .tab-switch a span.label{display:none;}#siteHeader .wrap{padding:0 20px;}}
+</style>
+<style id="siteFooterCss">
+/* Shared site footer (scoped) */
+#siteFooter{text-align:left;margin:0;--ft-line:#203330;--ft-ink-soft:#9db3ac;--ft-ink:#eef4f1;--ft-accent:#37d6b3;--ft-tag-bg:#1e4a41;--ft-tag-ink:#37d6b3;
+ background:#0a1210;color:#eef4f1;padding:56px 0 0 !important;font-family:'IBM Plex Sans',sans-serif;font-size:16px;line-height:1.6;width:100%;clear:both;position:relative;z-index:1;}
+#siteFooter *{box-sizing:border-box;}
+#siteFooter .wrap{max-width:1200px;margin:0 auto;padding:0 32px;position:relative;}
+#siteFooter a{text-decoration:none;}
+#siteFooter svg{display:block;max-width:100%;}
+#siteFooter p{margin:0;}
+#siteFooter .mono{font-family:'IBM Plex Mono',monospace;}
+#siteFooter .logo{display:flex;align-items:center;gap:9px;font-family:'Fraunces',serif;font-weight:600;font-size:21px;letter-spacing:.01em;color:#fff;}
+#siteFooter .logo-mark{width:28px;height:28px;flex-shrink:0;}
+#siteFooter .footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:28px;padding-bottom:40px;border-bottom:1px solid var(--ft-line);}
+#siteFooter .footer-top > *{min-width:0;}
+#siteFooter .footer-brand p{font-size:13.5px;color:var(--ft-ink-soft);margin-top:12px;max-width:32ch;}
+#siteFooter .footer-tag{display:inline-block;margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ft-tag-ink);background:var(--ft-tag-bg);padding:6px 11px;border-radius:20px;}
+#siteFooter .footer-col h5{font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:11.5px;color:var(--ft-ink-soft);margin:0 0 16px;letter-spacing:.03em;}
+#siteFooter .footer-col a{display:block;font-size:13.5px;color:var(--ft-ink);margin-bottom:11px;}
+#siteFooter .footer-col a:hover{color:var(--ft-accent);}
+#siteFooter .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:22px 0;font-size:12px;color:var(--ft-ink-soft);}
+#siteFooter .footer-bottom a{color:inherit;text-decoration:underline;text-underline-offset:2px;}
+#siteFooter .footer-bottom a:hover{color:var(--ft-accent);}
+#siteFooter .social-row{display:flex;align-items:center;gap:10px;margin-top:20px;flex-wrap:wrap;}
+#siteFooter .social-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.04em;color:var(--ft-ink-soft);margin-right:2px;}
+#siteFooter .social-row a{width:38px;height:38px;border:1px solid var(--ft-line);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--ft-ink);transition:color .18s,border-color .18s;}
+#siteFooter .social-row a svg{width:18px;height:18px;}
+#siteFooter .social-row a:hover,#siteFooter .social-row a:focus-visible{color:var(--ft-accent);border-color:var(--ft-accent);}
+@media (max-width:980px){#siteFooter .footer-top{grid-template-columns:1fr 1fr 1fr;}#siteFooter .footer-top > :first-child{grid-column:1 / -1;}}
+@media (max-width:880px){#siteFooter .wrap{padding:0 20px;}}
+@media (max-width:640px){#siteFooter .footer-top{grid-template-columns:1fr 1fr;}#siteFooter .footer-top > :first-child{grid-column:1 / -1;}}
+</style>
 </head>
 <body>
 
     <!-- TOP HEADER -->
-    <header class="site-header">
-        <div class="header-inner">
-            <a href="https://vigilon.in/" class="brand-logo-group">
-                <svg class="brand-logo-icon" viewBox="0 0 32 32" fill="none">
-                    <path d="M7 5l9 21 9-21" stroke="#0a4f46" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M16 6v5" stroke="#d98a34" stroke-width="1.8" stroke-linecap="round"/>
-                    <path d="M12.5 8a5 5 0 107 0" stroke="#d98a34" stroke-width="1.8" stroke-linecap="round"/>
-                </svg>
-                <span class="brand-logo-text">Vigil<span>ON</span></span>
-            </a>
-
-            <div class="practice-capsule">
-                <span>Compliance</span>
-                <span>Digital Forensics</span>
-                <span>Awareness</span>
-            </div>
-
-            <div class="header-actions">
-                <a href="https://vigilon.in/#services">Solutions</a>
-                <a href="https://vigilon.in/#contact">Contact</a>
-                <a href="https://vigilon.in/#contact" class="btn-consultation">Book a consultation</a>
-            </div>
-        </div>
-    </header>
+    <header id="siteHeader">
+  <div class="wrap nav-row">
+    <a href="/" class="logo">
+      <svg class="logo-mark" viewBox="0 0 32 32" fill="none">
+        <path d="M7 5l9 21 9-21" stroke="#0a4f46" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16 6v5" stroke="#d98a34" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M12.5 8a5 5 0 107 0" stroke="#d98a34" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      VigilON
+    </a>
+    <div class="tab-switch">
+      <div class="tab-dd">
+        <a href="/compliance.html" class="active"><span class="sw"></span><span class="label">Compliance</span></a>
+        <div class="dd-menu"><div class="dd-panel" role="menu" aria-label="CMMC resources">
+          <a role="menuitem" href="/cmmc-level-1-guide">Explore the CMMC Level 1 Guide</a>
+          <a role="menuitem" href="/cmmc-level-1-readiness-check">CMMC Level 1 Readiness Check</a>
+          <span class="dd-soon" aria-disabled="true">Explore the CMMC Level 2 Guide<em>Coming soon</em></span>
+          <a role="menuitem" href="/cmmc-level-2-score-calculator">CMMC Level 2 Score Calculator</a>
+        </div></div>
+      </div>
+      <div class="tab-dd">
+        <a href="/courses.html"><span class="sw"></span><span class="label">Digital Forensics</span></a>
+        <div class="dd-menu"><div class="dd-panel" role="menu" aria-label="Digital forensics">
+          <a role="menuitem" href="/courses.html#courses">Course catalog</a>
+          <a role="menuitem" href="/courses.html#path">Recommended learning path</a>
+          <a role="menuitem" href="/courses.html#format">How cohorts run</a>
+          <a role="menuitem" href="/df-010">DF-010 free course</a>
+          <a role="menuitem" href="/intro-to-digital-forensics">Introduction to Digital Forensics</a>
+          <a role="menuitem" href="/dpdp-forensic-readiness">DPDP and forensic readiness</a>
+        </div></div>
+      </div>
+      <div class="tab-dd">
+        <a href="/awareness.html"><span class="sw"></span><span class="label">Awareness</span></a>
+        <div class="dd-menu"><div class="dd-panel" role="menu" aria-label="Awareness">
+          <a role="menuitem" href="/awareness.html#modules">Awareness modules</a>
+          <a role="menuitem" href="/awareness.html#community">Digital arrest scam safety</a>
+          <a role="menuitem" href="/awareness.html#why">Why it matters</a>
+          <a role="menuitem" href="/awareness.html#format">How sessions run</a>
+          <a role="menuitem" href="/#contact">Bring this training to your team</a>
+        </div></div>
+      </div>
+    </div>
+    <div class="hdr-right">
+      <nav id="mobileNav">
+        <a href="/#solutions">Solutions</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+      <a href="/#contact" class="cta-btn primary">Book a consultation</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </div>
+</header>
 
     <!-- GUIDE INTRODUCTION -->
     <section class="hero-banner">
@@ -2077,6 +2175,51 @@
         </main>
     </div>
 
+<footer id="siteFooter">
+  <div class="wrap footer-top">
+    <div class="footer-brand">
+      <a href="/" class="logo" style="color:#fff;">
+        <svg class="logo-mark" viewBox="0 0 32 32" fill="none">
+          <path d="M7 5l9 21 9-21" stroke="#37d6b3" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M16 6v5" stroke="#e2933e" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M12.5 8a5 5 0 107 0" stroke="#e2933e" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        VigilON
+      </a>
+      <p>CMMC compliance, digital forensics &amp; cybersecurity awareness courses, for teams across the US and India.</p>
+      <span class="footer-tag">A Hora Technologies company</span>
+      <div class="social-row">
+        <span class="social-label mono">FOLLOW VIGILON</span>
+        <a href="https://www.linkedin.com/company/143994050/" target="_blank" rel="noopener" aria-label="VigilON on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="https://www.instagram.com/_vigilon/" target="_blank" rel="noopener" aria-label="VigilON on Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">COMPLIANCE</h5>
+      <a href="/compliance.html#services">Gap analysis &amp; SSP</a>
+      <a href="/compliance.html#services">Assessment prep</a>
+      <a href="/compliance.html#services">Managed compliance</a>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">DIGITAL FORENSICS</h5>
+      <a href="/courses.html#courses">Starter courses</a>
+      <a href="/courses.html#courses">Core track DF-101+</a>
+      <a href="/courses.html#courses">Expert testimony DF-310</a>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">AWARENESS</h5>
+      <a href="/awareness.html">Phishing &amp; social engineering</a>
+      <a href="/awareness.html">Password &amp; access hygiene</a>
+      <a href="/awareness.html">Incident reporting habits</a>
+      <a href="/awareness.html#community">Digital arrest scam safety</a>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 VigilON, a Hora Technologies company. All rights reserved.</span>
+    <span>Registered as a proprietorship — Hora Technologies · <a href="/privacy/">Privacy notice</a></span>
+  </div>
+</footer>
+
     <!-- CLIENT FILTER SCRIPT -->
     <script>
         function filterControls() {
@@ -2093,5 +2236,6 @@
             });
         }
     </script>
+<script>document.addEventListener('DOMContentLoaded',function(){var h=document.getElementById('siteHeader');if(h){window.addEventListener('scroll',function(){h.classList.toggle('scrolled',window.scrollY>8)});}});</script>
 </body>
 </html>

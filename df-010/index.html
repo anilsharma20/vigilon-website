@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JEZFE3C7RF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JEZFE3C7RF');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DF-010 Introduction to Digital Forensics: Free Online Course | VigilON</title>
+<meta name="description" content="A free, self-paced introduction to digital forensics in five short modules with video, activities and quizzes. Certificate of completion. Taught by Anil Sharma, VigilON.">
+<link rel="canonical" href="https://vigilon.in/df-010">
+<meta property="og:title" content="DF-010 Introduction to Digital Forensics: free online course">
+<meta property="og:description" content="Five short modules, activities and quizzes. Free and self-paced.">
+<meta property="og:url" content="https://vigilon.in/df-010">
+<meta property="og:type" content="website">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Course","name":"DF-010 Introduction to Digital Forensics","description":"A free, self-paced introduction to digital forensics in five short modules with video, activities and quizzes.","url":"https://vigilon.in/df-010","provider":{"@type":"Organization","name":"VigilON","url":"https://vigilon.in/"},"isAccessibleForFree":true,"inLanguage":"en","educationalLevel":"Beginner","hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT3H"}}
+</script>
+<style>
+  :root{
+    --hdr-line:var(--l-line); --hdr-ink:var(--l-ink); --hdr-ink-soft:var(--l-ink-soft);
+    --tab-bg:var(--l-bg-raised); --tab-active-bg:var(--l-teal-deep); --tab-active-ink:#fff;
+    --ft-line:var(--d-line); --ft-ink-soft:var(--d-ink-soft); --ft-ink:var(--d-ink); --ft-accent:var(--d-mint);
+    --ft-tag-bg:var(--d-mint-soft); --ft-tag-ink:var(--d-mint); --ft-input-bg:#142420; --ft-btn-ink:#06201b;
+  }
+  body{background:var(--l-bg);color:var(--l-ink);}
+  header{background:rgba(240,242,238,0.92);}
+  .cta-btn.primary{background:var(--l-teal-deep);color:#fff;}
+  .cta-btn.primary:hover{background:var(--l-teal);box-shadow:var(--shadow-md);}
+  .cta-btn.ghost{background:transparent;border:1px solid var(--l-line);color:var(--l-ink);}
+  .cta-btn.ghost:hover{background:var(--l-ink);color:#fff;}
+  footer{background:var(--d-bg);}
+
+  /* hero */
+  .p-hero{padding:64px 0 60px;border-bottom:1px solid var(--l-line);position:relative;overflow:hidden;}
+  .p-hero::before{content:"";position:absolute;top:-80px;right:-140px;width:520px;height:520px;background:radial-gradient(circle, rgba(15,122,108,0.12) 0%, rgba(15,122,108,0) 70%);pointer-events:none;}
+  .p-hero .wrap{position:relative;z-index:1;}
+  .crumb{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--l-ink-soft);margin-bottom:20px;}
+  .crumb a{color:var(--l-teal-deep);text-decoration:none;}
+  .file-tag{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--l-teal-deep);background:var(--l-teal-tint);border:1px solid var(--l-teal);padding:6px 12px;border-radius:20px;margin-bottom:22px;}
+  .file-tag .dot{width:6px;height:6px;background:var(--l-amber);border-radius:50%;}
+  .p-hero h1{font-size:46px;line-height:1.08;letter-spacing:-0.01em;max-width:16ch;margin-bottom:18px;}
+  .p-hero p.lede{font-size:17.5px;color:var(--l-ink-soft);max-width:60ch;margin-bottom:24px;}
+  .meta-row{display:flex;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--l-ink-soft);font-family:'IBM Plex Mono',monospace;margin-bottom:28px;}
+  .meta-row span{display:flex;align-items:center;gap:6px;}
+  .meta-row .sw{width:5px;height:5px;background:var(--l-teal);border-radius:50%;}
+  .p-hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+
+  /* article body */
+  .article{padding:72px 0;border-bottom:1px solid var(--l-line);}
+  .article .wrap{max-width:900px;}
+  .article-col{max-width:72ch;}
+  .article h2{font-size:28px;margin:0 0 16px;}
+  .article-col p{font-size:16px;line-height:1.7;color:var(--l-ink-soft);margin-bottom:18px;}
+  .article section + section{margin-top:48px;}
+
+  /* five domains */
+  .domain-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:8px;}
+  .domain-card{background:#fff;border:1px solid var(--l-line);border-radius:var(--radius);padding:22px 18px;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s,border-color .2s;}
+  .domain-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--l-teal);}
+  .domain-card .icon-box{width:38px;height:38px;border-radius:8px;background:var(--l-teal-tint);display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+  .domain-card h4{font-size:15.5px;margin-bottom:6px;}
+  .domain-card p{font-size:12.5px;color:var(--l-ink-soft);margin-bottom:10px;}
+  .domain-card .course-ref{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--l-teal-deep);text-decoration:none;font-weight:600;}
+  .domain-card .course-ref:hover{text-decoration:underline;}
+
+  /* callout (golden rule) */
+  .callout{background:var(--l-amber-tint);border:1px solid var(--l-amber);border-radius:var(--radius);padding:28px 30px;margin:8px 0;}
+  .callout .tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a5220;background:#fff;padding:4px 10px;border-radius:12px;margin-bottom:14px;}
+  .callout h3{font-size:19px;margin-bottom:10px;}
+  .callout p{font-size:15px;color:#5c4423;line-height:1.65;max-width:68ch;margin:0;}
+
+  /* scenario box */
+  .scenario-box{background:var(--l-bg-raised);border-left:3px solid var(--l-teal);border-radius:0 var(--radius) var(--radius) 0;padding:24px 28px;margin:8px 0;}
+  .scenario-box .tag{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--l-teal-deep);margin-bottom:10px;display:block;}
+  .scenario-box p{font-size:15px;color:var(--l-ink-soft);line-height:1.65;margin:0;}
+
+  /* knowledge check */
+  .kcheck{background:#fff;border:1px solid var(--l-line);border-radius:var(--radius);padding:26px 28px;box-shadow:var(--shadow-sm);}
+  .kcheck h3{font-size:18px;margin-bottom:14px;}
+  .kcheck ol{margin:0;padding-left:20px;}
+  .kcheck li{font-size:15px;color:var(--l-ink-soft);margin-bottom:10px;line-height:1.5;}
+  .kcheck li::marker{color:var(--l-teal-deep);font-weight:600;}
+
+  /* CTA */
+  .cta-wrap{padding:0 0 96px;}
+  .cta-banner{background:linear-gradient(120deg,var(--l-teal-deep) 0%,#0a4f46 45%,#0d3d35 100%);border-radius:16px;padding:56px 48px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;position:relative;overflow:hidden;}
+  .cta-banner::before{content:"";position:absolute;right:-60px;top:-70px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle, rgba(217,138,52,0.30) 0%, rgba(217,138,52,0) 70%);}
+  .cta-banner h2{font-size:27px;max-width:18ch;margin-bottom:8px;color:#fff;}
+  .cta-banner p{font-size:14.5px;max-width:40ch;color:#cfe6e0;margin:0;}
+  .cta-banner-ctas{display:flex;gap:14px;flex-wrap:wrap;position:relative;z-index:1;}
+  .cta-btn.on-dark{background:var(--l-amber);color:#fff;}
+  .cta-btn.on-dark:hover{background:#c07322;}
+  .cta-btn.outline-dark{background:transparent;border:1px solid rgba(255,255,255,0.4);color:#fff;}
+  .cta-btn.outline-dark:hover{background:rgba(255,255,255,0.1);}
+
+  @media (max-width:980px){.domain-grid{grid-template-columns:repeat(3,1fr);}}
+  @media (max-width:880px){
+    .p-hero h1{font-size:32px;}
+    .domain-grid{grid-template-columns:1fr 1fr;}
+    .cta-banner{padding:36px 24px;}
+  }
+
+  .wrap.narrow{max-width:900px;}
+  .p-hero h1{max-width:22ch;}
+  .dl{margin:22px 0 0;font-size:15px;color:var(--l-ink-soft);}
+  .dl a{color:var(--l-teal-deep);font-weight:600;}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:28px 0 0;}
+  .step{background:#fff;border:1px solid var(--l-line);border-radius:var(--radius);padding:20px 18px;box-shadow:var(--shadow-sm);}
+  .step b{display:block;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--l-teal-deep);margin-bottom:8px;}
+  .step p{font-size:14px;color:var(--l-ink-soft);margin:0;line-height:1.5;}
+  .mods{padding:72px 0;border-bottom:1px solid var(--l-line);}
+  .mods h2,.cert h2,.enrol h2,.faq h2{font-size:28px;margin:0 0 10px;}
+  .mods .sub{color:var(--l-ink-soft);max-width:62ch;margin:0 0 32px;font-size:16px;line-height:1.6;}
+  .mod{background:#fff;border:1px solid var(--l-line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow-sm);margin-bottom:28px;scroll-margin-top:90px;}
+  .mod-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 16px;margin-bottom:6px;}
+  .mod-n{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--l-teal-deep);background:var(--l-teal-tint);border:1px solid var(--l-teal);padding:4px 10px;border-radius:14px;}
+  .mod h3{font-size:22px;margin:0;}
+  .mod-meta{display:flex;gap:14px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--l-ink-soft);width:100%;}
+  .mod-desc{font-size:15.5px;color:var(--l-ink-soft);line-height:1.6;margin:10px 0 18px;max-width:68ch;}
+  .player{position:relative;aspect-ratio:16/9;background:#0a1210 radial-gradient(600px 300px at 80% 0%,rgba(55,214,179,.22),transparent);border-radius:12px;overflow:hidden;}
+  .player iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .play{position:absolute;inset:0;width:100%;display:flex;align-items:center;justify-content:center;gap:14px;background:transparent;border:0;color:#fff;font:600 18px 'IBM Plex Sans',sans-serif;cursor:pointer;}
+  .play .tri{width:64px;height:64px;border-radius:50%;background:var(--l-teal);display:grid;place-items:center;}
+  .play .tri::after{content:"";margin-left:5px;border-left:18px solid #fff;border-top:11px solid transparent;border-bottom:11px solid transparent;}
+  .play:hover .tri{background:var(--l-teal-deep);}
+  .play:focus-visible{outline:3px solid var(--l-amber);outline-offset:-6px;}
+  .yt-note{font-size:12.5px;color:var(--l-ink-soft);margin:10px 0 18px;}
+  .yt-note a{color:var(--l-teal-deep);}
+  .act{border:1px solid var(--l-line);border-radius:10px;background:var(--l-bg-raised);margin-bottom:16px;}
+  .act summary{cursor:pointer;padding:14px 18px;font-weight:600;font-size:15px;}
+  .act-body{padding:0 18px 16px;font-size:15px;color:var(--l-ink-soft);line-height:1.6;}
+  .act-body ol,.facts{padding-left:20px;margin:8px 0;}
+  .act-body li,.facts li{margin-bottom:6px;}
+  table.cmd{border-collapse:collapse;margin:10px 0 14px;width:100%;font-size:13.5px;}
+  table.cmd th,table.cmd td{border:1px solid var(--l-line);padding:8px 12px;text-align:left;vertical-align:top;}
+  table.cmd th{background:#fff;font-weight:600;white-space:nowrap;}
+  code{font-family:'IBM Plex Mono',monospace;font-size:.9em;word-break:break-all;}
+  .note{background:var(--l-amber-tint);border:1px solid var(--l-amber);border-radius:10px;padding:14px 18px;font-size:14.5px;color:#5c4423;line-height:1.6;margin:0 0 16px;}
+  .scenario-box{background:var(--l-bg-raised);border-left:3px solid var(--l-teal);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:0 0 16px;}
+  .scenario-box .tag{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--l-teal-deep);display:block;margin-bottom:8px;}
+  .scenario-box p{font-size:14.5px;color:var(--l-ink-soft);margin:8px 0 0;}
+  .facts{font-size:14.5px;color:var(--l-ink-soft);line-height:1.55;}
+  .cta-btn.disabled{opacity:.55;cursor:not-allowed;pointer-events:none;}
+  .cert,.enrol,.faq{padding:72px 0;border-bottom:1px solid var(--l-line);}
+  .cert p,.faq p{font-size:16px;color:var(--l-ink-soft);line-height:1.7;max-width:70ch;margin:0 0 16px;}
+  .cert ul{color:var(--l-ink-soft);line-height:1.7;padding-left:20px;max-width:70ch;}
+  .enrol form{background:#fff;border:1px solid var(--l-line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow-sm);max-width:640px;margin-top:20px;}
+  .enrol label{display:block;font-size:13.5px;font-weight:600;margin:0 0 6px;}
+  .enrol input[type=text],.enrol input[type=email],.enrol select{width:100%;padding:11px 12px;border:1px solid var(--l-line);border-radius:8px;font:inherit;margin-bottom:16px;background:#fff;}
+  .enrol .consent{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:13.5px;line-height:1.5;color:var(--l-ink-soft);}
+  .enrol .consent input{margin-top:3px;}
+  .enrol .sent{display:none;background:var(--l-teal-tint);border:1px solid var(--l-teal);border-radius:10px;padding:16px 18px;margin-top:16px;font-size:15px;}
+  .enrol .err{display:none;color:#a33;font-size:14px;margin-top:10px;}
+  .enrol button.cta-btn{border:0;cursor:pointer;font:inherit;font-weight:600;}
+  .faq details{border-bottom:1px solid var(--l-line);padding:14px 0;max-width:70ch;}
+  .faq summary{cursor:pointer;font-weight:600;}
+  .faq details p{margin:10px 0 0;}
+  @media (max-width:880px){.steps{grid-template-columns:1fr 1fr;}.mod{padding:20px;}}
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap nav-row">
+    <a href="../index.html" class="logo">
+      <svg class="logo-mark" viewBox="0 0 32 32" fill="none">
+        <path d="M7 5l9 21 9-21" stroke="#0a4f46" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16 6v5" stroke="#d98a34" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M12.5 8a5 5 0 107 0" stroke="#d98a34" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      VigilON
+    </a>
+    <div class="tab-switch">
+      <div class="tab-dd">
+        <a href="../compliance.html"><span class="sw"></span><span class="label">Compliance</span></a>
+        <div class="dd-menu"><div class="dd-panel" role="menu" aria-label="CMMC resources">
+          <a role="menuitem" href="/cmmc-level-1-guide">Explore the CMMC Level 1 Guide</a>
+          <a role="menuitem" href="/cmmc-level-1-readiness-check">CMMC Level 1 Readiness Check</a>
+          <span class="dd-soon" aria-disabled="true">Explore the CMMC Level 2 Guide<em>Coming soon</em></span>
+          <a role="menuitem" href="/cmmc-level-2-score-calculator">CMMC Level 2 Score Calculator</a>
+        </div></div>
+      </div>
+      <div class="tab-dd">
+        <a href="../courses.html" class="active"><span class="sw"></span><span class="label">Digital Forensics</span></a>
+        <div class="dd-menu"><div class="dd-panel" role="menu" aria-label="Digital forensics">
+          <a role="menuitem" href="/courses.html#courses">Course catalog</a>
+          <a role="menuitem" href="/courses.html#path">Recommended learning path</a>
+          <a role="menuitem" href="/courses.html#format">How cohorts run</a>
+          <a role="menuitem" href="/df-010">DF-010 free course</a>
+          <a role="menuitem" href="/intro-to-digital-forensics">Introduction to Digital Forensics</a>
+          <a role="menuitem" href="/dpdp-forensic-readiness">DPDP and forensic readiness</a>
+        </div></div>
+      </div>
+      <div class="tab-dd">
+        <a href="../awareness.html"><span class="sw"></span><span class="label">Awareness</span></a>
+        <div class="dd-menu"><div class="dd-panel" role="menu" aria-label="Awareness">
+          <a role="menuitem" href="/awareness.html#modules">Awareness modules</a>
+          <a role="menuitem" href="/awareness.html#community">Digital arrest scam safety</a>
+          <a role="menuitem" href="/awareness.html#why">Why it matters</a>
+          <a role="menuitem" href="/awareness.html#format">How sessions run</a>
+          <a role="menuitem" href="/#contact">Bring this training to your team</a>
+        </div></div>
+      </div>
+    </div>
+    <div class="hdr-right">
+      <nav id="mobileNav">
+        <a href="../index.html#solutions">Solutions</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <a href="../index.html#contact" class="cta-btn primary">Book a consultation</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="p-hero">
+    <div class="wrap">
+      <div class="crumb"><a href="../index.html">VigilON</a> / <a href="../courses.html">Digital Forensics</a> / DF-010</div>
+      <span class="file-tag"><span class="dot"></span>Free course · Self-paced</span>
+      <h1>DF-010 Introduction to Digital Forensics</h1>
+      <p class="lede">Five short modules that teach how digital evidence is found, protected and presented, with the legal basics for India. Taught by Anil Sharma. Start today, at your own speed.</p>
+      <div class="meta-row">
+        <span><span class="sw"></span>5 modules, about 25 minutes of video</span>
+        <span><span class="sw"></span>Activities and quizzes</span>
+        <span><span class="sw"></span>No prior experience needed</span>
+        <span><span class="sw"></span>English, with captions</span>
+      </div>
+      <div class="p-hero-ctas">
+        <a href="#module-1" class="cta-btn primary" data-track="start">Start Module 1</a>
+        <a href="#enrol" class="cta-btn ghost">Enrol for updates and your certificate</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mods" id="modules">
+    <div class="wrap narrow">
+      <h2>How the course works</h2>
+      <p class="sub">You do not need to enrol to watch. Work through the modules in order. In each one, watch the video, try the activity, then take the quiz.</p>
+      <div class="steps">
+        <div class="step"><b>1 · WATCH</b><p>About five minutes of video per module.</p></div>
+        <div class="step"><b>2 · PRACTISE</b><p>A short activity of 25 to 30 minutes.</p></div>
+        <div class="step"><b>3 · CHECK</b><p>A five-question quiz with instant feedback.</p></div>
+        <div class="step"><b>4 · FINISH</b><p>Final assessment and a one-page case note.</p></div>
+      </div>
+      <p class="dl"><b>Downloads:</b> <a href="DF-010_Quick-Reference.pdf" target="_blank" rel="noopener" data-track="handout">Quick reference handout (PDF)</a> &nbsp;·&nbsp; <a href="DF-010_Chain-of-Custody-Template.pdf" target="_blank" rel="noopener" data-track="coc">Chain of custody template (PDF)</a></p>
+      <div style="height:36px"></div>
+      <article class="mod" id="module-1">
+  <div class="mod-head"><span class="mod-n">Module 1</span><h3>What digital evidence is</h3><div class="mod-meta"><span>5:46 video</span><span>25 min activity</span><span>5-question quiz</span></div></div>
+  <p class="mod-desc">What counts as digital evidence, where it lives, volatile and non-volatile data, and why evidence is so fragile.</p>
+  <div class="player" data-vid="LugtshoBzak" data-title="DF-010 Module 1: What digital evidence is"><button type="button" class="play" aria-label="Watch Module 1"><span class="tri"></span><span>Watch Module 1</span></button></div>
+  <p class="yt-note">Opens the video from YouTube. <a href="https://youtu.be/LugtshoBzak" target="_blank" rel="noopener">Open on YouTube</a></p>
+  <details class="act"><summary>Activity for Module 1</summary><div class="act-body"><p>A sales manager is suspected of emailing a price list to a competitor.</p><ol><li>List at least eight places where evidence could exist.</li><li>Mark each one as volatile or non-volatile.</li><li>Rank which you would secure first, and say why. There is no single right answer, but mention how short-lived each source is.</li></ol></div></details>
+  
+  <div class="mod-cta"><a class="cta-btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSffjsXUOL0g6UwCIvB0l8rOKtRj3oTL3_z21eB2PJc_bDKXlA/viewform" target="_blank" rel="noopener" data-track="quiz1">Take the Module 1 quiz</a></div>
+</article>
+<article class="mod" id="module-2">
+  <div class="mod-head"><span class="mod-n">Module 2</span><h3>How a digital investigation runs</h3><div class="mod-meta"><span>5:19 video</span><span>30 min activity</span><span>5-question quiz</span></div></div>
+  <p class="mod-desc">The stages of an investigation, why authority and scope come first, and the order of volatility.</p>
+  <div class="player" data-vid="bBpAIWgAagA" data-title="DF-010 Module 2: How a digital investigation runs"><button type="button" class="play" aria-label="Watch Module 2"><span class="tri"></span><span>Watch Module 2</span></button></div>
+  <p class="yt-note">Opens the video from YouTube. <a href="https://youtu.be/bBpAIWgAagA" target="_blank" rel="noopener">Open on YouTube</a></p>
+  <details class="act"><summary>Activity for Module 2</summary><div class="act-body"><p>A laptop is switched on and shows an open chat window. Keep it to the first fifteen minutes.</p><ol><li>Write down what you would photograph and record.</li><li>Write down what you would not touch.</li><li>Say who you would call before anyone moves the laptop.</li></ol></div></details>
+  
+  <div class="mod-cta"><a class="cta-btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdxxbIU0BrysKr7s44sklgjllzK_giL5XsQ1ne8wxVEMmL0tg/viewform" target="_blank" rel="noopener" data-track="quiz2">Take the Module 2 quiz</a></div>
+</article>
+<article class="mod" id="module-3">
+  <div class="mod-head"><span class="mod-n">Module 3</span><h3>Chain of custody and file integrity</h3><div class="mod-meta"><span>5:04 video</span><span>30 min activity</span><span>5-question quiz</span></div></div>
+  <p class="mod-desc">Recording who held evidence and why, and using a SHA-256 hash to prove a file has not changed.</p>
+  <div class="player" data-vid="6d1n47BwvWI" data-title="DF-010 Module 3: Chain of custody and file integrity"><button type="button" class="play" aria-label="Watch Module 3"><span class="tri"></span><span>Watch Module 3</span></button></div>
+  <p class="yt-note">Opens the video from YouTube. <a href="https://youtu.be/6d1n47BwvWI" target="_blank" rel="noopener">Open on YouTube</a></p>
+  <details class="act"><summary>Activity for Module 3</summary><div class="act-body"><p>Create a text file and record its SHA-256 hash. Change a single character and hash it again. Compare the two values.</p><table class="cmd"><tr><th>Windows PowerShell</th><td><code>Get-FileHash file.txt -Algorithm SHA256</code></td></tr><tr><th>Windows Command Prompt</th><td><code>certutil -hashfile file.txt SHA256</code></td></tr><tr><th>Linux</th><td><code>sha256sum file.txt</code></td></tr><tr><th>Mac</th><td><code>shasum -a 256 file.txt</code></td></tr></table><p>Then complete a chain of custody record for a USB drive handed from a manager, to an IT officer, to a lab. Use the <a href="DF-010_Chain-of-Custody-Template.pdf" target="_blank" rel="noopener">chain of custody template (PDF)</a> or your own table. For each handover record: the item (description, make, model, serial number), who handed it over, who received it, date and time, location, where it is stored, and the reason for the transfer.</p></div></details>
+  
+  <div class="mod-cta"><a class="cta-btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSflUZ_LxnkjAogsFmd1v7Z4K5SyGeAq85Xw8B9WmjkSd_uRew/viewform" target="_blank" rel="noopener" data-track="quiz3">Take the Module 3 quiz</a></div>
+</article>
+<article class="mod" id="module-4">
+  <div class="mod-head"><span class="mod-n">Module 4</span><h3>Legal basics for investigators in India</h3><div class="mod-meta"><span>5:12 video</span><span>25 min activity</span><span>5-question quiz</span></div></div>
+  <p class="mod-desc">An overview of the main Indian laws on electronic evidence, the evidence certificate, and why authority and consent come first.</p>
+  <div class="player" data-vid="1Cm7OUMf6bM" data-title="DF-010 Module 4: Legal basics for investigators in India"><button type="button" class="play" aria-label="Watch Module 4"><span class="tri"></span><span>Watch Module 4</span></button></div>
+  <p class="yt-note">Opens the video from YouTube. <a href="https://youtu.be/1Cm7OUMf6bM" target="_blank" rel="noopener">Open on YouTube</a></p>
+  <details class="act"><summary>Activity for Module 4</summary><div class="act-body"><p>For each of three scenarios, write who has authority and what you would document.</p><ol><li>A company investigating an employee's laptop under an IT policy.</li><li>A parent asking about a child's phone.</li><li>The police asking a company for server logs.</li></ol></div></details>
+  <p class="note"><strong>General education, not legal advice.</strong> Laws change and your situation may be different. Check the current text of any law and speak to a qualified lawyer before you rely on this module.</p>
+  <div class="mod-cta"><a class="cta-btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSe1uWij73iNawPt-PEPd1eLx3kc1KTrs72yZMgXFv544dmEXg/viewform" target="_blank" rel="noopener" data-track="quiz4">Take the Module 4 quiz</a></div>
+</article>
+<article class="mod" id="module-5">
+  <div class="mod-head"><span class="mod-n">Module 5</span><h3>Tools, reporting and your next step</h3><div class="mod-meta"><span>4:10 video</span><span>30 min activity</span><span>5-question quiz</span></div></div>
+  <p class="mod-desc">The main families of forensic tools, how to write a short factual case note, and choosing your next course.</p>
+  <div class="player" data-vid="njXR-kuo-1A" data-title="DF-010 Module 5: Tools, reporting and your next step"><button type="button" class="play" aria-label="Watch Module 5"><span class="tri"></span><span>Watch Module 5</span></button></div>
+  <p class="yt-note">Opens the video from YouTube. <a href="https://youtu.be/njXR-kuo-1A" target="_blank" rel="noopener">Open on YouTube</a></p>
+  <details class="act"><summary>Activity for Module 5</summary><div class="act-body"><p>Using the price-list scenario from Module 1 and the made-up facts below, write a one-page case note and highlight one limitation. You submit it with your final assessment.</p></div></details>
+  <div class="scenario-box"><span class="tag">MADE-UP FACTS FOR THE CASE NOTE</span>
+<ul class="facts"><li>Case ID DF010-DEMO-01. The examiner is you.</li><li>Authority: a written request from the HR director dated 2 May 2026, to examine one company laptop (a sales manager's) for files related to the Q2 price list.</li><li>Item received: one laptop, imaged by your lab. SHA-256 of the image (made-up): <code>9f2c1e7a5b3d4c8e0a6f1b2d3c4e5f60718293a4b5c6d7e8f9012a3b4c5d6e7f</code>.</li><li>Finding 1: the file <code>Price_List_Q2.xlsx</code> was last modified on 4 May 2026 at 10:42, as shown by the file system.</li><li>Finding 2: the company mail log shows an email with an attachment of the same name sent to an outside address at 10:58 on 4 May 2026.</li><li>The mail server keeps logs for only 30 days, and the laptop's time zone setting could not be confirmed.</li><li>The browser history was outside the scope of the request and was not examined.</li></ul>
+<p>Write facts as facts, with times and sources. Keep opinions separate and labelled. Never write guilty or innocent.</p></div>
+  <div class="mod-cta"><a class="cta-btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLScRyNNxIfKpuHms8dqcgKDeLSQs0uccyBuYMguo7qT7G_QJZA/viewform" target="_blank" rel="noopener" data-track="quiz5">Take the Module 5 quiz</a></div>
+</article>
+    </div>
+  </section>
+
+  <section class="cert" id="certificate">
+    <div class="wrap narrow">
+      <h2>Final assessment and certificate</h2>
+      <p>When you have finished all five modules, take the final assessment and submit your one-page case note from Module 5.</p>
+      <ul><li>The final assessment has 10 questions. The pass mark is 70 percent.</li><li>You receive a certificate of completion when you pass and have submitted your case note.</li></ul>
+      <p><strong>About the certificate.</strong> It records that you completed an introductory course. It is not an accredited qualification.</p>
+      <p><a class="cta-btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLScsx5f_GSGhVgWltfpFRRf7dsv_hg1j3l649BNlD1y07FIguQ/viewform" target="_blank" rel="noopener" data-track="final">Open the final assessment</a></p>
+    </div>
+  </section>
+
+  <section class="enrol" id="enrol">
+    <div class="wrap narrow">
+      <h2>Enrol (free)</h2>
+      <p style="color:var(--l-ink-soft);max-width:62ch;line-height:1.6;">Enrolling is optional. Tell us who you are and we will email you about new modules, the next course in the series, and your certificate.</p>
+      <form name="df010-enrol" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" id="enrolForm">
+        <input type="hidden" name="form-name" value="df010-enrol">
+        <p style="position:absolute;left:-9999px;" aria-hidden="true"><label>Do not fill this out if you are human: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <label for="e-name">Full name</label>
+        <input id="e-name" name="name" type="text" required autocomplete="name">
+        <label for="e-email">Email</label>
+        <input id="e-email" name="email" type="email" required autocomplete="email">
+        <label for="e-role">I am a</label>
+        <select id="e-role" name="role"><option>Student</option><option>IT or security professional</option><option>Legal or law enforcement professional</option><option>Other</option></select>
+        <label class="consent"><input type="checkbox" name="consent" value="yes" required><span>I agree that VigilON may email me about this course, new modules and my certificate. I can withdraw this at any time. See the <a href="../privacy/">privacy notice</a>.</span></label>
+        <button type="submit" class="cta-btn primary" style="margin-top:18px;">Enrol for free</button>
+        <p class="err" id="enrolErr" role="alert">Sorry, that did not send. Please try again, or write to us from the contact section on the home page.</p>
+      </form>
+      <div class="sent" id="enrolSent" role="status">Thank you, you are enrolled. Start with <a href="#module-1">Module 1</a>.</div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="wrap narrow">
+      <h2>Questions</h2>
+      <details><summary>Is it really free?</summary><p>Yes. DF-010 is free. Later courses in the series, such as DF-020, DF-030 and DF-101, are described in the <a href="../courses.html#courses">course catalog</a>.</p></details>
+      <details><summary>Do I need to enrol to watch?</summary><p>No. The videos, activities and quizzes are open. Enrol if you want email updates and your certificate.</p></details>
+      <details><summary>Do I need any background?</summary><p>No. This course gives you the foundation that the later courses build on.</p></details>
+      <details><summary>Is the certificate accredited?</summary><p>No. It records that you completed an introductory course.</p></details>
+      <details><summary>Is Module 4 legal advice?</summary><p>No. It is general education about the main Indian laws. Laws change, so check the current text and speak to a qualified lawyer.</p></details>
+      <details><summary>Where does the narration come from?</summary><p>You hear Anil Sharma's own voice. The slides, activities and quizzes were prepared by the VigilON team.</p></details>
+    </div>
+  </section>
+
+  <section class="cta-wrap" style="padding-top:88px;">
+    <div class="wrap reveal">
+      <div class="cta-banner">
+        <div>
+          <h2>Finished DF-010? Choose your next step.</h2>
+          <p>Continue with DF-020 and DF-030, or tell us your background and we will suggest an entry point.</p>
+        </div>
+        <div class="cta-banner-ctas">
+          <a href="../courses.html#courses" class="cta-btn on-dark">View the course catalog</a>
+          <a href="../index.html#contact" class="cta-btn outline-dark">Ask us where to start</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+(function(){
+  document.querySelectorAll('.player').forEach(function(p){
+    p.querySelector('.play').addEventListener('click',function(){
+      var f=document.createElement('iframe');
+      f.src='https://www.youtube-nocookie.com/embed/'+p.dataset.vid+'?autoplay=1&rel=0&cc_load_policy=1';
+      f.title=p.dataset.title;f.allow='accelerometer; autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;f.referrerPolicy='strict-origin-when-cross-origin';
+      p.innerHTML='';p.appendChild(f);
+      if(window.gtag)gtag('event','df010_video_play',{video_title:p.dataset.title});
+    });
+  });
+  document.querySelectorAll('[data-track]').forEach(function(a){
+    a.addEventListener('click',function(){if(window.gtag)gtag('event','df010_click',{target:a.dataset.track});});
+  });
+  var form=document.getElementById('enrolForm');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var fd=new FormData(form),p=new URLSearchParams();
+    ['form-name','bot-field','name','email','role'].forEach(function(k){p.append(k,fd.get(k)||'')});
+    p.append('consent',fd.get('consent')?'yes':'');
+    var b=form.querySelector('button');b.disabled=true;b.textContent='Sending...';
+    document.getElementById('enrolErr').style.display='none';
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:p.toString()}).then(function(r){
+      if(!r.ok)throw new Error('HTTP '+r.status);
+      if(window.gtag)gtag('event','generate_lead',{form_name:'df010-enrol'});
+      form.style.display='none';document.getElementById('enrolSent').style.display='block';
+    }).catch(function(){b.disabled=false;b.textContent='Enrol for free';document.getElementById('enrolErr').style.display='block';});
+  });
+})();
+</script>
+
+<footer>
+  <div class="wrap footer-top">
+    <div class="footer-brand">
+      <a href="../index.html" class="logo" style="color:#fff;">
+        <svg class="logo-mark" viewBox="0 0 32 32" fill="none">
+          <path d="M7 5l9 21 9-21" stroke="#37d6b3" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M16 6v5" stroke="#e2933e" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M12.5 8a5 5 0 107 0" stroke="#e2933e" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        VigilON
+      </a>
+      <p>CMMC compliance, digital forensics &amp; cybersecurity awareness courses, for teams across the US and India.</p>
+      <span class="footer-tag">A Hora Technologies company</span>
+      <div class="social-row">
+        <span class="social-label mono">FOLLOW VIGILON</span>
+        <a href="https://www.linkedin.com/company/143994050/" target="_blank" rel="noopener" aria-label="VigilON on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="https://www.instagram.com/_vigilon/" target="_blank" rel="noopener" aria-label="VigilON on Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">COMPLIANCE</h5>
+      <a href="../compliance.html#services">Gap analysis &amp; SSP</a>
+      <a href="../compliance.html#services">Assessment prep</a>
+      <a href="../compliance.html#services">Managed compliance</a>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">DIGITAL FORENSICS</h5>
+      <a href="../courses.html#courses">Starter courses</a>
+      <a href="../courses.html#courses">Core track DF-101+</a>
+      <a href="../courses.html#courses">Expert testimony DF-310</a>
+    </div>
+    <div class="footer-col">
+      <h5 class="mono">AWARENESS</h5>
+      <a href="../awareness.html">Phishing &amp; social engineering</a>
+      <a href="../awareness.html">Password &amp; access hygiene</a>
+      <a href="../awareness.html">Incident reporting habits</a>
+      <a href="../awareness.html#community">Digital arrest scam safety</a>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 VigilON, a Hora Technologies company. All rights reserved.</span>
+    <span>Registered as a proprietorship — Hora Technologies · <a href="../privacy/">Privacy notice</a></span>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>
