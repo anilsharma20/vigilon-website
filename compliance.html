@@ -21,111 +21,102 @@
     --tab-bg:var(--l-bg-raised); --tab-active-bg:var(--l-teal-deep); --tab-active-ink:#fff;
     --ft-line:var(--d-line); --ft-ink-soft:var(--d-ink-soft); --ft-ink:var(--d-ink); --ft-accent:var(--d-mint);
     --ft-tag-bg:var(--d-mint-soft); --ft-tag-ink:var(--d-mint); --ft-input-bg:#142420; --ft-btn-ink:#06201b;
+    --acc:#e2933e; --acc-ink:#241403; --hero-soft:#c3ddd6; --hero-link:#8ee8d2;
   }
   body{background:var(--l-bg);color:var(--l-ink);}
   header{background:rgba(240,242,238,0.92);}
+  footer{background:var(--d-bg);}
   .cta-btn.primary{background:var(--l-teal-deep);color:#fff;}
   .cta-btn.primary:hover{background:var(--l-teal);box-shadow:var(--shadow-md);}
-  .cta-btn.ghost{background:transparent;border:1px solid var(--l-line);color:var(--l-ink);}
-  .cta-btn.ghost:hover{background:var(--l-ink);color:#fff;}
 
-  /* ---- page hero ---- */
-  .p-hero{padding:64px 0 76px;border-bottom:1px solid var(--l-line);position:relative;overflow:hidden;}
-  .p-hero::before{content:"";position:absolute;top:-80px;right:-140px;width:520px;height:520px;background:radial-gradient(circle, rgba(15,122,108,0.12) 0%, rgba(15,122,108,0) 70%);pointer-events:none;}
-  .p-hero .wrap{position:relative;z-index:1;}
-  .crumb{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--l-ink-soft);margin-bottom:20px;}
-  .crumb a{color:var(--l-teal-deep);text-decoration:none;}
-  .p-hero .file-tag{display:inline-flex;align-items:flex-start;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.5;color:var(--l-teal-deep);background:var(--l-teal-tint);border:1px solid var(--l-teal);padding:10px 16px;border-radius:14px;margin-bottom:22px;max-width:56ch;}
-  .p-hero .file-tag .dot{width:6px;height:6px;background:var(--l-amber);border-radius:50%;margin-top:6px;flex-shrink:0;}
-  .p-hero h1{font-size:52px;line-height:1.06;letter-spacing:-0.015em;max-width:15ch;margin-bottom:18px;}
-  .p-hero p.lede{font-size:17.5px;color:var(--l-ink-soft);max-width:52ch;margin-bottom:30px;}
-  .p-hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+  body{overflow-x:hidden;}
+  .v2-hero{position:relative;overflow:hidden;padding:76px 0 92px;}
+  .v2-hero .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;}
+  .v2-hero h1{font-size:58px;line-height:1.04;letter-spacing:-.02em;max-width:17ch;margin:0 0 22px;color:#fff;}
+  .v2-hero .lede{font-size:18px;line-height:1.65;max-width:50ch;margin:0 0 30px;color:var(--hero-soft);}
+  .crumb2{font-size:13px;color:var(--hero-soft);margin-bottom:22px;}
+  .crumb2 a{color:var(--hero-link);text-decoration:none;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+  .cta-btn.acc{background:var(--acc);color:var(--acc-ink);}
+  .cta-btn.acc:hover{filter:brightness(1.08);box-shadow:0 10px 26px rgba(0,0,0,.28);}
+  .cta-btn.line{background:transparent;border:1px solid rgba(255,255,255,.38);color:#fff;}
+  .cta-btn.line:hover{background:rgba(255,255,255,.1);}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px;}
+  .chips span{font-size:13px;padding:7px 13px;border-radius:20px;border:1px solid rgba(255,255,255,.22);color:var(--hero-soft);}
+  .block{padding:92px 0;}
+  .block-head{max-width:660px;margin-bottom:46px;}
+  .block-head h2{font-size:40px;line-height:1.08;letter-spacing:-.015em;margin-bottom:14px;}
+  .block-head p{font-size:16.5px;line-height:1.65;}
+  .v2-cta{padding:0 0 100px;}
+  .v2-cta .box{border-radius:20px;padding:58px 56px;display:flex;justify-content:space-between;align-items:center;gap:36px;flex-wrap:wrap;position:relative;overflow:hidden;color:#fff;}
+  .v2-cta h2{font-size:32px;max-width:20ch;margin-bottom:10px;color:#fff;}
+  .v2-cta p{max-width:44ch;font-size:15.5px;color:rgba(255,255,255,.78);}
+  .v2-cta .btns{display:flex;gap:14px;flex-wrap:wrap;position:relative;z-index:1;}
+  .icon-sq{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+    .v2-hero .grid>*{min-width:0;}
+  @media (max-width:980px){.v2-hero .grid{grid-template-columns:minmax(0,1fr);gap:44px;}.v2-hero h1{font-size:44px;}}
+  @media (max-width:880px){.block{padding:64px 0;}.block-head h2{font-size:32px;}.v2-cta .box{padding:38px 26px;}}
 
-  /* level ledger */
-  .levels{padding:88px 0;border-bottom:1px solid var(--l-line);}
-  .sec-head{display:grid;grid-template-columns:0.4fr 0.6fr;gap:40px;margin-bottom:52px;align-items:end;}
-  .sec-head .index{font-family:'IBM Plex Mono',monospace;color:var(--l-teal-deep);font-size:13px;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
-  .sec-head .index::before{content:"";width:22px;height:1px;background:var(--l-teal);}
-  .sec-head h2{font-size:34px;max-width:14ch;}
-  .sec-head p{font-size:15.5px;color:var(--l-ink-soft);max-width:46ch;}
-  .ledger{border:1px solid var(--l-line);border-radius:var(--radius);overflow:hidden;background:#fff;}
-  .ledger-row{display:grid;grid-template-columns:0.6fr 2fr 1.4fr 1fr;gap:24px;padding:26px 30px;border-bottom:1px solid var(--l-line);align-items:center;}
-  .ledger-row:last-child{border-bottom:none;}
-  .ledger-row.head-row{background:var(--l-bg-raised);font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--l-ink-soft);padding:16px 30px;letter-spacing:.03em;}
-  .lvl-num{width:46px;height:46px;border-radius:50%;background:var(--l-teal-tint);color:var(--l-teal-deep);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:600;font-size:18px;}
-  .ledger-row h4{font-size:19px;margin-bottom:4px;}
-  .ledger-row .d{font-size:13.5px;color:var(--l-ink-soft);}
-  .ledger-row .who{font-size:13px;color:var(--l-ink-soft);}
-  .assess-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;padding:5px 10px;border-radius:16px;width:fit-content;}
-  .assess-tag.self{background:var(--l-teal-tint);color:var(--l-teal-deep);}
-  .assess-tag.c3{background:var(--l-amber-tint);color:#8a5220;}
-  .assess-tag.gov{background:#1c1c1c;color:#fff;}
-
-  /* framework strip */
-  .fw-strip{border-top:1px solid var(--l-line);border-bottom:1px solid var(--l-line);padding:26px 0;background:var(--l-bg-raised);}
-  .fw-strip .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
-  .fw-strip .label{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--l-ink-soft);}
-  .fw-strip .fws{display:flex;gap:26px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--l-ink-soft);}
-
-  /* services */
-  .services{padding:88px 0;border-bottom:1px solid var(--l-line);}
-  .service-list{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
-  .service-card{background:#fff;border:1px solid var(--l-line);border-radius:var(--radius);padding:30px 26px;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s,border-color .2s;}
-  .service-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--l-teal);}
-  .service-card .icon-box{width:50px;height:50px;border-radius:9px;background:var(--l-teal-tint);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
-  .service-card .name{font-size:20px;margin-bottom:4px;}
-  .service-card .ref{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--l-amber);display:block;margin-bottom:12px;}
-  .service-card p{font-size:14px;color:var(--l-ink-soft);margin-bottom:16px;}
-  .service-card ul{list-style:none;font-size:13.5px;color:var(--l-ink-soft);}
-  .service-card ul li{padding-left:16px;position:relative;margin-bottom:7px;}
-  .service-card ul li::before{content:"";position:absolute;left:0;top:7px;width:8px;height:1px;background:var(--l-teal);}
-
-  /* CMMC resources */
-  .resources{padding:64px 0;border-bottom:1px solid var(--l-line);}
-  .resource-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
-  .resource-title{display:inline-block;font-size:20px;font-weight:600;color:var(--l-teal-deep);text-decoration:none;margin-bottom:10px;}
-  .resource-title:hover{text-decoration:underline;}
-  .resource-card-disabled{opacity:0.62;}
-  .resource-card-disabled .resource-title{color:var(--l-ink);cursor:default;}
-  .resource-cta{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:var(--l-teal-deep);text-decoration:none;}
-  .resource-cta:hover{text-decoration:underline;}
-  .resource-badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--l-ink-soft);background:var(--l-bg-raised);padding:3px 9px;border-radius:12px;margin-left:8px;vertical-align:middle;}
-
-  /* process timeline */
-  .process{padding:88px 0;border-bottom:1px solid var(--l-line);}
-  .timeline{display:grid;grid-template-columns:repeat(5,1fr);position:relative;margin-top:12px;}
-  .timeline::before{content:"";position:absolute;top:22px;left:5%;right:5%;height:1px;background:var(--l-line);z-index:0;}
-  .tl-step{position:relative;z-index:1;text-align:center;padding:0 10px;}
-  .tl-num{width:44px;height:44px;border-radius:50%;background:#fff;border:1.5px solid var(--l-teal);color:var(--l-teal-deep);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:600;font-size:16px;margin:0 auto 14px;box-shadow:0 0 0 6px var(--l-bg);}
-  .tl-step h4{font-size:14px;font-family:'IBM Plex Sans',sans-serif;font-weight:600;margin-bottom:6px;}
-  .tl-step p{font-size:12px;color:var(--l-ink-soft);}
-
-  /* CTA */
-  .cta-wrap{padding:0 0 96px;}
-  .cta-banner{background:linear-gradient(120deg,var(--l-teal-deep) 0%,#0a4f46 45%,#0d3d35 100%);border-radius:16px;padding:60px 52px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:36px;flex-wrap:wrap;position:relative;overflow:hidden;}
-  .cta-banner::before{content:"";position:absolute;right:-60px;top:-70px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle, rgba(217,138,52,0.30) 0%, rgba(217,138,52,0) 70%);}
-  .cta-banner h2{font-size:29px;max-width:17ch;margin-bottom:8px;color:#fff;}
-  .cta-banner p{font-size:14.5px;max-width:38ch;color:#cfe6e0;}
-  .cta-banner-ctas{display:flex;gap:14px;flex-wrap:wrap;position:relative;z-index:1;}
-  .cta-btn.on-dark{background:var(--l-amber);color:#fff;}
-  .cta-btn.on-dark:hover{background:#c07322;}
-  .cta-btn.outline-dark{background:transparent;border:1px solid rgba(255,255,255,0.4);color:#fff;}
-  .cta-btn.outline-dark:hover{background:rgba(255,255,255,0.1);}
-
-  footer{background:var(--d-bg);}
-
-  @media (max-width:980px){.service-list{grid-template-columns:1fr 1fr;}}
-  @media (max-width:880px){
-    .p-hero h1{font-size:34px;}
-    .sec-head{grid-template-columns:1fr;}
-    .ledger-row{grid-template-columns:1fr;gap:10px;}
-    .ledger-row.head-row{display:none;}
-    .service-list{grid-template-columns:1fr;}
-    .resource-grid{grid-template-columns:1fr;}
-    .timeline{grid-template-columns:1fr;gap:26px;}
-    .timeline::before{display:none;}
-    .cta-banner{padding:36px 24px;}
-  }
+  .c-hero{background:radial-gradient(520px 380px at 88% 8%,rgba(226,147,62,.22),transparent 70%),linear-gradient(135deg,#0a4f46 0%,#0b3f38 55%,#08302b 100%);}
+  .map{background:#fcfcfa;border-radius:20px;padding:26px;box-shadow:0 30px 70px rgba(0,0,0,.35);color:var(--l-ink);}
+  .map-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:16px;}
+  .map-top b{font-family:'Fraunces',serif;font-size:19px;font-weight:600;}
+  .map-top span{font-size:12.5px;color:var(--l-ink-soft);}
+  .map-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+  .map-grid div{background:var(--l-bg);border:1px solid var(--l-line);border-radius:10px;padding:11px 8px 10px;min-height:64px;}
+  .map-grid b{display:block;font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--l-teal-deep);letter-spacing:.02em;}
+  .map-grid i{display:block;font-style:normal;font-size:10.5px;line-height:1.25;color:var(--l-ink-soft);margin-top:3px;}
+  .map-grid .out{background:var(--l-teal-deep);border-color:var(--l-teal-deep);}
+  .map-grid .out b{color:#fff;}.map-grid .out i{color:#bfe3da;}
+  .map-note{font-size:12.5px;color:var(--l-ink-soft);margin-top:14px;line-height:1.5;}
+  .fw{background:var(--l-bg-raised);border-bottom:1px solid var(--l-line);padding:22px 0;}
+  .fw .wrap{display:flex;align-items:center;gap:14px 30px;flex-wrap:wrap;font-size:14px;color:var(--l-ink-soft);}
+  .fw b{font-family:'IBM Plex Mono',monospace;font-weight:500;color:var(--l-ink);font-size:13px;}
+  .tools-sec{border-bottom:1px solid var(--l-line);}
+  .res{display:grid;grid-template-columns:1.1fr 1fr;grid-template-rows:auto auto auto;gap:18px;}
+  .res a.tile,.res .tile{border-radius:18px;padding:30px 30px 28px;text-decoration:none;display:flex;flex-direction:column;gap:10px;transition:transform .2s,box-shadow .2s;}
+  .res a.tile:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);}
+  .tile.light{background:#fff;border:1px solid var(--l-line);color:var(--l-ink);}
+  .tile.feature{grid-row:span 3;background:linear-gradient(160deg,#0a4f46,#0d3d35);color:#fff;justify-content:space-between;min-height:360px;}
+  .tile.soon{background:transparent;border:1.5px dashed var(--l-line);color:var(--l-ink-soft);}
+  .tile h3{font-size:22px;line-height:1.15;}
+  .tile.feature h3{font-size:32px;}
+  .tile p{font-size:14.5px;line-height:1.6;color:var(--l-ink-soft);}
+  .tile.feature p{color:#c9e3dc;font-size:16px;max-width:38ch;}
+  .tile .go{font-size:14px;font-weight:600;color:var(--l-teal-deep);}
+  .tile.feature .go{color:#f2b36b;}
+  .badge-soon{display:inline-block;font-size:11.5px;background:var(--l-bg-raised);color:var(--l-ink-soft);padding:3px 10px;border-radius:12px;margin-left:8px;vertical-align:middle;font-family:'IBM Plex Sans',sans-serif;font-weight:500;}
+  .levels-sec{background:#fcfcfa;border-top:1px solid var(--l-line);border-bottom:1px solid var(--l-line);}
+  .stairs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:end;}
+  .step{border-radius:18px;padding:28px 28px 30px;border:1px solid var(--l-line);display:flex;flex-direction:column;gap:8px;}
+  .step .big{font-family:'Fraunces',serif;font-size:76px;font-weight:600;line-height:.9;opacity:.9;}
+  .step h3{font-size:25px;}
+  .step .d{font-size:14.5px;line-height:1.55;}
+  .step .who{font-size:13.5px;font-weight:600;margin-top:6px;}
+  .step .pill{align-self:flex-start;font-size:12.5px;padding:5px 12px;border-radius:16px;font-weight:500;}
+  .s1{background:#fff;min-height:300px;color:var(--l-ink);}.s1 .big{color:var(--l-teal);}.s1 .d{color:var(--l-ink-soft);}.s1 .pill{background:var(--l-teal-tint);color:var(--l-teal-deep);}
+  .s2{background:var(--l-teal-tint);min-height:380px;color:var(--l-ink);}.s2 .big{color:var(--l-teal-deep);}.s2 .d{color:#33463f;}.s2 .pill{background:var(--l-amber-tint);color:#7a4510;}
+  .s3{background:#0a4f46;min-height:460px;color:#fff;border-color:#0a4f46;}.s3 .big{color:#f2b36b;}.s3 .d{color:#c9e3dc;}.s3 .pill{background:#0a2f2a;color:#e4f3ef;}
+  .svc{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .svc .card{background:#fff;border:1px solid var(--l-line);border-top:4px solid var(--l-teal);border-radius:14px;padding:30px 28px;}
+  .svc .icon-sq{background:var(--l-teal-tint);}
+  .svc h3{font-size:22px;margin-bottom:4px;}
+  .svc .ref{font-family:'IBM Plex Mono',monospace;font-size:12px;color:#9a5f1c;display:block;margin-bottom:12px;}
+  .svc p{font-size:14.5px;line-height:1.6;color:var(--l-ink-soft);margin-bottom:16px;}
+  .svc ul{list-style:none;font-size:14px;color:var(--l-ink);}
+  .svc li{padding:9px 0 9px 22px;border-top:1px solid var(--l-line);position:relative;}
+  .svc li::before{content:"";position:absolute;left:2px;top:17px;width:9px;height:5px;border-left:2px solid var(--l-teal);border-bottom:2px solid var(--l-teal);transform:rotate(-45deg);}
+  .flow{background:#0a4f46;color:#fff;}
+  .flow .block-head p{color:#c9e3dc;}
+  .flow h2{color:#fff;}
+  .steps5{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;}
+  .steps5::before{content:"";position:absolute;left:10%;right:10%;top:27px;height:2px;background:rgba(255,255,255,.22);}
+  .st{position:relative;text-align:center;padding:0 12px;}
+  .st .n{width:56px;height:56px;border-radius:50%;background:#0a4f46;border:2px solid #e2933e;color:#f2b36b;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-family:'Fraunces',serif;font-size:22px;font-weight:600;}
+  .st h3{font-size:19px;margin-bottom:6px;color:#fff;font-family:'IBM Plex Sans',sans-serif;font-weight:600;}
+  .st p{font-size:14px;color:#c9e3dc;line-height:1.5;}
+  @media (max-width:560px){.map-grid{grid-template-columns:repeat(3,1fr);}.map{padding:18px;}.map-top span{display:none;}}
+  @media (max-width:980px){.res{grid-template-columns:1fr;}.tile.feature{grid-row:auto;min-height:0;}.stairs,.svc{grid-template-columns:1fr;}.step{min-height:0 !important;}.steps5{grid-template-columns:1fr;gap:26px;}.steps5::before{display:none;}.st{text-align:left;display:grid;grid-template-columns:56px 1fr;gap:0 16px;padding:0;}.st .n{margin:0;grid-row:span 2;}}
 </style>
 </head>
 <body>
@@ -155,10 +146,6 @@
         <div class="dd-menu"><div class="dd-panel" role="menu" aria-label="Digital forensics">
           <a role="menuitem" href="/courses.html#courses">Course catalog</a>
           <a role="menuitem" href="/courses.html#path">Recommended learning path</a>
-          <a role="menuitem" href="/courses.html#format">How cohorts run</a>
-          <a role="menuitem" href="/df-010">DF-010 free course</a>
-          <a role="menuitem" href="/intro-to-digital-forensics">Introduction to Digital Forensics</a>
-          <a role="menuitem" href="/dpdp-forensic-readiness">DPDP and forensic readiness</a>
         </div></div>
       </div>
       <div class="tab-dd">
@@ -171,6 +158,7 @@
           <a role="menuitem" href="/#contact">Bring this training to your team</a>
         </div></div>
       </div>
+      <a href="/blog/"><span class="sw"></span><span class="label">Blog</span></a>
     </div>
     <div class="hdr-right">
       <nav id="mobileNav">
@@ -185,152 +173,80 @@
 
 <main>
 
-  <section class="p-hero grain">
-    <div class="wrap">
-      <div class="crumb"><a href="index.html">VigilON</a> / Compliance</div>
-      <span class="file-tag"><span class="dot"></span>CMMC (Cybersecurity Maturity Model Certification) and NIST (National Institute of Standards and Technology) SP 800-171</span>
-      <h1>Certification readiness, built the way an assessor will actually test it.</h1>
-      <p class="lede">We take defense contractors from an unscored SPRS entry to assessment day — mapping every control, drafting the System Security Plan, and rehearsing the interview before the C3PAO ever asks a question.</p>
-      <div class="p-hero-ctas">
-        <a href="index.html#contact" class="cta-btn primary">Start a gap assessment</a>
-        <a href="#services" class="cta-btn ghost">See our services</a>
+  <section class="v2-hero c-hero grain">
+    <div class="wrap grid">
+      <div>
+        <div class="crumb2"><a href="index.html">VigilON</a> / Compliance</div>
+        <h1>Certification readiness, built the way an assessor will test it.</h1>
+        <p class="lede">We take defense contractors from an unscored SPRS entry to assessment day: mapping every control, drafting the System Security Plan, and rehearsing the interview before the C3PAO asks a question.</p>
+        <div class="hero-ctas"><a href="index.html#contact" class="cta-btn acc">Start a gap assessment</a><a href="#services" class="cta-btn line">See our services</a></div>
+        <div class="chips"><span>CMMC (Cybersecurity Maturity Model Certification)</span><span>NIST SP 800-171</span></div>
+      </div>
+      <div class="map" aria-label="The 14 control families of NIST SP 800-171 and the two documents a gap assessment produces">
+        <div class="map-top"><b>One assessment, every control</b><span>NIST SP 800-171</span></div>
+        <div class="map-grid"><div><b>AC</b><i>Access control</i></div><div><b>AT</b><i>Awareness and training</i></div><div><b>AU</b><i>Audit and accountability</i></div><div><b>CM</b><i>Configuration management</i></div><div><b>IA</b><i>Identification and authentication</i></div><div><b>IR</b><i>Incident response</i></div><div><b>MA</b><i>Maintenance</i></div><div><b>MP</b><i>Media protection</i></div><div><b>PS</b><i>Personnel security</i></div><div><b>PE</b><i>Physical protection</i></div><div><b>RA</b><i>Risk assessment</i></div><div><b>CA</b><i>Security assessment</i></div><div><b>SC</b><i>System and communications</i></div><div><b>SI</b><i>System and information integrity</i></div><div class="out"><b>SSP</b><i>System Security Plan</i></div><div class="out"><b>POA&amp;M</b><i>Plan of action</i></div></div>
+        <p class="map-note">A gap assessment scores each of the 14 control families, then produces your SSP and a prioritized POA&amp;M.</p>
       </div>
     </div>
   </section>
 
-  <!-- CMMC RESOURCES -->
-  <section class="resources">
+  <div class="fw"><div class="wrap"><span>Frameworks we work against</span><b>NIST SP 800-171</b><b>NIST SP 800-172</b><b>DFARS 252.204-7012</b><b>CMMC</b><b>FAR 52.204-21</b></div></div>
+
+  <section class="block tools-sec" id="resources">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <div><div class="index mono">RESOURCES</div><h2>CMMC Resources</h2></div>
-        <p>Practical guidance for defense contractors preparing for CMMC.</p>
-      </div>
-      <div class="resource-grid">
-        <div class="service-card reveal">
-          <a href="/cmmc-level-1-guide" class="resource-title">Explore the CMMC Level 1 Guide</a>
-          <p>Understand the 15 FAR 52.204-21 safeguarding requirements and 17 CMMC Level 1 practices, including implementation considerations, evidence to prepare, and how each practice may be assessed.</p>
-        </div>
-        <div class="service-card reveal">
-          <a href="/cmmc-level-1-readiness-check" class="resource-title">CMMC Level 1 Readiness Check</a>
-          <p>Assess the 15 FAR 52.204-21 safeguarding requirements for CMMC Level 1, identify FCI protection gaps, and prepare for a Level 1 self-assessment.</p>
-          <a href="/cmmc-level-1-readiness-check" class="resource-cta">Start the readiness check &rarr;</a>
-        </div>
-        <div class="service-card resource-card-disabled reveal">
-          <span class="resource-title">Explore the CMMC Level 2 Guide<span class="resource-badge">Coming soon</span></span>
-          <p>Coming soon.</p>
-        </div>
-        <div class="service-card reveal">
-          <a href="/cmmc-level-2-score-calculator" class="resource-title">Use the CMMC Level 2 Score Calculator</a>
-          <p>Calculate an estimated CMMC Level 2 score across all 110 NIST SP 800-171 Rev. 2 requirements, identify POA&amp;M eligibility issues, and review domain gaps.</p>
-        </div>
+      <div class="block-head"><h2>Start with a free self-check</h2><p>Practical guidance and tools for defense contractors preparing for CMMC. Use them before, or instead of, a call.</p></div>
+      <div class="res">
+        <a class="tile feature" href="/cmmc-level-1-readiness-check">
+          <div><h3>CMMC Level 1 Readiness Check</h3><p>Assess the 15 FAR 52.204-21 safeguarding requirements, find gaps in how you protect FCI, and prepare for a Level 1 self-assessment.</p></div>
+          <span class="go">Start the readiness check &rarr;</span>
+        </a>
+        <a class="tile light" href="/cmmc-level-1-guide"><h3>CMMC Level 1 Guide</h3><p>The 15 FAR 52.204-21 requirements and 17 Level 1 practices: implementation considerations, evidence to prepare, and how each may be assessed.</p><span class="go">Read the guide &rarr;</span></a>
+        <a class="tile light" href="/cmmc-level-2-score-calculator"><h3>CMMC Level 2 Score Calculator</h3><p>Estimate your Level 2 score across all 110 NIST SP 800-171 Rev. 2 requirements, spot POA&amp;M eligibility issues, and review domain gaps.</p><span class="go">Open the calculator &rarr;</span></a>
+        <div class="tile soon"><h3>CMMC Level 2 Guide<span class="badge-soon">Coming soon</span></h3><p>The Level 2 companion to the Level 1 guide.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- LEVEL LEDGER -->
-  <section class="levels">
+  <section class="block levels-sec">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <div><div class="index mono">CMMC</div><h2>The three levels, plainly</h2></div>
-        <p>Your target level is set by the sensitivity of the Federal Contract Information (FCI) and Controlled Unclassified Information (CUI) you handle — not by ambition.</p>
-      </div>
-      <div class="ledger reveal">
-        <div class="ledger-row head-row"><span>LEVEL</span><span>SCOPE</span><span>ASSESSED BY</span><span>PRACTICES</span></div>
-        <div class="ledger-row">
-          <div class="lvl-num">01</div>
-          <div><h4>Foundational</h4><div class="d">Basic safeguarding of Federal Contract Information (FCI)</div></div>
-          <div><span class="assess-tag self">Annual self-assessment</span></div>
-          <div class="who">17 practices</div>
-        </div>
-        <div class="ledger-row">
-          <div class="lvl-num">02</div>
-          <div><h4>Advanced</h4><div class="d">Protection of Controlled Unclassified Information (CUI)</div></div>
-          <div><span class="assess-tag c3">Self or C3PAO assessment</span></div>
-          <div class="who">110 practices — NIST SP 800-171</div>
-        </div>
-        <div class="ledger-row">
-          <div class="lvl-num">03</div>
-          <div><h4>Expert</h4><div class="d">Highest-risk programs, enhanced CUI protection</div></div>
-          <div><span class="assess-tag gov">Government-led assessment</span></div>
-          <div class="who">110 + NIST SP 800-172 enhanced controls</div>
-        </div>
+      <div class="block-head"><h2>Three levels, set by what you handle</h2><p>Your target level depends on the sensitivity of the Federal Contract Information (FCI) and Controlled Unclassified Information (CUI) in your contracts, not on ambition.</p></div>
+      <div class="stairs">
+        <div class="step s1"><span class="big">1</span><h3>Foundational</h3><p class="d">Basic safeguarding of Federal Contract Information (FCI).</p><span class="pill">Annual self-assessment</span><span class="who">17 practices</span></div>
+        <div class="step s2"><span class="big">2</span><h3>Advanced</h3><p class="d">Protection of Controlled Unclassified Information (CUI).</p><span class="pill">Self or C3PAO assessment</span><span class="who">110 practices (NIST SP 800-171)</span></div>
+        <div class="step s3"><span class="big">3</span><h3>Expert</h3><p class="d">Highest-risk programs and enhanced CUI protection.</p><span class="pill">Government-led assessment</span><span class="who">110 practices plus NIST SP 800-172 enhanced controls</span></div>
       </div>
     </div>
   </section>
 
-  <div class="fw-strip">
+  <section class="block" id="services">
     <div class="wrap">
-      <span class="label mono">FRAMEWORKS WE WORK AGAINST</span>
-      <div class="fws"><span>NIST SP 800-171</span><span>NIST SP 800-172</span><span>DFARS 252.204-7012</span><span>CMMC</span><span>FAR 52.204-21</span></div>
-    </div>
-  </div>
-
-  <!-- SERVICES -->
-  <section class="services" id="services">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div><div class="index mono">SERVICES</div><h2>How we get you there</h2></div>
-        <p>Three engagement types, used independently or as a full journey from first gap analysis through year-round maintenance.</p>
-      </div>
-      <div class="service-list">
-        <div class="service-card reveal">
-          <div class="icon-box"><svg class="icon" viewBox="0 0 24 24" stroke="#0a4f46"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
-          <div class="name">Gap analysis &amp; SSP build</div>
-          <span class="ref mono">CMMC-GA</span>
-          <p>A control-by-control review against your target level, scored against SPRS methodology, with a prioritized POA&amp;M.</p>
-          <ul><li>NIST SP 800-171 / 800-172 control mapping</li><li>System Security Plan drafting &amp; review</li><li>CUI boundary and data-flow diagrams</li></ul>
-        </div>
-        <div class="service-card reveal">
-          <div class="icon-box"><svg class="icon" viewBox="0 0 24 24" stroke="#0a4f46"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.3-4.3"/></svg></div>
-          <div class="name">Assessment preparation</div>
-          <span class="ref mono">CMMC-AP</span>
-          <p>Mock assessments run the way a C3PAO will run them, so evidence, interviews, and artifacts are ready before assessment day.</p>
-          <ul><li>Evidence package organization</li><li>Mock C3PAO interviews with staff</li><li>DFARS flow-down review</li></ul>
-        </div>
-        <div class="service-card reveal">
-          <div class="icon-box"><svg class="icon" viewBox="0 0 24 24" stroke="#0a4f46"><path d="M4 12a8 8 0 1116 0 8 8 0 01-16 0z"/><path d="M12 8v4l3 2"/></svg></div>
-          <div class="name">Managed compliance</div>
-          <span class="ref mono">CMMC-MC</span>
-          <p>Ongoing support for teams that need compliance maintained between assessments, not just achieved once.</p>
-          <ul><li>Quarterly control monitoring</li><li>Policy &amp; SSP version control</li><li>Subcontractor flow-down tracking</li></ul>
-        </div>
+      <div class="block-head"><h2>How we get you there</h2><p>Three engagement types, used on their own or as a full journey from first gap analysis to year-round maintenance.</p></div>
+      <div class="svc">
+        <div class="card"><div class="icon-sq"><svg class="icon" viewBox="0 0 24 24" stroke="#0a4f46"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div><h3>Gap analysis &amp; SSP build</h3><span class="ref">CMMC-GA</span><p>A control-by-control review against your target level, scored with SPRS methodology, with a prioritized POA&amp;M.</p><ul><li>NIST SP 800-171 / 800-172 control mapping</li><li>System Security Plan drafting and review</li><li>CUI boundary and data-flow diagrams</li></ul></div>
+        <div class="card"><div class="icon-sq"><svg class="icon" viewBox="0 0 24 24" stroke="#0a4f46"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.3-4.3"/></svg></div><h3>Assessment preparation</h3><span class="ref">CMMC-AP</span><p>Mock assessments run the way a C3PAO will run them, so evidence, interviews and artifacts are ready before assessment day.</p><ul><li>Evidence package organization</li><li>Mock C3PAO interviews with staff</li><li>DFARS flow-down review</li></ul></div>
+        <div class="card"><div class="icon-sq"><svg class="icon" viewBox="0 0 24 24" stroke="#0a4f46"><path d="M4 12a8 8 0 1116 0 8 8 0 01-16 0z"/><path d="M12 8v4l3 2"/></svg></div><h3>Managed compliance</h3><span class="ref">CMMC-MC</span><p>Ongoing support for teams that need compliance maintained between assessments, not just achieved once.</p><ul><li>Quarterly control monitoring</li><li>Policy and SSP version control</li><li>Subcontractor flow-down tracking</li></ul></div>
       </div>
     </div>
   </section>
 
-  <!-- PROCESS -->
-  <section class="process">
+  <section class="block flow">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <div><div class="index mono">ENGAGEMENT</div><h2>How an engagement runs</h2></div>
-        <p>Most contractors move through all five stages in four to eight weeks, depending on target level and current maturity.</p>
-      </div>
-      <div class="timeline reveal">
-        <div class="tl-step"><div class="tl-num">1</div><h4>Discovery</h4><p>Scope CUI/FCI boundary and target level</p></div>
-        <div class="tl-step"><div class="tl-num">2</div><h4>Gap assessment</h4><p>Score all controls, draft POA&amp;M</p></div>
-        <div class="tl-step"><div class="tl-num">3</div><h4>Remediation</h4><p>Close gaps, write policy &amp; SSP</p></div>
-        <div class="tl-step"><div class="tl-num">4</div><h4>Mock assessment</h4><p>Rehearse interviews &amp; evidence</p></div>
-        <div class="tl-step"><div class="tl-num">5</div><h4>Certification</h4><p>Support through C3PAO assessment</p></div>
+      <div class="block-head"><h2>How an engagement runs</h2><p>Most contractors move through all five stages in four to eight weeks, depending on target level and current maturity.</p></div>
+      <div class="steps5">
+        <div class="st"><div class="n">1</div><h3>Discovery</h3><p>Scope the CUI/FCI boundary and target level</p></div>
+        <div class="st"><div class="n">2</div><h3>Gap assessment</h3><p>Score all controls, draft the POA&amp;M</p></div>
+        <div class="st"><div class="n">3</div><h3>Remediation</h3><p>Close gaps, write policy and SSP</p></div>
+        <div class="st"><div class="n">4</div><h3>Mock assessment</h3><p>Rehearse interviews and evidence</p></div>
+        <div class="st"><div class="n">5</div><h3>Certification</h3><p>Support through the C3PAO assessment</p></div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta-wrap" style="padding-top:88px;">
-    <div class="wrap reveal">
-      <div class="cta-banner grain">
-        <div>
-          <h2>Not sure which level applies to you?</h2>
-          <p>A short scoping call is usually enough to tell you your target level and a realistic timeline.</p>
-        </div>
-        <div class="cta-banner-ctas">
-          <a href="index.html#contact" class="cta-btn on-dark">Book a scoping call</a>
-          <a href="courses.html" class="cta-btn outline-dark">Explore forensics courses</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  <div style="height:92px"></div>
+  <section class="v2-cta"><div class="wrap"><div class="box grain" style="background:linear-gradient(120deg,#0a4f46,#0d3d35)">
+    <div><h2>Not sure which level applies to you?</h2><p>A short scoping call is usually enough to tell you your target level and a realistic timeline.</p></div>
+    <div class="btns"><a href="index.html#contact" class="cta-btn acc">Book a scoping call</a><a href="courses.html" class="cta-btn line">Explore forensics courses</a></div>
+  </div></div></section>
 </main>
 
 <footer>
