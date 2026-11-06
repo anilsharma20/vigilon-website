@@ -84,6 +84,11 @@
   .cc .meta{display:flex;gap:6px 14px;flex-wrap:wrap;font-size:12.5px;color:var(--d-ink-soft);border-top:1px solid var(--d-line);padding-top:12px;margin-top:8px;}
   .cc .lvl{font-size:11.5px;padding:3px 10px;border-radius:12px;font-weight:500;}
   .lvl.s{background:var(--d-mint-soft);color:var(--d-mint);}.lvl.i{background:#33384a;color:#b9c4ff;}.lvl.a{background:var(--d-amber-soft);color:var(--d-amber);}
+  .cc-link{display:inline-block;margin-top:10px;font-size:14px;font-weight:600;color:var(--d-mint);text-decoration:none;}
+  .cc-link:hover{text-decoration:underline;}
+  .bundle{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-top:18px;background:linear-gradient(150deg,#12403a,#0f1c19);border:1px solid #1f6a5d;border-radius:16px;padding:24px 28px;}
+  .bundle h4{font-family:'Fraunces',serif;font-size:22px;color:#fff;margin:0 0 6px;}
+  .bundle p{font-size:14.5px;line-height:1.6;color:var(--d-ink-soft);max-width:62ch;margin:0;}
   .cc.hero-c{background:linear-gradient(150deg,#12403a,#0f1c19);border-color:#1f6a5d;grid-column:span 3;flex-direction:row;gap:36px;align-items:center;padding:36px 38px;}
   .cc.hero-c .l{flex:1.2;display:flex;flex-direction:column;gap:10px;}.cc.hero-c h3{font-size:30px;}.cc.hero-c p{font-size:16px;flex:none;max-width:52ch;}
   .cc.hero-c .r{flex:.8;display:grid;gap:10px;}
@@ -129,6 +134,9 @@
         <div class="dd-menu"><div class="dd-panel" role="menu" aria-label="Digital forensics">
           <a role="menuitem" href="/courses.html#courses">Course catalog</a>
           <a role="menuitem" href="/courses.html#path">Recommended learning path</a>
+          <a role="menuitem" href="/df-010">DF-010 online course</a>
+          <a role="menuitem" href="/df-020">DF-020 online course<em>Coming soon</em></a>
+          <a role="menuitem" href="/df-030">DF-030 online course<em>Coming soon</em></a>
         </div></div>
       </div>
       <div class="tab-dd">
@@ -161,7 +169,7 @@
       <div>
         <div class="crumb2"><a href="index.html">VigilON</a> / Digital Forensics Global Courses</div>
         <h1>Investigate evidence the way examiners actually do.</h1>
-        <p class="lede">Eight live, hands-on courses, from your first look at forensic tools to expert testimony. Delivered to learners across India, the US and beyond, on the tools working examiners use.</p>
+        <p class="lede">Nine courses: three self-paced starter courses and six live, hands-on courses, from your first look at forensic tools to expert testimony. Delivered to learners across India, the US and beyond, on the tools working examiners use.</p>
         <div class="hero-ctas"><a href="index.html#contact" class="cta-btn acc">Enroll in a cohort</a><a href="#courses" class="cta-btn line">View the catalog</a></div>
       </div>
       <div class="tag" aria-label="Sample evidence tag from a course case file">
@@ -178,13 +186,15 @@
 
   <section class="block" id="courses">
     <div class="wrap">
-      <div class="block-head"><h2>Eight courses, one case-file method</h2><p>Start with zero background, or join at the core track. Each course builds a complete case file, end to end, before the next one begins.</p></div>
+      <div class="block-head"><h2>Nine courses, one case-file method</h2><p>Start with zero background, or join at the core track. Each course builds a complete case file, end to end, before the next one begins.</p></div>
 
       <div class="stage"><div class="stage-head"><h3>Starter</h3><span>No background needed</span></div>
-        <div class="cg two">
-          <div class="cc"><div class="top"><div class="icon-sq"><svg class="icon" viewBox="0 0 24 24" stroke="#37d6b3"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/></svg></div><span class="lvl s">Starter</span></div><span class="code">DF-020</span><h3>Cybersecurity Basics for Investigators</h3><p>The networking, operating-system and security concepts every later course assumes you already know.</p><div class="meta"><span>2 weeks</span><span>Online, live</span><span>No prerequisite</span></div></div>
-          <div class="cc"><div class="top"><div class="icon-sq"><svg class="icon" viewBox="0 0 24 24" stroke="#37d6b3"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.1-3.1a4 4 0 01-5.4 5.4L5 22l-3-3L12.4 8.6a4 4 0 015.4-5.4l-3 3z"/></svg></div><span class="lvl s">Starter</span></div><span class="code">DF-030</span><h3>First Look at Forensic Tools</h3><p>A guided walkthrough of Autopsy and FTK Imager on a sample case file, with no prior technical background needed.</p><div class="meta"><span>2 weeks</span><span>Online, live</span><span>No prerequisite</span></div></div>
-        </div></div>
+        <div class="cg">
+          <div class="cc"><div class="top"><div class="icon-sq"><svg class="icon" viewBox="0 0 24 24" stroke="#37d6b3"><path d="M6 4h9l4 4v12H6z"/><path d="M14 4v4h4"/></svg></div><span class="lvl s">Starter</span></div><span class="code">DF-010</span><h3>Introduction to Digital Forensics</h3><p>How digital evidence is found, protected and presented, with the legal basics for India. Short videos, activities and quizzes.</p><div class="meta"><span>5 modules</span><span>Online, self-paced</span><span>₹399 incl. GST</span></div><a class="cc-link" href="df-010">View the course</a></div>
+          <div class="cc"><div class="top"><div class="icon-sq"><svg class="icon" viewBox="0 0 24 24" stroke="#37d6b3"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/></svg></div><span class="lvl s">Starter</span></div><span class="code">DF-020</span><h3>Cybersecurity Basics for Investigators</h3><p>The networking, operating-system and security concepts every later course assumes you already know.</p><div class="meta"><span>5 modules</span><span>Online, self-paced</span><span>₹399 incl. GST</span></div><a class="cc-link" href="df-020">Coming soon: join the waitlist</a></div>
+          <div class="cc"><div class="top"><div class="icon-sq"><svg class="icon" viewBox="0 0 24 24" stroke="#37d6b3"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.1-3.1a4 4 0 01-5.4 5.4L5 22l-3-3L12.4 8.6a4 4 0 015.4-5.4l-3 3z"/></svg></div><span class="lvl s">Starter</span></div><span class="code">DF-030</span><h3>First Look at Forensic Tools</h3><p>A guided walkthrough of Autopsy and FTK Imager on a supplied practice image, with no prior technical background needed.</p><div class="meta"><span>5 modules</span><span>Online, self-paced</span><span>₹399 incl. GST</span></div><a class="cc-link" href="df-030">Coming soon: join the waitlist</a></div>
+        </div>
+        <div class="bundle"><div><h4>Starter bundle: DF-010, DF-020 and DF-030</h4><p>All three self-paced courses for ₹999 including GST, which saves ₹198. The bundle opens when DF-020 and DF-030 are ready. Join a waitlist to hear first.</p></div><a href="df-020#enrol" class="cta-btn acc">Join the waitlist</a></div></div>
 
       <div class="stage"><div class="stage-head"><h3>Core track</h3><span>The foundation for everything after it</span></div>
         <div class="cg"><div class="cc hero-c">
@@ -205,16 +215,17 @@
 
   <section class="block route" id="path">
     <div class="wrap">
-      <div class="block-head"><h2>The recommended path</h2><p>Zero background? Start with DF-020. Already comfortable with the basics? Join at DF-101 and branch toward mobile, network or memory forensics from there.</p></div>
+      <div class="block-head"><h2>The recommended path</h2><p>Zero background? Start with DF-010, then DF-020. Already comfortable with the basics? Join at DF-101 and branch toward mobile, network or memory forensics from there.</p></div>
       <div class="rt">
-        <div class="n"><b>DF-020</b><span>Basics</span><em>Weeks 1&ndash;2</em></div>
-        <div class="n"><b>DF-030</b><span>Tools</span><em>Weeks 3&ndash;4</em></div>
-        <div class="n"><b>DF-101</b><span>Foundations</span><em>Weeks 5&ndash;10</em></div>
-        <div class="n br"><b>DF-210</b><span>Network</span><em>Weeks 11&ndash;15</em></div>
-        <div class="n br"><b>DF-230</b><span>Mobile</span><em>Weeks 11&ndash;14</em></div>
-        <div class="n br"><b>DF-260</b><span>Memory</span><em>Weeks 16&ndash;20</em></div>
-        <div class="n br"><b>DF-280</b><span>Cloud</span><em>Weeks 16&ndash;19</em></div>
-        <div class="n br"><b>DF-310</b><span>Testimony</span><em>Weeks 21&ndash;23</em></div>
+        <div class="n"><b>DF-010</b><span>Intro</span><em>Week 1</em></div>
+        <div class="n"><b>DF-020</b><span>Basics</span><em>Weeks 2&ndash;3</em></div>
+        <div class="n"><b>DF-030</b><span>Tools</span><em>Weeks 4&ndash;5</em></div>
+        <div class="n"><b>DF-101</b><span>Foundations</span><em>Weeks 6&ndash;11</em></div>
+        <div class="n br"><b>DF-210</b><span>Network</span><em>Weeks 12&ndash;16</em></div>
+        <div class="n br"><b>DF-230</b><span>Mobile</span><em>Weeks 12&ndash;15</em></div>
+        <div class="n br"><b>DF-260</b><span>Memory</span><em>Weeks 17&ndash;21</em></div>
+        <div class="n br"><b>DF-280</b><span>Cloud</span><em>Weeks 17&ndash;20</em></div>
+        <div class="n br"><b>DF-310</b><span>Testimony</span><em>Weeks 22&ndash;24</em></div>
       </div>
     </div>
   </section>
@@ -267,7 +278,7 @@
   </div>
   <div class="wrap footer-bottom">
     <span>© 2026 VigilON, a Hora Technologies company. All rights reserved.</span>
-    <span>Registered as a proprietorship — Hora Technologies · <a href="privacy/">Privacy notice</a></span>
+    <span>Registered as a proprietorship — Hora Technologies · <a href="privacy/">Privacy notice</a> · <a href="terms/">Terms</a> · <a href="refund-policy/">Refunds</a></span>
   </div>
 </footer>
 
